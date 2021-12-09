@@ -6,3 +6,5 @@ length:
   len_200: 200
 regex:
   email: !ruby/regexp /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+min:
+  quantity: 0
