@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :check_user, :check_address, only: [:index, :show, :update, :create]
-  before_action :check_order, only: [:index, :update, :create]
+  before_action :check_order, only: [:index, :update]
 
   def index
     store_location
@@ -23,14 +23,12 @@ class OrdersController < ApplicationController
   def create
     ActiveRecord::Base.transaction do
       create_order
-      flash[:success] = t "errors.order_create"
-      redirect_to root_path
+      redirect_to orders_path
     end
   rescue ActiveRecord::RecordInvalid
     flash[:danger] = t "errors.record_invalid"
     redirect_to carts_path
   end
-
 
   private
 
@@ -82,7 +80,7 @@ class OrdersController < ApplicationController
       flash[:danger] = t("warning.order")
       redirect_to home_path
     else
-      @products = detail_product(@order.order_details)
+      @products = @order.order_details
     end
   end
 

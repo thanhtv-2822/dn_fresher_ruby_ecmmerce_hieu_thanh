@@ -1,12 +1,12 @@
 class Order < ApplicationRecord
   belongs_to :user
-  belongs_to :payment
-  belongs_to :address
+  belongs_to :payment, optional: true
+  belongs_to :address, optional: true
   accepts_nested_attributes_for :address, update_only: true
   has_many :order_details, dependent: :destroy
   has_many :products, through: :order_details
-  before_save :status_default
-  enum status: {pending: 0, accept: 1, resolved: 2, rejected: 3}
+  
+  enum status: {pending: 0, accept: 1, rejected: 2}
 
   def get_total
     total = 0
@@ -15,8 +15,4 @@ class Order < ApplicationRecord
     end
     return total
   end
-
-  private
-
-  enum status: {pending: 0, resolved: 1, rejected: 2}
 end
