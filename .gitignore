@@ -69,6 +69,12 @@ yarn-debug.log*
 .framgia-ci-reports/
 .framgia-ci-result.temp.yml
 /spec
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
+# Ignore application configuration
+/config/application.yml
 /config/database.yml
 /config/credentials.yml.enc
 .pull_request_template.md
