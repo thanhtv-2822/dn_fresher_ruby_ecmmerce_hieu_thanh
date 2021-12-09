@@ -1,5 +1,3 @@
-category = ["Apple", "Samsung", "Xiaomi"]
-
 User.create(
   name: "Admin",
   email: "admin@gmail.com",
@@ -7,12 +5,24 @@ User.create(
   password_confirmation: "123456",
   is_admin: true
 )
+category = ["Dell", "Hp", "Lenovo"]
+
+3.times do |n|
+  Category.create(name: category[n])
+end
+
+5.times do |n|
+  Category.create(
+    name: category[0] + "-#{n}",
+    parent_id: 1
+  )
+end
 
 User.create!(name: "Example User",
   email: "example@railstutorial.org",
   password: "foobar",
   password_confirmation: "foobar")
-  99.times do |n|
+  20.times do |n|
     name = Faker::Name.name
     email = "example-#{n+1}@railstutorial.org"
     password = "password"
@@ -20,9 +30,18 @@ User.create!(name: "Example User",
     email: email,
     password: password,
     password_confirmation: password,
+    is_admin: false
   )
   end
 
-3.times do |n|
-  Category.create(name: category[n-1])
+10.times do
+  Product.create(
+    name: Faker::Name.first_name,
+    description: Faker::Lorem.sentence,
+    price: 120000,
+    image: "https://laptops.vn/uploads/dell-xps-9570-laptop-tran-phat_1600612884.jpg",
+    category_id: 4,
+    quantity: 10,
+    rating: 5
+  )
 end

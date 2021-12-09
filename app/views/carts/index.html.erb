@@ -1,0 +1,24 @@
+<div class="wrap cf">
+  <div class="heading cf">
+    <h1>My Cart</h1>
+    <%= link_to  "Continue Shopping", root_path, class: "continue" %>
+  </div>
+  <div class="cart">
+    <ul class="cartWrap">
+		  <%= render :partial => "product", :collection => @carts, :as => :item %>
+    </ul>
+  </div>
+  
+  <div class="subtotal cf">
+    <ul>
+      <li class="totalRow final"><span class="label">Total</span>
+        <span class="value">
+          <%= total_all_price %>
+        </span>
+      </li>
+      <li class="totalRow">
+        <%= link_to "Checkout", orders_path, class: "btn continue btn-checkout", method: :post %>
+      </li>
+    </ul>
+  </div>
+</div>

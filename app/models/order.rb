@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :user
-  belongs_to :address
-  belongs_to :payment
+  belongs_to :address, optional: true
+  belongs_to :payment, optional: true
   has_many :order_details, dependent: :destroy
   has_many :products, through: :order_details
 
