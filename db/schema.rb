@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2021_12_15_075607) do
   end
 
   create_table "order_details", charset: "utf8", force: :cascade do |t|
-    t.integer "quantity"
+    t.integer "quantity", default: 1
     t.decimal "price", precision: 10
     t.bigint "order_id", null: false
     t.bigint "product_id", null: false
@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 2021_12_15_075607) do
     t.text "description"
     t.integer "status", default: 0
     t.bigint "user_id", null: false
-    t.bigint "payment_id", null: false
-    t.bigint "address_id", null: false
+    t.bigint "payment_id"
+    t.bigint "address_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["address_id"], name: "index_orders_on_address_id"

@@ -55,6 +55,17 @@ vi:
       success: "Đăng nhập thành công"
     register:
       success: "Đăng ký thành công"
+    order_create: "Tạo đơn hàng thành công"
+    record_invalid: "Bản ghi không hợp lệ"
+    carts:
+      update: "Cập nhật sản phẩm vào giỏ hàng thành công"
+      add: "Thêm sản phẩm vào giỏ hàng thành công"
+      remove: "Xóa mục thành công"
+      update_qty: "Cập nhật giỏ hàng thành công"
+      update_fail: "Cập nhật giỏ hàng không thành công"
+      review_success: "Đánh giá thành công"
+      review_fail: "Đánh giá không thành công"
+      enough: "Số lượng sản phẩm không đủ"
   form:
     register_here: "Đăng ký tại đây"
     login_here: "Đăng nhập tại đây"
@@ -63,3 +74,40 @@ vi:
     password: "Mật khẩu"
     password_confirm: "Xác nhận Mật khẩu"
     error_msg: "Biểu mẫu Chứa %{errors} lỗi"
+  product:
+    description: "Mô tả"
+    add_to_cart: "Thêm vào giỏ hàng"
+    product_left: "sản phẩm còn lại"
+    rating: "Xếp hạng"
+    not_found: "Sản phẩm không được tìm thấy!"
+  carts:
+    index:
+      total: "Tổng cộng"
+      title: "Giỏ hàng của tôi"
+      checkout: "Thanh toán"
+      back: "Tiếp tục Mua sắm"
+    product:
+      confirm: "Bạn có chắc không?"
+    item:
+      not_found: "Không tìm thấy mặt hàng trong giỏ hàng!"
+    quantity:
+      not_valid: "Số lượng phải lớn hơn 0"
+  admin:
+    permission: "Bạn không được phép"
+    static_pages:
+      home:
+        content: "Chào mừng đến với trang quản trị"
+    layouts:
+      nav:
+        dashboard: "Trang tổng quan"
+        function: "Chức năng"
+        user_manager: "Quản lý người dùng"
+        product_manager: "Quản lý sản phẩm"
+        order_manager: "Quản lý đơn đặt hàng"
+        contribute_manager: "Quản lý đóng góp"
+        list_product: "Liệt kê Sản phẩm"
+      header:
+        profile: "Hồ sơ"
+        logout: "Đăng xuất"
+      footer: 
+        content: "Quản trị & copy; Thương mại điện tử 2021"

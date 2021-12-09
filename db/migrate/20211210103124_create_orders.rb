@@ -4,8 +4,8 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.text :description
       t.integer :status, default: 0
       t.references :user, null: false, foreign_key: true
-      t.references :payment, null: false, foreign_key: true
-      t.references :address, null: false, foreign_key: true
+      t.references :payment, null: true, foreign_key: true
+      t.references :address, null: true, foreign_key: true
       
       t.timestamps
     end
