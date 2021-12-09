@@ -1,0 +1,22 @@
+<%= form_tag admin_products_path, method: :get do %>
+  <%= select_tag :option, options_for_select(Settings.admin.product_sorts), class: "form-control mr-sm-2 option-filter" %>
+  <%= submit_tag "Sort", class: "btn btn-info"%>
+<% end %>
+
+<table class="table table-bordered table-hover table-inverse">
+  <thead class="thead-inverse|thead-default">
+    <tr>
+      <th><%= t ".id" %></th>
+      <th><%= t ".name" %></th>
+      <th><%= t ".price" %></th>
+      <th><%= t ".quantity" %></th>
+      <th><%= t ".description" %></th>
+      <th><%= t ".image" %></th>
+      <th class="col-md-2"><%= t ".action" %></th>
+    </tr>
+  </thead>
+  <tbody>
+      <%= render "product" %>
+  </tbody>
+</table>
+<%== pagy_bootstrap_nav(@pagy) %>

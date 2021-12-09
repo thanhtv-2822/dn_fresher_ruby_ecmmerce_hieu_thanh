@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+    <title><%= t "application.title" %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= javascript_pack_tag "application", "data-turbolinks-track": "reload" %>
+    <%= stylesheet_link_tag "/assets/admin/sb-admin-2.min.css", "data-turbolinks-track": "reload" %>	
+  </head>
+  <body id="page-top">
+    <div id="wrapper">
+      <%= render "admin/layouts/nav" %>
+      <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+        <div id="content">
+          <%= render "admin/layouts/header" %>
+          <div class="container-fluid">
+            <% flash.each do |message_type, message| %>
+              <div class="alert alert-<%= message_type %> alert-dismissible fade show"><%= message %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            <% end %>
+            <%= yield %>
+          </div>
+        </div>
+          <!-- End of Main Content -->
+        <%= render "admin/layouts/footer" %>
+      </div>
+    </div>
+    <%= javascript_pack_tag "admin", "data-turbolinks-track": "reload" %>
+  </body>
+</html>

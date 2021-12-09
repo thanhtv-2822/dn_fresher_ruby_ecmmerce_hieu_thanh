@@ -1,0 +1,67 @@
+<section class="h-100 gradient-custom">
+  <div class="container py-5 h-100 checkout">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-10 col-xl-8">
+        <div class="card" style="border-radius: 10px;">
+          <div class="card-header px-4 py-5">
+            <h5 class="text-muted mb-0"><%= t("info.order") %> <span style="color: #a8729a;"><%= @user.name %></span></h5></h5>
+          </div>
+          <div class="order_config">
+
+          <% @orders.each do |order| %>
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-between pt-2">
+              <p class="fw-bold mb-0"><%= "#{t("order_num")} : #{order.id}" %></p>
+              <p class="text-muted mb-0"><span class="fw-bold me-4">Total:</span><%= order.get_total %>VND</p>
+            </div>
+            <div class="row d-flex align-items-center mt-2">
+              <div class="col-md-2">
+                <p class="text-muted mb-0 small"><%= t("tracker_order") %></p>
+              </div>
+              <%= render partial: "shared/order_status" , locals: {zone: order.status} %>
+            </div>
+
+              <% detail_product(order.order_details).each do |product| %>
+              <div class="card shadow-0 border mb-4 mt-4">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <%= image_tag(product[:img], class:"img-wrap") %>
+                    </div>
+                    <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                      <p class="text-muted mb-0"> <%= product[:name] %></p>
+                    </div>
+                    <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                      <p class="text-muted mb-0 small">Quantity: <%= product[:quantity] %></p>
+                    </div>
+                    <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                      <p class="text-muted mb-0 small"><%= product[:price] %>VND</p>
+                    </div>
+                  </div>
+                  <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
+                </div>
+              </div>
+              <% end %>
+
+          </div>
+          <% end %>
+          </div>
+          <div class="card-footer border-0 px-4 py-5"
+            style="background-color: #a8729a;
+                  border-bottom-left-radius: 10px;
+                  border-bottom-right-radius: 10px;
+                  text-align: right;">
+          <div class="row justify-content-between">
+            <div class="col-md-2">
+              <%= button_to t("Home"), home_path, method: "get", form_class: "button-23", class: "form-control button_config"%>
+            </div>
+            <div class="col-md-6">
+              <%= button_to t("back"), user_path(@user), method: "get", form_class: "button-23", class: "form-control button_config"%>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

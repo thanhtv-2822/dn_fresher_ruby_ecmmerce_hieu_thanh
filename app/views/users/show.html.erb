@@ -1,0 +1,178 @@
+<div class="container main-secction mb-5 mt-4">
+  <div class="row">
+    <div class="row user-left-part">
+      <div class="col-md-3 col-sm-3 col-xs-12 user-profil-part pull-left">
+        <div class="row">
+          <%= form_with model: @user, url: user_upload_path(@user), method: "patch" do |upload| %>
+          <div class="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center">
+            <% if @user.image.attached? %>
+              <%= image_tag( @user.display_image, class: "rounded-circle" ) %>
+            <% else %>
+              <%= image_tag(Settings.default_url, class: "rounded-circle" ) %>
+            <% end %>
+            <%= upload.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center">
+            <%= upload.submit t("upload_avt"), class: "btn btn-success btn-block follow" %>
+          </div>
+          <% end %>
+          <div class="row user-detail-row mt-2">
+            <ul class="menu-category">
+              <li>
+                <%= link_to t("his_order"), user_order_path(@user) %>
+              </li>
+              <li>
+                <%= link_to t("his_contrbutes"), user_contribute_path(@user) %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section">
+        <div class="row profile-right-section-row">
+          <div class="col-md-12 profile-header">
+            <div class="row">
+              <div class="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left">
+                <h1>
+                  <%= @user.name %>
+                </h1>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-8">
+                <ul class="nav nav-tabs" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#profile" role="tab" data-toggle="tab"><i
+                        class="fas fa-user-circle"></i>
+                      <%= t("your_profile")%>
+                    </a>
+                  </li>
+                </ul>
+                <div class="tab-content mt-4">
+                  <div role="tabpanel" class="tab-pane fade show active" id="profile">
+                    <%= form_for @user do |f| %>
+                      <%= render partial: "shared/error" , locals: {zone: @user}%>
+                        <div class="row">
+                          <div class="col-md-2">
+                            <label>
+                              <%= t("name")%>
+                            </label>
+                          </div>
+                          <div class="col-md-6">
+                            <p>
+                              <%= f.text_field :name, class: "form-control" %>
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-2">
+                            <label>
+                              <%= t("email") %>
+                            </label>
+                          </div>
+                          <div class="col-md-6">
+                            <p>
+                              <%= f.text_field :email, class: "form-control" %>
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-2">
+                            <label>
+                              <%= t("password")%>
+                            </label>
+                          </div>
+                          <div class="col-md-6">
+                            <p>
+                              <%= f.password_field :password, class: "form-control" %>
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-2">
+                            <label>
+                              <%= t("pass_confirm")%>
+                            </label>
+                          </div>
+                          <div class="col-md-6">
+                            <p>
+                              <%= f.password_field :password_confirmation, class: "form-control" %>
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <%= link_to t("Home"), home_path, class: "btn btn-sm btn-primary config-buton" %>
+                            </div>
+                            <div class="col-md-4">
+                                <%= f.submit "Save", class: "btn btn-sm btn-primary" , style: "font-size: 18px;
+                            font-weight: bold" %>
+                            </div>
+                        </div>
+                        <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-md-8">
+                <ul class="nav nav-tabs" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#profile" role="tab" data-toggle="tab"><i
+                        class="fas fa-user-circle"></i>
+                      <%= t("your_address") %>
+                    </a>
+                  </li>
+                  <li class="ml-5 mt-2">
+                    <%= link_to new_address_path do %>
+                    <span class="mb-4">
+                      <%= t("info.new_add") %>
+                      <i class="fas fa-plus"></i>
+                    </span>
+                  <% end %>
+                  </li>
+                </ul>
+                <div class="tab-content mt-4">
+                  <div class="row">
+                    <% if @address.present? %>
+                      <table>
+                        <% current_user.addresses.each do |add| %>
+                          <tr>
+                            <td>
+                              <%= add.address_initial %>
+                            </td>
+                            <td>
+                              <% if add.default==1 %>
+                                <span>
+                                  <%= t("default_add")%>
+                                </span>
+                              <% end %>
+                            </td>
+                            <td>
+                              <%= link_to edit_address_path(add) do %>
+                                <i class="fas fa-edit"></i>
+                              <% end %>
+                            </td>
+                            <td>
+                              <%= link_to address_path(add), method: :delete, data: { confirm: t("warning.delete")},
+                                remote: true do %>
+                                <i class="fas fa-trash"></i>
+                              <% end %>
+                            </td>
+                          </tr>
+                          <% end %>
+                      </table>
+                      <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

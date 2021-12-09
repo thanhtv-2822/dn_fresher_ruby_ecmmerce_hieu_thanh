@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+<<<<<<< HEAD
+=======
+load File.expand_path("spring", __dir__)
+>>>>>>> 115a558... 44086 Model User Validate
+require_relative "../config/boot"
+require "rake"
+Rake.application.run
