@@ -1,0 +1,54 @@
+<%= form_for [:admin, @product] do |f| %>
+  <div class="row">
+    <div class="col-sm">
+    <%= render "shared/error_messages", object: f.object %>
+    <div class="form-group">
+      <%= f.label :category_id %>
+      <%= f.select :category_id, options_for_select(@category_child.collect{|cate| [cate.name, cate.id]}), {:include_blank => "--Select category--"}, {class: "form-control"}%>
+    </div>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "form-control", size: "70x5" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :price %>
+      <%= f.number_field :price, min: 0, step: 1000, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :rating %>
+      <%= f.range_field :rating, class: "form-control", in: 1..5 %>
+    </div>
+    <div class="form-group">
+      <%= f.label :quantity %>
+      <%= f.number_field :quantity, min: 1, step: 1, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <span class="image">
+        <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+      </span>
+    </div>
+    </div>
+    <div class="col-sm">
+    <%= f.fields_for :category do |p| %>
+      <div class="form-group">
+        <%= p.label :parent_id %>  
+        <%= p.select :parent_id, options_for_select(Category.filter_by_parent_id.collect{|cate| [cate.name, cate.id]}), {}, {class: "form-control"}%>
+      </div>
+      <div class="form-group">
+        <%= p.label :name %>
+        <%= p.text_field :name, class: "form-control" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group back col-md-6">
+      <%= link_to t("back"), "#", class: "btn-danger btn-back"%>
+      <%= f.submit t("admin.products.form_edit.submit"), class: "btn btn-info" %>
+    </div>
+  </div>
+<% end %>

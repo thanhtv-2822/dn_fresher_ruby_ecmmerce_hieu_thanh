@@ -1,0 +1,31 @@
+<table class="table table-bordered table-hover table-inverse">
+  <thead class="thead-inverse|thead-default">
+    <tr>
+      <th><%= t ".id" %></th>
+      <th><%= t ".name" %></th>
+      <th><%= t ".email" %></th>
+      <th><%= t ".diff_info" %></th>
+      <th><%= t ".price" %></th>
+      <th class="col-md-2"><%= t ".status" %></th>
+      <th><%= t ".option" %></th>
+    </tr>
+  </thead>
+  <div class="row justify-content-between mb-4">
+    <div class="col-md-3">
+      <%= form_with url: admin_orders_path, method: :get do |form| %>
+      <%= form.label :name, t("placeholder") %>
+      <%= form.text_field :name, class: "form-control" %>
+      <%= form.label :status, t(".status"), class: "mt-2" %>
+      <%= select_tag :status, options_for_select(Settings.order.status), class: "form-control" %>
+      <%= form.submit t("admin.search"), class: "btn btn-primary mt-2"%>
+      <% end %>
+    </div>
+    <div class="col-md-1">
+      <%= button_to  t("show_all"), admin_users_path, method: "get", class: "btn btn-outline-primary config-showall" %>
+    </div>
+  </div>
+  <tbody>
+    <%= render "order" %>
+  </tbody>
+</table>
+<%== pagy_bootstrap_nav(@pagy) %>

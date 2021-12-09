@@ -1,23 +1,24 @@
 <li class="items odd">
   <div class="infoWrap"> 
-  <input type="hidden" class="product-id" value="<%= item["product"]["id"] %>">
+  <input type="hidden" class="product-id" value="<%= item[:product].id %>">
     <div class="cartSection">
-      <img src="<%= item["product"]["image"] %>" alt="" class="itemImg" />
-      <h3><%=item["product"]["name"] %></h3>
-      <input type="number" class="qty" value="<%= item["quantity"] %>", min="1", max="<%= item["product"]["quantity"] %>">
-      x <%= item["product"]["price"] %>
+      <div class="itemImg">
+        <%= image_tag item[:product].display_image_admin if item[:product].image.attached? %>
+      </div>
+      <h3><%=item[:product].name %></h3>
+      <input type="number" class="qty" value="<%= item[:quantity] %>"  min="1" max="<%= item[:product].quantity %>">
+      x <%= item[:product].price %> VND
     </div>
     <div class="cartReview">
       <% 5.times do |n| %>
-        <span class="fa fa-star review <%= item["rating"] >= n + 1 ? 'checked' : ''%>" value="<%= n+1 %>"></span>
+        <span class="fa fa-star review <%= item[:rating] >= n + 1 ? 'checked' : ''%>" value="<%= n+1 %>"></span>
       <% end %>
     </div>
     <div class="prodTotal cartSection">
-      <p><%= total_price(item) %></p>
+      <p><%= total_price(item) %> VND</p>
     </div>
     <div class="cartSection removeWrap">
-      <%= link_to  "x", cart_path(id: item["product"]["id"]), class: "remove", method: :delete, data: {confirm: t(".confirm")}%>
+      <%= link_to  "x", cart_path(id: item[:product].id), class: "remove", method: :delete, data: {confirm: t(".confirm")}%>
     </div>
   </div>
 </li>
-<%= javascript_include_tag "cart" %>

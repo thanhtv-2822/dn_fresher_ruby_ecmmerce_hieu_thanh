@@ -3,7 +3,7 @@ class CreateContributes < ActiveRecord::Migration[6.1]
     create_table :contributes do |t|
       t.string :content
       t.string :image
-      t.integer :status
+      t.integer :status, default: 0
       t.references :user, null: false, foreign_key: true
 
       t.timestamps

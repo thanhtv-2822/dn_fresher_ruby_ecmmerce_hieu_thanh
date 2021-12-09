@@ -1,0 +1,35 @@
+<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+  <div class="input-group">
+    <%= form_tag admin_products_path, method: :get do %>
+      <%= text_field_tag :search, params[:search], class: "form-control bg-white border-0 small" %>
+      <div class="input-group-append">
+        <%= submit_tag t("admin.search"), class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</form>
+
+<%= form_tag admin_products_path, method: :get do %>
+  <div class="form-option">
+    <%= select_tag :option, options_for_select(Settings.admin.product_sorts), class: "form-control mr-sm-2 option-filter" %>
+    <%= submit_tag t(".sort"), class: "btn btn-info"%>
+  </div>
+<% end %>
+
+<table class="table table-bordered table-hover table-inverse">
+  <thead class="thead-inverse|thead-default">
+    <tr>
+      <th><%= t ".id" %></th>
+      <th><%= t ".name" %></th>
+      <th><%= t ".price" %></th>
+      <th><%= t ".quantity" %></th>
+      <th><%= t ".description" %></th>
+      <th><%= t ".image" %></th>
+      <th class="col-md-2"><%= t ".action" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render "product" %>
+  </tbody>
+</table>
+<%== pagy_bootstrap_nav(@pagy) %>

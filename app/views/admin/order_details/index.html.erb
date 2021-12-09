@@ -1,0 +1,15 @@
+<div class="card-footer border-0 px-4 py-5 cart-contrib-footer">
+  <div class="row justify-content-end">
+
+    <div class="col-md-6">
+      <%= button_to  t("back"), admin_orders_path, method: "get", class: "btn btn-outline-primary config-showall" %>
+    </div>
+  </div>
+  <div class="order_config">
+    <div class="card-body p-4">
+      <div class="row d-flex align-items-center mt-2">
+      </div>
+      <%= render partial: "shared/order_detail" , locals: {zone: @order} %>
+    </div>
+  </div>
+</div>

@@ -2,10 +2,21 @@ vi:
   application:
     title: "Trang thương mại điện tử"
   Welcome: "Xin chào!"
-  sign_in: "Đăng nhập"
-  sign_up: "Đăng kí "
   description: " Thêm dặn dò dành cho chúng tôi"
-  filter: "sắp xếp"
+  sign_in: "Đăng nhập"
+  sign_up: "Đăng ký"
+  log_out: "Đăng xuất"
+  upload_avt: "Upload avatar"
+  save: "Save"
+  back: "Trở lại"
+  select_payment: vui lòng chọn địa chỉ và phương thức thanh toán
+  select_payment: vui lòng chọn địa chỉ và phương thức thanh toán
+  payment: "Phương thức thanh toán"
+  diff_info: "Những thông tin khác"
+  save: "Luu"
+  list_orders: "Danh sách order"
+  show_all: "Hiển thị tất cả"
+  placeholder: "Tìm kiếm tên :" 
   header:
     Home: "Trang chủ"
     Contact us: "Về chúng tôi"
@@ -49,13 +60,20 @@ vi:
     email: "info@com"
     phone: "+000-000-0000"
     Street: "Street name 123, ABC"
+  success:
+    address: "Địa chỉ đã được tạo thành công"
+    address_fail: "Không thành công"
   errors:
     index: "Không hợp lệ"
     login:
       danger: "Email hoặc mật khẩu không chính xác"
       success: "Đăng nhập thành công"
+    logout: "Logout successfuly"
+    cant_login: "You must log out before you can log in"
     register:
       success: "Đăng ký thành công"
+    update:
+      success: "Update successfully"
     order_create: "Tạo đơn hàng thành công"
     record_invalid: "Bản ghi không hợp lệ"
     carts:
@@ -81,6 +99,7 @@ vi:
     product_left: "sản phẩm còn lại"
     rating: "Xếp hạng"
     not_found: "Sản phẩm không được tìm thấy!"
+    delete: "Xóa sản phẩm thành công"
   carts:
     index:
       total: "Tổng cộng"
@@ -94,10 +113,43 @@ vi:
     quantity:
       not_valid: "Số lượng phải lớn hơn 0"
   admin:
+    search: "Tim Kiem" 
     permission: "Bạn không được phép"
     static_pages:
       home:
         content: "Chào mừng đến với trang quản trị"
+    categories:
+      add_form:
+        back: "Trở lại"
+        parent: "Thêm danh mục cha"
+      category_child:
+        delete: "Bạn có chắc không?"
+      category:
+        delete: "Bạn có chắc không?"
+      form:
+        back: "Trở lại"
+      edit:
+        title: "Edit Category"
+      new:
+        title: "Add Category"
+    contributes:
+      index:
+        stt: "STT"
+        contributer: "Người đóng góp"
+        content: "Nội dung"
+        image: "Hình ảnh"
+        status: "Trạng thái"
+        sort: "Sắp xếp"
+      show:
+        back: "Trở lại"
+        accept: "Chấp nhận"
+        contrib: "Đóng góp"
+    orders:
+      index:
+        status: "Chọn trạng thái :"
+    users:
+      user: 
+        delete: "Bạn có chắc không?"
     layouts:
       nav:
         dashboard: "Trang tổng quan"
@@ -107,19 +159,53 @@ vi:
         order_manager: "Quản lý đơn đặt hàng"
         contribute_manager: "Quản lý đóng góp"
         list_product: "Liệt kê Sản phẩm"
+        add_product: "Thêm sản phẩm"
+        category_manager: "Quản lý danh mục"
+        list_category: "Danh mục danh sách"
+        add_category: "Thêm danh mục"
+        list_contributes: "Danh sách đóng góp"
       header:
         profile: "Hồ sơ"
         logout: "Đăng xuất"
       footer:
         content: "Quản trị & copy; Thương mại điện tử 2021"
-  sort:
-    index: "Sắp xếp"
-    price:
-      low: "Giá : Thấp-Cao"
-      high: "Giá : Cao-Thấp"
-    rate:
-      low: "Đánh giá: Thấp-Cao"
-      high: "Đánh giá: Cao-Thấp"
-    name:
-      low: "Tên: A-Z"
-      high: "Tên: Z-A"
+    products:
+      new:
+        title: "Thêm sản phẩm"
+        success: "Tạo sản phẩm thành công"
+        not_found: "Danh mục không được tìm thấy"
+      edit:
+        title: "Chỉnh sửa sản phẩm"
+      form_add:
+        submit: "Luu"
+      form_edit:
+        submit: "Luu"
+      index:
+        id: "ID"
+        name: "Ten"
+        price: "Giá"
+        image: "Hình ảnh"
+        quantity: "Số lượng"
+        sort: "Sắp xếp"
+      delete: "Xóa thành công"
+      update: "Cập nhật thành công"
+    category:
+      update:
+        success: "Cập nhật danh mục thành công"
+        fail: "Cập nhật danh mục không thành công"
+      remove: "Xóa danh mục thành công"
+      not_found:  "Danh mục không được tìm thấy"
+      new: "Tạo danh mục thành công"
+    contrib:
+      not_found: "Không thể tìm thấy đóng góp"
+    order_detail:
+      invalid: "Đơn hàng không hợp lệ"
+    order:
+      update:
+        success: "Đã cập nhật đơn hàng thành công"
+        fail: "Cập nhật không thành công"
+  user:
+    id: "ID"
+    name: "Tên"
+    email: "Email"
+    img : "Hình ảnh"

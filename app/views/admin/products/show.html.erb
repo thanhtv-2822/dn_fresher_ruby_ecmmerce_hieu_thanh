@@ -1,0 +1,28 @@
+<main class="container">
+  <div class="left-column">
+    <%= image_tag @product.image if @product.image.attached? %>
+  </div>
+  <div class="right-column">
+    <div class="product-description">
+      <span><%= @product.name %></span>
+      <h1><%= t "product.description" %></h1>
+      <p><%= @product.description %></p>
+    </div>
+    <div>
+      <span><%= t "product.rating" %></span>
+      <% 5.times do |n| %>
+        <span class="fa fa-star <%= @product.rating >= n + 1 ? 'checked' : ''%>"></span>
+      <% end %>
+      <span><%= @product.rating %></span>
+    </div>
+    <hr>
+    <!-- Product Pricing -->
+    <div class="product-price">
+      <span><%= @product.price %> VND</span>
+    </div>
+    <p>
+      <%= @product.quantity %>
+      <%= t "product.product_left" %>
+    </p>
+  </div>
+</main>

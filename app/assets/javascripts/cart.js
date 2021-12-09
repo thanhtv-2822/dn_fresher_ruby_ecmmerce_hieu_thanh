@@ -1,11 +1,13 @@
 $(document).ready(function(){
+  var token = $( '[name="csrf-token"]' ).attr( 'content' );
   $(".qty").change(function () {
     var id = $(this).parent().parent().find(".product-id").val()
     var quantity = $(this).val();
     $.ajax({
       url: "/carts/update_cart/" + id,
       method: "PUT",
-      data: {quantity: quantity}
+      data: {quantity: quantity},
+      headers: {'X-CFRS-Token': token}
     })
   })
   $(".review").click(function(){
@@ -15,7 +17,8 @@ $(document).ready(function(){
     $.ajax({
       url: "/carts/update_rating/" + id,
       method: "PUT",
-      data: {rating: rate}
+      data: {rating: rate},
+      headers: {'X-CFRS-Token': token}
     })
     for(let i = 0; i < parent.length; i++){
       if (i+1 > rate){

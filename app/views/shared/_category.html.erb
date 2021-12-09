@@ -1,3 +1,24 @@
-<li>
-  <%= link_to category.name, home_path(category: "#{category.id}") %>
-<li>
+<table>
+  <% zone.each do |type| %>
+    <tr>
+      <th>
+        <%= link_to home_path(type: "#{type.id}" ) do %>
+        <span>
+          <%= type.name %>
+        </span>
+        <% end %>
+      </th>
+    </tr>
+    <tr>
+      <td>
+        <ul style="list-style-type:none;">
+          <% sub_menu(type.id).each do |sub_menu| %>
+            <li>
+              <%= link_to sub_menu.name, home_path(category: "#{sub_menu.id}" ) %>
+            </li>
+          <% end %>
+        </ul>
+      </td>
+    </tr>
+  <% end %>
+</table>
