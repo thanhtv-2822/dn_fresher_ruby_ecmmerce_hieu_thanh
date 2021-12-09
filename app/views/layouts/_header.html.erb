@@ -33,7 +33,9 @@
                   <%= t("Welcome") %>
                 </span>
                 <% if logged_in? %>
-                  <div><%= link_to t("log_out"), logout_path, method: :delete %></div>
+                  <div>
+                    <%= link_to t("log_out"), logout_path, method: :delete %>
+                  </div>
                 <% else %>
                   <div>
                     <%= link_to t("sign_in"), login_path %>

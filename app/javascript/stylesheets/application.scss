@@ -1,6 +1,11 @@
 @import "bootstrap";
 @import "color";
 
+body {
+  font-family: sans-serif;
+  font-size: 17px;
+}
+
 .nav_bar_color {
   color: $nav_bar_color !important;
 }
@@ -85,7 +90,7 @@ a {
 #login .container #login-row #login-column #login-box #login-form {
   padding: 20px;
 }
-#login .container #login-row #login-column #login-box #register-link{
+#login .container #login-row #login-column #login-box #register-link {
   margin-top: -40px;
   margin-bottom: 20px;
 }
@@ -103,11 +108,10 @@ form#new_user {
 #signup .container #signup-row #signup-column #signup-box #signup-form {
   padding: 20px;
 }
-#signup .container #signup-row #signup-column #signup-box #register-link{
+#signup .container #signup-row #signup-column #signup-box #register-link {
   margin-top: -40px;
 }
 footer.section-footer.border-top.bg {
-  position: fixed;
   bottom: 0px;
   width: 100%;
   background-color: $footer_bg;
@@ -594,10 +598,10 @@ a.remove:hover {
   }
 }
 div#login {
-	padding-bottom: 200px;
+  padding-bottom: 200px;
 }
 #error_explanation ul li {
-  color: $icon_remove_hover; 
+  color: $icon_remove_hover;
   list-style: none;
 }
 main.container {
@@ -735,4 +739,3 @@ body {
   padding: 0;
   height: 100vh;
 }
-

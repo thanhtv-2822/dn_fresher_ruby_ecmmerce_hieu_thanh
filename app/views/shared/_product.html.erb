@@ -1,10 +1,15 @@
 <div class="col-md-3">
   <div href="#" class="card card-product-grid">
     <a href="#" class="img-wrap">
+      <%= image_tag product.image %>
     </a>
     <figcaption class="info-wrap">
-      <a href="#" class="title"></a>
-      <div class="price mt-1"></div>
+      <a href="#" class="title">
+        <%= product.name %>
+      </a>
+      <div class="price mt-1">
+        <%= product.price %>
+      </div>
     </figcaption>
   </div>
 </div>

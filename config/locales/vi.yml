@@ -3,8 +3,9 @@ vi:
     title: "Trang thương mại điện tử"
   Welcome: "Xin chào!"
   sign_in: "Đăng nhập"
-  sign_up: "Đăng ký"
-  log_out: "Đăng xuất"
+  sign_up: "Đăng kí "
+  description: " Thêm dặn dò dành cho chúng tôi"
+  filter: "sắp xếp"
   header:
     Home: "Trang chủ"
     Contact us: "Về chúng tôi"
@@ -109,5 +110,16 @@ vi:
       header:
         profile: "Hồ sơ"
         logout: "Đăng xuất"
-      footer: 
+      footer:
         content: "Quản trị & copy; Thương mại điện tử 2021"
+  sort:
+    index: "Sắp xếp"
+    price:
+      low: "Giá : Thấp-Cao"
+      high: "Giá : Cao-Thấp"
+    rate:
+      low: "Đánh giá: Thấp-Cao"
+      high: "Đánh giá: Cao-Thấp"
+    name:
+      low: "Tên: A-Z"
+      high: "Tên: Z-A"

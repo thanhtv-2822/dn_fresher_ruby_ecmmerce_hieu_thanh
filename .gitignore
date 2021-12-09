@@ -82,6 +82,11 @@ config/environments/*.local.yml
 .vscode/tasks.json
 /vscode
 /bin
+.pull_request_template.md
+.browserslistrc
+# Ignore application configuration
+/config/application.yml
+/config/database.yml
 
 /public/packs
 /public/packs-test
@@ -89,3 +94,4 @@ config/environments/*.local.yml
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+/bin

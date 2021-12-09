@@ -21,5 +21,6 @@ Rails.application.routes.draw do
       get "/home", to: "static_pages#home"
       delete "/logout", to: "static_pages#destroy"
     end
+    resources :orders
   end
 end
