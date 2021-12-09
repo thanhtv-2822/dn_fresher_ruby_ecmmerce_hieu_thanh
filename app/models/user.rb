@@ -5,6 +5,8 @@ class User < ApplicationRecord
 
   before_save :email_downcase
 
+  USER_ATTRS = %w(name email password password_confirmation).freeze
+
   validates :email, uniqueness: true,
    length: {maximum: Settings.length.len_50},
    format: {with: Settings.regex.email}

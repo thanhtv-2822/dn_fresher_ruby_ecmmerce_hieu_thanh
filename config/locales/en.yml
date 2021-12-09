@@ -2,8 +2,9 @@ en:
   application:
     title: "Ecomerce"
   Welcome: "Welcome!"
-  Sign In: "Sign In"
-  Sign Up: "Sign Up"
+  sign_in: "Sign In"
+  sign_up: "Sign Up"
+  log_out: "Log out"
   header:
     Home: "Home"
     Products: "Products"
@@ -49,3 +50,21 @@ en:
     Street: "Street name 123, ABC"
   errors:
     index: "invalid"
+    login:
+      danger: "Email or password incorrect"
+      success: "Login successfully"
+    register:
+      success: "Register successfully"
+  form:
+    register_here: "Register here"
+    login_here: "Login here"
+    name: "Name"
+    email: "Email"
+    password: "Password"
+    password_confirm: "Password Confirmation"
+    error_msg: "The Form Contains %{errors} errors"
+  product:
+    description: "Description"
+    add_to_cart: "Add to cart"
+    product_left: "product left"
+    rating: "Rating"

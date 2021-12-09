@@ -1,0 +1,28 @@
+<li class="items odd">
+  <div class="infoWrap"> 
+  	<div class="cartSection">
+			<img src="<%= item["product"]["image"] %>" alt="" class="itemImg" />
+			<h3><%=item["product"]["name"] %></h3>
+			<input type="hidden" class="product-id" value="<%= item["product"]["id"] %>">
+			<input type="number" class="qty" value="<%= item["quantity"] %>", min="1", max="<%= item["product"]["quantity"] %>">
+			x <%= item["product"]["price"] %>
+  	</div>
+  	<div class="prodTotal cartSection">
+			<p><%= total_price(item) %></p>
+   	</div>
+    <div class="cartSection removeWrap">
+			 <%= link_to  "x", remove_item_in_carts_path(id: item["product"]["id"]), class: "remove", method: :delete, data: {confirm: "Are you sure?"}%>
+  	</div>
+  </div>
+</li>
+<script>
+	$('.qty').change(function () {
+		var id = $(this).parent().find(".product-id").val()
+		var quantity = $(this).val();
+		$.ajax({
+			url: "/carts/update_cart/" + id,
+			method: "PUT",
+			data: {quantity: quantity}
+		})
+	})
+</script>

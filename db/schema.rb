@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2021_12_15_075607) do
   end
 
   create_table "order_details", charset: "utf8", force: :cascade do |t|
-    t.integer "quantity"
+    t.integer "quantity", default: 1
     t.decimal "price", precision: 10
     t.bigint "order_id", null: false
     t.bigint "product_id", null: false
