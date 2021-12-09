@@ -1,0 +1,26 @@
+<%= form_for @address, url: static_pages_home_path do |f| %>
+	<div class="row">
+  	<div class="col-md-6">
+    	<%= f.label :phone %>
+      <%= f.text_field :phone, class: "form-control" %>
+    </div>
+		<div class="col-md-6">
+			<%= f.label :commune %>
+      <%= f.text_field :commune, class: "form-control" %>
+		</div>
+  </div>
+	<div class="row mt-2">
+		<div class="col-md-4">
+      <%= f.label :street %>
+			<%= f.text_field :street, class: "form-control" %>
+		</div>
+		<div class="col-md-4">
+			<%= f.label :district %>
+      <%= f.text_field :district, class: "form-control" %>
+		</div>
+		<div class="col-md-4">
+			<%= f.label :city %>
+      <%= f.text_field :city, class: "form-control" %>
+		</div>
+	</div>
+<% end %>

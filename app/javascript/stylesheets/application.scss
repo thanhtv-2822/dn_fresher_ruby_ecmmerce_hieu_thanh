@@ -1,6 +1,13 @@
 @import "bootstrap";
 @import "color";
 
+body {
+  font-family: sans-serif;
+  font-size: 17px;
+
+}
+
+
 .nav_bar_color {
   color: $nav_bar_color !important;
 }
@@ -11,6 +18,7 @@
 }
 a {
   color: #41464b;
+  text-decoration: none;
 }
 .menu-category {
   margin: 0;
@@ -19,7 +27,7 @@ a {
 .menu-category li {
   position: relative;
   display: block;
-  border-bottom: 1px solid #e4e4e4;
+  border-bottom: 1px solid $menu_bar_color;
 }
 .menu-category li:last-child {
   border-bottom: 0;
@@ -41,7 +49,7 @@ a {
   left: 100%;
   top: 0;
   width: 250px;
-  background: #fff;
+  background: $menu_background_color;
 }
 .menu-category .submenu li {
   list-style: none;
@@ -51,7 +59,7 @@ a {
   display: block;
 }
 .menu-category li:hover {
-  background: #f8f9fa;
+  background: $menu_hover_color;
   transition: all 0.3s;
 }
 .menu-category li:hover .submenu {
@@ -61,7 +69,7 @@ a {
 .menu-category .has-submenu > a:after {
   content: "›";
   font-size: 24px;
-  color: #999;
+  color: $menu_submenu_color;
   line-height: 18px;
   font-weight: bold;
   float: right;
@@ -72,4 +80,87 @@ a {
 }
 .img-wrap img {
   max-width: 100%;
+}
+input,
+textarea,
+select,
+.uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  input {
+    height: auto !important;
+  }
+}
+
+body {
+  background-color: #eee
+}
+
+
+
+
+.form-control {
+  border-bottom: 2px solid #eee !important;
+  border: none;
+  font-weight: 600
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #8bbafe;
+  outline: 0;
+  box-shadow: none;
+  border-radius: 0px;
+  border-bottom: 2px solid blue !important
+}
+
+.inputbox {
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%
+}
+
+.inputbox span {
+  position: absolute;
+  top: 7px;
+  left: 11px;
+  transition: 0.5s
+}
+
+.inputbox i {
+  position: absolute;
+  top: 13px;
+  right: 8px;
+  transition: 0.5s;
+  color: #3F51B5
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0
+}
+
+.inputbox input:focus~span {
+  transform: translateX(-0px) translateY(-15px);
+  font-size: 12px
+}
+
+.inputbox input:valid~span {
+  transform: translateX(-0px) translateY(-15px);
+  font-size: 12px
+}
+
+.card-blue {
+  background-color: #888;
+}
+
+.hightlight {
+  background-color: #5737d9;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 15px;
+  font-size: 14px
 }

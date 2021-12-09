@@ -8,9 +8,9 @@ class Product < ApplicationRecord
   validates :price, presence: true,
     numericality: {only_decimal: true}
   validates :description, presence: true
-  validates :quantity, presence: true,
-    numericality: {only_integer: true, greater_than: Settings.min.quantity}
-  validate :check_image, if: ->{category_id && type_id}
+  # validates :quantity, presence: true,
+  #   numericality: {only_integer: true, greater_than: Settings.min.quantity}
+  # validate :check_image, if: ->{category_id && type_id}
 
   private
 

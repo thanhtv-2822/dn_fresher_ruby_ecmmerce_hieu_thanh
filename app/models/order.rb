@@ -1,6 +1,8 @@
 class Order < ApplicationRecord
   belongs_to :user
   belongs_to :payment
+  belongs_to :address
+  accepts_nested_attributes_for :address, update_only: true
   has_many :order_details, dependent: :destroy
   has_many :products, through: :order_details
   before_save :status_default

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_15_075627) do
+ActiveRecord::Schema.define(version: 2021_12_15_095605) do
 
   create_table "addresses", charset: "utf8", force: :cascade do |t|
     t.string "phone"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2021_12_15_075627) do
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "default"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
@@ -46,7 +47,7 @@ ActiveRecord::Schema.define(version: 2021_12_15_075627) do
     t.decimal "price", precision: 10
     t.bigint "order_id", null: false
     t.bigint "product_id", null: false
-    t.datetime "created_at", precision: 6, null: false
+    t.datetime "created_at", precision: 6
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id", "product_id"], name: "index_order_details_on_order_id_and_product_id", unique: true
     t.index ["order_id"], name: "index_order_details_on_order_id"
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 2021_12_15_075627) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "payment_id"
+    t.integer "address_id"
     t.index ["payment_id"], name: "index_orders_on_payment_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -79,6 +81,8 @@ ActiveRecord::Schema.define(version: 2021_12_15_075627) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "quantity"
+    t.bigint "category_id", null: false
+    t.index ["category_id"], name: "index_products_on_category_id"
   end
 
   create_table "users", charset: "utf8", force: :cascade do |t|

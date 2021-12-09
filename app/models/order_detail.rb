@@ -10,7 +10,7 @@ class OrderDetail < ApplicationRecord
   end
 
   def calcular_total_price
-    self.price = quantity * unit_price
+    self.price = self.quantity * unit_price
   end
 
   def change_product_quantity

@@ -1,0 +1,29 @@
+<div class="row mt-4">
+  <div class="col-md-1">
+    <%= radio_button_tag(:payment_id, "1") %>
+  </div>
+  <div class="col-md-8">
+    <%= image_tag("#{Settings.payment.cod}") %>
+    <span style="margin-left: 10px;"><%= t("payment.cod") %></span>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-1">
+    <%= radio_button_tag(:payment_id, "2") %>
+  </div>
+  <div class="col-md-8">
+    <%= image_tag("#{Settings.payment.momo}") %>
+    <span style="margin-left: 10px;"><%= t("payment.momo") %></span>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-1">
+    <%= radio_button_tag(:payment_id, "3") %>
+  </div>
+  <div class="col-md-8">
+    <%= image_tag("#{Settings.payment.internet_banking}") %>
+    <span style="margin-left: 10px;"><%= t("payment.inter") %></span>
+  </div>
+</div>

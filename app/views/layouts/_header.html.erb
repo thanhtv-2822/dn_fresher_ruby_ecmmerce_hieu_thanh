@@ -21,15 +21,20 @@
           <div class="widgets-wrap float-md-right">
             <div class="widget-header mr-3 shopping_card">
               <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></a>
-              <span class="badge badge-pill badge-danger notify" style="color:red">0</span>
             </div>
             <div class="widget-header icontext">
               <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></a>
               <div class="text">
-                <span class="text-muted">Welcome!</span>
+                <span class="text-muted">
+                  <%= t("Welcome") %>
+                </span>
                 <div>
-                  <a href="#">Sign in</a> |
-                  <a href="#"> Register</a>
+                  <a href="#">
+                    <%= t("Sign In") %>
+                  </a>
+                  <a href="#">
+                    <%= t("Sign Up") %>
+                  </a>
                 </div>
               </div>
             </div>
