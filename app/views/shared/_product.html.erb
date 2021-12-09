@@ -2,7 +2,7 @@
 <div class="product-grid8">
   <div class="product-image8">
       <a href="#">
-        <%= image_tag(product.image) %>
+        <%= image_tag(product.image) if product.image.attached? %>
       </a>
       <ul class="social">
           <li><a href="" class="fa fa-shopping-cart"></a></li>

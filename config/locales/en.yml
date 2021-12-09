@@ -31,6 +31,7 @@ en:
   order_num: "Order Num"
   back: "Back"
   track_order : "Track Order"
+  select_payment: "Please select payment and address"
   errors:
     user: "invalid users"
     default: "you have already set the default address"
@@ -176,7 +177,7 @@ en:
       header:
         profile: "Profile"
         logout: "Logout"
-      footer: 
+      footer:
         content: "Admin &copy; Ecommerce 2021"
     products:
       new:

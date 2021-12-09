@@ -44,3 +44,15 @@ User.create!(name: "Example User",
     rating: 5
   )
 end
+
+Payment.create(
+  name: "MoMo"
+)
+
+Payment.create(
+  name: "COD"
+)
+
+Payment.create(
+  name: "Internet Banking"
+)
