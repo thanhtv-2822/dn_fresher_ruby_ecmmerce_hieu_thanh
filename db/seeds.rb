@@ -8,11 +8,26 @@ User.create(
   is_admin: true
 )
 
+category = ["Apple", "Samsung", "Xiaomi"]
+
+3.times do |n|
+  name = category[n-1]
+  price = 12000000
+  description = Faker::Lorem.sentence
+  quantity = 5
+  Product.create(
+    name: name,
+    price: price,
+    description: description,
+    quantity: quantity
+  )
+end
+
 User.create!(name: "Example User",
   email: "example@railstutorial.org",
   password: "foobar",
   password_confirmation: "foobar")
-  99.times do |n|
+  20.times do |n|
     name = Faker::Name.name
     email = "example-#{n+1}@railstutorial.org"
     password = "password"

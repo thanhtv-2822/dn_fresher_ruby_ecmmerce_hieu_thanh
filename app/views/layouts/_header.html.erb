@@ -1,6 +1,10 @@
 <header class="section-header">
   <section class="header-main border-bottom">
     <div class="container">
+      <div>
+        <%= link_to image_tag("vietnam.png"), locale: :vi %>
+        <%= link_to image_tag("england.png"), locale: :en %>
+      </div>
       <div class="row align-items-center">
         <div class="col-lg-2 col-4">
           <%= t("application.title") %>
@@ -28,17 +32,16 @@
                 <span class="text-muted">
                   <%= t("Welcome") %>
                 </span>
-                <div>
-                  <a href="#">
-                    <%= t("Sign In") %>
-                  </a>
-                  <a href="#">
-                    <%= t("Sign Up") %>
-                  </a>
-                </div>
+                <% if logged_in? %>
+                  <div><%= link_to t("log_out"), logout_path, method: :delete %></div>
+                <% else %>
+                  <div>
+                    <%= link_to t("sign_in"), login_path %>
+                    <%= link_to t("sign_up"), signup_path %>
+                  </div>
+                <% end %>
               </div>
             </div>
-
           </div>
         </div>
       </div>
