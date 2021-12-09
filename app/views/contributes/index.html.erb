@@ -6,7 +6,7 @@
           <div class="card-header px-4 py-5">
             <h5 class="text-muted mb-0"><%= t("info.contribute") %><span style="color: #a8729a;"><%= current_user.name %></span></h5></h5>
           </div>
-
+            <div class="order_config">
           <div class="card-body p-4">
             <% @contributes.each do |contribute| %>
             <div class="card shadow-0 border mb-4 mt-4">
@@ -28,6 +28,7 @@
               </div>
             </div>
             <% end %>
+          </div>
           </div>
           <div class="card-footer border-0 px-4 py-5"
             style="background-color: #a8729a;

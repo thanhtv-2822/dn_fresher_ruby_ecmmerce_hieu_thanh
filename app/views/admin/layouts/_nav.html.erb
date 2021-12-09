@@ -27,6 +27,8 @@
     </a>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
+        <%= link_to  t(".list_users"), admin_users_path, class: "collapse-item" %>
+        <%= link_to  t(".add_user"), new_admin_user_path, class: "collapse-item" %>
       </div>
     </div>
   </li>
@@ -49,6 +51,7 @@
     </a>
     <div id="collapseOrder" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
+        <%= link_to  t(".list_orders"), admin_orders_path, class: "collapse-item" %>
       </div>
     </div>
   </li>

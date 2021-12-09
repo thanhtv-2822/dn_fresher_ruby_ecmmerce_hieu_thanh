@@ -7,6 +7,11 @@ vi:
   sign_up: "Đăng ký"
   log_out: "Đăng xuất"
   upload_avt: "Upload avatar"
+  select_payment: vui lòng chọn địa chỉ và phương thức thanh toán
+  payment: "Phương thức thanh toán"
+  diff_info: "Những thông tin khác"
+  save: "Luu"
+  list_orders: "Danh sách order"
   header:
     Home: "Trang chủ"
     Contact us: "Về chúng tôi"
@@ -113,7 +118,7 @@ vi:
       header:
         profile: "Hồ sơ"
         logout: "Đăng xuất"
-      footer: 
+      footer:
         content: "Quản trị & copy; Thương mại điện tử 2021"
     products:
       new:
@@ -124,3 +129,8 @@ vi:
         title: "Chỉnh sửa sản phẩm"
       form:
         submit: "Luu"
+  user:
+    id: "ID"
+    name: "Tên"
+    email: "Email"
+    img : "Hình ảnh"

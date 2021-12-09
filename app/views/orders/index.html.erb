@@ -67,7 +67,7 @@
                     </div>
                     <div class="mt-4 mb-4 d-flex justify-content-between">
                         <div class="col-md-4">
-                            <%= link_to t("Home"), home_path, class: "btn btn-sm btn-primary config-buton" %>
+                            <%= link_to t("Home"), home_path, class: "btn btn-sm btn-primary config-buton config-buton config-bnt-link" %>
                         </div>
                         <div class="col-md-4">
                             <%= f.submit "Checkout" , class: "btn btn-sm btn-primary" , style: "font-size: 18px;
@@ -83,19 +83,19 @@
                         <tr>
                             <td>
                                 <a href="#" class="img-wrap">
-                                    <%= image_tag(details[:img]) %>
+                                    <%= image_tag details.product.image if details.product.image.attached? %>
                                 </a>
                             </td>
                             <td>
                                 <ul style="list-style-type:none;">
                                     <li>
                                         <span>
-                                            <%= details[:name] %>
+                                            <%= details.product.name %>
                                         </span>
                                     </li>
                                     <li>
                                         <span>
-                                            Amount: <%= details[:quantity] %>
+                                            Amount: <%= details.product.quantity %>
                                         </span>
                                     </li>
                                 </ul>
@@ -104,7 +104,7 @@
                                 <ul style="list-style-type:none;">
                                     <li>
                                         <span>
-                                            <%= details[:price] %>
+                                            <%= details.product.price %>
                                         </span>
                                     </li>
                                     <li>

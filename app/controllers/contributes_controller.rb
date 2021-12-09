@@ -4,8 +4,8 @@ class ContributesController < ApplicationController
     @contribute = Contribute.new
   end
 
-  def show
-    @contributes = current_user.contributes
+  def index
+    @contributes = current_user.contributes.order(created_at: "DESC")
   end
 
   def create
@@ -13,9 +13,9 @@ class ContributesController < ApplicationController
     @contribute.image.attach(contribute_params[:image])
     if @contribute.save
       flash[:success] = "Thanks your contribute"
-      redirect_to user_path(current_user)
+      redirect_to user_contributes_path(current_user)
     else
-      render :show
+      render :new
     end
   end
 

@@ -11,7 +11,10 @@ class Product < ApplicationRecord
   scope :filter_by_category, -> (category){where category_id: category}
   scope :filter_by_price, -> (order){ order(price: order) }
   scope :filter_by_rate, -> (order){ order(rating: order)}
-  scope :filter_by_name, -> (order){ order(name: order)}
+  scope :filter_by_type, -> (type_id){Product.joins("INNER JOIN categories
+    ON products.category_id = categories.id
+    AND  categories.parent_id = #{type_id}")}
+
 
   OPTION = {
     all: 1,
@@ -33,5 +36,13 @@ class Product < ApplicationRecord
 
   def display_image_admin
     image.variant resize_to_limit: [300, 200]
+  end
+
+  def display_image_home
+    image.variant resize_to_limit: [267, 268]
+  end
+
+  def display_img_detail
+    image.variant resize_to_limit: [377, 377]
   end
 end

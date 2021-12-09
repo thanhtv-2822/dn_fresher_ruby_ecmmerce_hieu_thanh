@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :check_user, only: [:show, :update]
   def show
     @address = @user.addresses
+    store_location
   end
 
   def  update

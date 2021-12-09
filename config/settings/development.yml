@@ -15,3 +15,6 @@ min:
   quantity: 0
 admin:
   product_sorts: [["All", 1], ["Oldest", 2], ["Newest", 3], ["Price ASC", 4], ["Price DESC", 5]]
+order:
+  status: [["accept", 1],["resolved", 2], ["rejected", 3]]
+status: {pending: 0, accept: 1, resolved: 2, rejected: 3}
