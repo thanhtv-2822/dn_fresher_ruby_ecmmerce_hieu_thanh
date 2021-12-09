@@ -28,17 +28,16 @@
                 <span class="text-muted">
                   <%= t("Welcome") %>
                 </span>
-                <div>
-                  <a href="#">
-                    <%= t("Sign In") %>
-                  </a>
-                  <a href="#">
-                    <%= t("Sign Up") %>
-                  </a>
-                </div>
+                <% if logged_in? %>
+                  <div><%= link_to t("log_out"), logout_path, method: :delete %></div>
+                <% else %>
+                  <div>
+                    <%= link_to t("sign_in"), login_path %>
+                    <%= link_to t("sign_up"), signup_path %>
+                  </div>
+                <% end %>
               </div>
             </div>
-
           </div>
         </div>
       </div>
