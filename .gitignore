@@ -82,3 +82,4 @@ config/environments/*.local.yml
 .vscode/tasks.json
 /vscode
 /bin
+/storage

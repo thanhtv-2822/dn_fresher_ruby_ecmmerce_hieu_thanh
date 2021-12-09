@@ -55,6 +55,17 @@ en:
       success: "Login successfully"
     register:
       success: "Register successfully"
+    order_create: "Create order successfuly"
+    record_invalid: "Record Invalid"
+    carts:
+      update: "Update product to cart success"
+      add: "Add product to cart success"
+      remove: "Remove item success"
+      update_qty: "Update cart successfully"
+      update_fail: "Update cart fail"
+      review_success: "Review successfully"
+      review_fail: "Review fail"
+      enough: "Product quantity not enough"
   form:
     register_here: "Register here"
     login_here: "Login here"
@@ -63,3 +74,48 @@ en:
     password: "Password"
     password_confirm: "Password Confirmation"
     error_msg: "The Form Contains %{errors} errors"
+  product:
+    description: "Description"
+    add_to_cart: "Add to cart"
+    product_left: "product left"
+    rating: "Rating"
+    not_found: "Product not found!"
+    delete: "Remove product success"
+  carts:
+    index:
+      total: "Total"
+      title: "My Cart"
+      checkout: "Checkout"
+      back: "Continue Shopping"
+    product:
+      confirm: "Are you sure?"
+  admin:
+    search: "Search"
+    permission: "You dont permission"
+    static_pages:
+      home:
+        content: "Welcome to admin page"
+    layouts:
+      nav:
+        dashboard: "Dashboard"
+        function: "Function"
+        user_manager: "User manager"
+        product_manager: "Product manager"
+        order_manager: "Order manager"
+        contribute_manager: "Contribute manager"
+        list_product: "List Product"
+        add_product: "Add Product"
+      header:
+        profile: "Profile"
+        logout: "Logout"
+      footer: 
+        content: "Admin &copy; Ecommerce 2021"
+    products:
+      new:
+        title: "Add Product"
+        success: "Create product successfuly"
+        not_found: "Category not found"
+      edit:
+        title: "Edit Product"
+      form:
+        submit: "Save"

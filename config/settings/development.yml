@@ -8,3 +8,5 @@ regex:
   email: !ruby/regexp /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 min:
   quantity: 0
+admin:
+  product_sorts: [["All", 1], ["Oldest", 2], ["Newest", 3], ["Price ASC", 4], ["Price DESC", 5]]
