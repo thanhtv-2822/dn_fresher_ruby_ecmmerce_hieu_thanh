@@ -83,3 +83,10 @@ config/environments/*.local.yml
 # Ignore application configuration
 /config/application.yml
 /config/database.yml
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
