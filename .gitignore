@@ -76,7 +76,6 @@ config/environments/*.local.yml
 # Ignore application configuration
 /config/application.yml
 /config/database.yml
-/config/database.yml
 /config/credentials.yml.enc
 .pull_request_template.md
 .browserslistrc
