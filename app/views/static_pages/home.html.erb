@@ -5,20 +5,18 @@
       <aside class="col-md-3">
         <nav class="card">
           <ul class="menu-category">
-            <li><a href="#">Best clothes</a></li>
-            <li><a href="#">Automobiles</a></li>
-            <li><a href="#">Home interior</a></li>
-            <li><a href="#">Electronics</a></li>
-            <li><a href="#">Technologies</a></li>
-            <li><a href="#">Digital goods</a></li>
-            <li class="has-submenu"><a href="#">More items</a>
+            <li><a href="#">Home</a></li>
+            <li class="has-submenu"><a href="#">Products</a>
               <ul class="submenu">
-                <li><a href="#">Submenu name</a></li>
-                <li><a href="#">Great submenu</a></li>
-                <li><a href="#">Another menu</a></li>
-                <li><a href="#">Some others</a></li>
+                <li><a href="#">Clothes</a></li>
+                <li><a href="#">Electronics</a></li>
               </ul>
             </li>
+            <li><a href="#">Hot trends</a></li>
+            <li><a href="#">Best seller</a></li>
+            <li><a href="#">Best rating</a></li>
+            <li><a href="#">Contribute</a></li>
+            <li><a href="#">About Us</a></li>
           </ul>
         </nav>
       </aside> <!-- col.// -->
@@ -36,7 +34,7 @@
       <h3 class="section-title">Popular products</h3>
     </header>
     <div class="row">
-      <%= render("shared/product")%>
+      <%= render partial: "shared/product", collection: @products %>
     </div>
   </div>
 </section>
