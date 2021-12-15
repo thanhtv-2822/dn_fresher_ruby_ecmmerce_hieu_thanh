@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :addresses, dependent: :destroy
   has_many :contributes, dependent: :destroy
+  has_many :orders, dependent: :destroy
   before_save{self.email = email.downcase}
   validates :email, uniqueness: true,
    length: {maximum: Settings.length.len_50},

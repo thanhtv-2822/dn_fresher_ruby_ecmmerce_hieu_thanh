@@ -1,5 +1,6 @@
 en:
-  title: "Ecomerce"
+  application:
+    title: "Ecomerce"
   Home: "Home"
   Products: "Products"
   Clothes: "Clothes"
