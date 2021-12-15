@@ -2,4 +2,7 @@ length:
   len_50: 50
   len_6: 6
   len_20: 20
-regex: !ruby/regexp /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  len_11: 11
+  len_200: 200
+regex:
+  email: !ruby/regexp /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

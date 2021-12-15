@@ -80,3 +80,10 @@ config/environments/*.local.yml
 .pull_request_template.md
 .browserslistrc
 .vscode/tasks.json
+# Ignore application configuration
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
