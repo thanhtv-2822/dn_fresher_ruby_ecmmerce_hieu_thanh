@@ -1,0 +1,59 @@
+<section class="section-main bg padding-y mt-2">
+  <div class="container">
+    <div class="row">
+      <aside class="col-md-3">
+        <nav class="card">
+          <ul class="menu-category">
+            <li><a href="#">
+                <%= t("header.Home") %>
+              </a></li>
+            <li class="has-submenu"><a href="#">
+                <%= t("header.Products") %>
+              </a>
+              <ul class="submenu">
+                <li><a href="#">
+                    <%= t("header.Clothes") %>
+                  </a></li>
+                <li><a href="#">
+                    <%= t("header.Electronics") %>
+                  </a></li>
+              </ul>
+            </li>
+            <li><a href="#">
+                <%= t("header.Hot trends") %>
+              </a></li>
+            <li><a href="#">
+                <%= t("header.Best seller") %>
+              </a></li>
+            <li><a href="#">
+                <%= t("header.Best rating") %>
+              </a></li>
+            <li><a href="#">
+                <%= t("header.Contribute") %>
+              </a></li>
+            <li><a href="#">
+                <%= t("header.Contact us") %>
+              </a></li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="col-md-9">
+        <article class="banner-wrap">
+          <%= image_tag("2.jpg")%>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section-name padding-y-sm mb-5">
+  <div class="container">
+    <header class="section-heading">
+      <h3 class="section-title">
+        <%= t("header.Popular products") %>
+      </h3>
+    </header>
+    <div class="row">
+      <%= render partial: "shared/product" , collection: @products %>
+    </div>
+  </div>
+</section>
