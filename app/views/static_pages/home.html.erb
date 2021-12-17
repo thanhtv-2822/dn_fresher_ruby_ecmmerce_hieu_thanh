@@ -1,42 +1,39 @@
 <section class="section-main bg padding-y mt-2">
   <div class="container">
+
     <div class="row">
       <aside class="col-md-3">
         <nav class="card">
           <ul class="menu-category">
-            <li><a href="#">
-                <%= t("header.Home") %>
-              </a></li>
-            <li class="has-submenu"><a href="#">
-                <%= t("header.Products") %>
-              </a>
+            <li><a href="#">Home</a></li>
+            <li class="has-submenu"><a href="#">Products</a>
               <ul class="submenu">
-                <li><a href="#">
-                    <%= t("header.Clothes") %>
-                  </a></li>
-                <li><a href="#">
-                    <%= t("header.Electronics") %>
-                  </a></li>
+                <%= render partial: "shared/category", collection: @categories %>
               </ul>
             </li>
-            <li><a href="#">
-                <%= t("header.Hot trends") %>
-              </a></li>
-            <li><a href="#">
-                <%= t("header.Best seller") %>
-              </a></li>
-            <li><a href="#">
-                <%= t("header.Best rating") %>
-              </a></li>
-            <li><a href="#">
-                <%= t("header.Contribute") %>
-              </a></li>
-            <li><a href="#">
-                <%= t("header.Contact us") %>
-              </a></li>
+            <li><a href="#">Hot trends</a></li>
+            <li><a href="#">Best seller</a></li>
+            <li><a href="#">Best rating</a></li>
+            <li><a href="#">Contribute</a></li>
+            <li><a href="#">About Us</a></li>
+            <li class="has-submenu"><a href="#">Sort by</a>
+              <ul class="submenu">
+                <li>
+                  <%= link_to "Price: Low-High", static_pages_home_path(price: "ASC") %>
+                </li>
+                <li>
+                  <%= link_to "Price: High-Low", static_pages_home_path(price: "DESC") %>
+                </li>
+                <li>
+                  <%= link_to "Rate: Low-High", static_pages_home_path(rate: "ASC") %>
+                </li>
+                <li>
+                  <%= link_to "Rate: High-Low", static_pages_home_path(rate: "DESC") %>
+                </li>
+              </ul>
           </ul>
         </nav>
-      </aside>
+      </aside> <!-- col.// -->
       <div class="col-md-9">
         <article class="banner-wrap">
           <%= image_tag("2.jpg")%>
@@ -45,16 +42,22 @@
     </div>
   </div>
 </section>
-<section class="section-name padding-y-sm mb-5">
+<section class="section-name padding-y-sm mt-5">
   <div class="container">
     <header class="section-heading">
-      <h3 class="section-title">
-        <%= t("header.Popular products") %>
-      </h3>
+      <h3 class="section-title">Popular products</h3>
     </header>
     <div class="row">
-      <%= render partial: "shared/product" , collection: @products %>
-        </header>
+      <%= render partial: "shared/product", collection: @products %>
+    </div>
+    <div class="row mt-2 justify-content-center">
+      <div class="col-md-3">
+        <%== pagy_bootstrap_nav(@pagy) %>
+      </div>
     </div>
   </div>
 </section>
+<script>
+
+
+</script>

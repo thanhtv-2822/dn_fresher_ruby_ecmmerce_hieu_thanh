@@ -1,6 +1,9 @@
 class Product < ApplicationRecord
   has_many :order_details, dependent: :destroy
   has_many :orders, through: :order_details
+  scope :filter_by_category, -> (category){where category_id: category}
+  scope :filter_by_price, -> (order){ order(price: order) }
+  scope :filter_by_rate, -> (order){ order(rating: order)}
   belongs_to :category
   after_initialize :init
   validates :name, presence: true,
