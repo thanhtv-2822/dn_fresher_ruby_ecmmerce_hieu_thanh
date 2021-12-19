@@ -12,7 +12,7 @@ class StaticPagesController < ApplicationController
   private
 
   def filtering_params(params)
-    params.slice(:category, :price, :rate)
+    params.slice(:category, :price, :rate, :name)
   end
 
 

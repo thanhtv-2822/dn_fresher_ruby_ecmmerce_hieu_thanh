@@ -4,6 +4,7 @@ class Product < ApplicationRecord
   scope :filter_by_category, -> (category){where category_id: category}
   scope :filter_by_price, -> (order){ order(price: order) }
   scope :filter_by_rate, -> (order){ order(rating: order)}
+  scope :filter_by_name, -> (order){ order(name: order)}
   belongs_to :category
   after_initialize :init
   validates :name, presence: true,
