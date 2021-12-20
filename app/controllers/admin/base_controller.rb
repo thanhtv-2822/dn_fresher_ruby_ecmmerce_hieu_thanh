@@ -1,4 +1,5 @@
 class Admin::BaseController < ApplicationController
+  include Pagy::Backend
   layout "admin/layouts/application"
   before_action :logged_admin?
 

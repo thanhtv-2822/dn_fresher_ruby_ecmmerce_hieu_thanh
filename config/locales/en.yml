@@ -68,3 +68,13 @@ en:
     add_to_cart: "Add to cart"
     product_left: "product left"
     rating: "Rating"
+  admin:
+    products:
+      index:
+        id: "ID"
+        name: "Name"
+        price: "Price"
+        description: "Description"
+        image: "Image"
+        action: "Action"
+        quantity: "Quantity"

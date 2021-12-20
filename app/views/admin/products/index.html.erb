@@ -1,0 +1,17 @@
+<table class="table table-striped|sm|bordered|hover|inverse table-inverse table-responsive">
+  <thead class="thead-inverse|thead-default">
+    <tr>
+      <th><%= t ".id" %></th>
+      <th><%= t ".name" %></th>
+      <th><%= t ".price" %></th>
+      <th><%= t ".quantity" %></th>
+      <th><%= t ".description" %></th>
+      <th><%= t ".image" %></th>
+      <th class="col-md-2"><%= t ".action" %></th>
+    </tr>
+  </thead>
+  <tbody>
+      <%= render "product" %>
+  </tbody>
+</table>
+<%== pagy_bootstrap_nav(@pagy) %>

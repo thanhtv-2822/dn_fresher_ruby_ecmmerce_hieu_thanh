@@ -68,3 +68,13 @@ vi:
     add_to_cart: "Thêm vào giỏ hàng"
     product_left: "sản phẩm còn lại"
     rating: "Xếp hạng"
+  admin:
+    products:
+      index:
+        id: "ID"
+        name: "Tên"
+        price: "Giá"
+        description: "Mô tả"
+        image: "Hình ảnh"
+        action: "Hành động"
+        quantity: "Số lượng"

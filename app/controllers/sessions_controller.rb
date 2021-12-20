@@ -4,13 +4,14 @@ class SessionsController < ApplicationController
     if user&.authenticate params[:session][:password]
       active user
     else
-      flash[:danger] = t "errors.login.danger"
+      flash.now[:danger] = t "errors.login.danger"
       render :new
     end
   end
 
   def destroy
     log_out
+    flash[:success] = "Logout successfuly"
     redirect_to home_path
   end
 

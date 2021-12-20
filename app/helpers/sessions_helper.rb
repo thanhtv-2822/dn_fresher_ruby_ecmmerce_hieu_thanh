@@ -26,6 +26,7 @@ module SessionsHelper
   def log_out
     session.delete :user_id
     session.delete :cart
+    session.delete :admin_id
     @current_user = nil
   end
 
