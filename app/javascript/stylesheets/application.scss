@@ -10,7 +10,7 @@
   right: 26px;
 }
 a {
-  color: #41464b;
+  color: $tag_a_color;
   text-decoration: none;
 }
 .menu-category {
@@ -26,7 +26,7 @@ a {
   border-bottom: 0;
 }
 .menu-category a {
-  color: #212529;
+  color: $tag_a_of_menu_color;
 }
 .menu-category > li > a {
   display: block;
@@ -73,4 +73,57 @@ a {
 }
 .img-wrap img {
   max-width: 100%;
+}
+#login .container #login-row #login-column #login-box {
+  margin-top: 50px;
+  max-width: 500px;
+  background-color: $login_signup_box;
+  padding-top: 30px;
+  opacity: 0.9;
+  padding-bottom: 20px;
+}
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 20px;
+}
+#login .container #login-row #login-column #login-box #register-link{
+  margin-top: -40px;
+  margin-bottom: 20px;
+}
+form#new_user {
+  margin-bottom: 20px;
+}
+#signup .container #signup-row #signup-column #signup-box {
+  margin-top: 50px;
+  max-width: 500px;
+  background-color: $login_signup_box;
+  padding-top: 30px;
+  opacity: 0.9;
+  padding-bottom: 20px;
+}
+#signup .container #signup-row #signup-column #signup-box #signup-form {
+  padding: 20px;
+}
+#signup .container #signup-row #signup-column #signup-box #register-link{
+  margin-top: -40px;
+}
+footer.section-footer.border-top.bg {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  background-color: $footer_bg;
+}
+#signup .container {
+  padding-bottom: 200px;
+}
+.msg {
+  float: right;
+  margin: 20px;
+  transform: translateY(-50px);
+}
+div#login {
+	padding-bottom: 200px;
+}
+#error_explanation ul li {
+  color: red; 
+  list-style: none;
 }
