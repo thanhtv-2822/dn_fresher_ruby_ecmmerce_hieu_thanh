@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
-  include OrdersHelper
   before_action :set_locale
 
   private

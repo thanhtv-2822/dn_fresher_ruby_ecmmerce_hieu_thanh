@@ -28,14 +28,21 @@ en:
   pass_confirm: "Password Confirm"
   continue_shop : "Continue Shopping"
   errors:
+    user: "invalid users"
     default: "you have already set the default address"
+    img:  "Image upload failed"
+    order: "Order Failed"
     index: "invalid"
     one: "Form contain 1 error"
     other: "Form contain %{count} errors"
   warning:
     delete: "Are you sure you want to delete ?"
+    order: "You don't have any order"
   info:
     new_add: "Add new Address"
+  success:
+    img: "Image uploaded successfully"
+    order: "Order Successfully"
   header:
     Home: "Home"
     Products: "Products"
