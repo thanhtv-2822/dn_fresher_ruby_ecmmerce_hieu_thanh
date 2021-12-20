@@ -14,15 +14,13 @@
           </div>
           <div class="row user-detail-row mt-2">
             <ul class="menu-category">
-              <li><a href="#">
+              <li>
+                <a href="#">
                   <%= t("his_order") %>
-                </a></li>
-              <li><a href="#">
-                  <%= t("change_pwd") %>
-                </a></li>
+                </a>
+              </li>
             </ul>
           </div>
-
         </div>
       </div>
       <div class="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section">
@@ -34,7 +32,6 @@
                   <%= @user.name %>
                 </h1>
               </div>
-
             </div>
           </div>
           <div class="col-md-12">
@@ -51,37 +48,63 @@
                 <div class="tab-content mt-4">
                   <div role="tabpanel" class="tab-pane fade show active" id="profile">
                     <%= form_for @user do |f| %>
-
-                    <div class="row">
-                      <div class="col-md-2">
-                        <label><%= t("name")%></label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>
-                          <%= f.text_field :name, class: "form-control" %>
-                        </p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-2">
-                        <label><%= t("email") %></label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>
-                          <%= f.text_field :email, class: "form-control" %>
-                        </p>
-                      </div>
-                    </div>
-                    <% end %>
-                    <div class="row">
-                      <div class="col-md-2">
-                        <a href="/search" class="btn btn-primary"><%= t("save") %></a>
-                      </div>
-                    </div>
+                      <%= render partial: "shared/error" , locals: {zone: @user}%>
+                        <div class="row">
+                          <div class="col-md-2">
+                            <label>
+                              <%= t("name")%>
+                            </label>
+                          </div>
+                          <div class="col-md-6">
+                            <p>
+                              <%= f.text_field :name, class: "form-control" %>
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-2">
+                            <label>
+                              <%= t("email") %>
+                            </label>
+                          </div>
+                          <div class="col-md-6">
+                            <p>
+                              <%= f.text_field :email, class: "form-control" %>
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-2">
+                            <label>
+                              <%= t("password")%>
+                            </label>
+                          </div>
+                          <div class="col-md-6">
+                            <p>
+                              <%= f.password_field :password, class: "form-control" %>
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-2">
+                            <label>
+                              <%= t("pass_confirm")%>
+                            </label>
+                          </div>
+                          <div class="col-md-6">
+                            <p>
+                              <%= f.password_field :password_confirmation, class: "form-control" %>
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row justify-content-center">
+                          <div class="col-md-2">
+                            <%= f.submit "Save" , class: "btn btn-primary" %>
+                          </div>
+                        </div>
+                        <% end %>
                   </div>
-
                 </div>
-
               </div>
             </div>
             <div class="row mt-4">
@@ -90,45 +113,50 @@
                   <li class="nav-item">
                     <a class="nav-link active" href="#profile" role="tab" data-toggle="tab"><i
                         class="fas fa-user-circle"></i>
-                      <%= t("your_address")%>
+                      <%= t("your_address") %>
                     </a>
                   </li>
                 </ul>
                 <div class="tab-content mt-4">
-                    <div class="row">
-                        <table>
-                          <% @user.addresses.each do |add| %>
-                            <tr>
-                              <td>
-                                <%= add.address_initial %>
-                              </td>
-                              <td>
-                                <% if add.default == 1 %>
+                  <div class="row">
+                    <% if @address.present? %>
+                      <table>
+                        <% @user.addresses.each do |add| %>
+                          <tr>
+                            <td>
+                              <%= add.address_initial %>
+                            </td>
+                            <td>
+                              <% if add.default==1 %>
                                 <span>
                                   <%= t("default_add")%>
                                 </span>
-                                <% end %>
-                              </td>
-                              <td>
-                                <a href="#">
-                                  <i class="fas fa-edit"></i>
-                                </a>
-                              </td>
-                              <td>
-                                <a href="#">
-                                  <i class="fas fa-trash"></i>
-                                </a>
-                              </td>
-
-                            </tr>
+                              <% end %>
+                            </td>
+                            <td>
+                              <%= link_to edit_address_path(add) do %>
+                                <i class="fas fa-edit"></i>
+                              <% end %>
+                            </td>
+                            <td>
+                              <%= link_to address_path(add), method: :delete, data: { confirm: t("warning.delete")},
+                                remote: true do %>
+                                <i class="fas fa-trash"></i>
+                              <% end %>
+                            </td>
+                          </tr>
                           <% end %>
-                        </table>
-
-                    </div>
-
-
+                      </table>
+                      <% else %>
+                        <%= link_to new_address_path do %>
+                          <span>
+                            <%= t("info.new_add") %>
+                            <i class="fas fa-plus"></i>
+                          </span>
+                        <% end %>
+                      <% end %>
+                  </div>
                 </div>
-
               </div>
             </div>
           </div>

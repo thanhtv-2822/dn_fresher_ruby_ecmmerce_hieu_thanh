@@ -24,6 +24,18 @@ en:
   save: "Save"
   name: "Name"
   email: "Email"
+  password: "Password"
+  pass_confirm: "Password Confirm"
+  continue_shop : "Continue Shopping"
+  errors:
+    default: "you have already set the default address"
+    index: "invalid"
+    one: "Form contain 1 error"
+    other: "Form contain %{count} errors"
+  warning:
+    delete: "Are you sure you want to delete ?"
+  info:
+    new_add: "Add new Address"
   header:
     Home: "Home"
     Products: "Products"
@@ -72,5 +84,18 @@ en:
     cod: "You have to pay when you received the goods"
     internet_banking: "Internet banking"
   child: "child"
-  errors:
-    index: "invalid"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "is not blank"
+              email:
+              invalid: "Invalid"
+              taken: "has already been taken"
+            password:
+              too_short: "at least 6 characters"
+              blank: "invalid"
+            password_confirmation:
+              confirmation: "not match"

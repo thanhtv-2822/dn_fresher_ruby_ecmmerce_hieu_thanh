@@ -6,9 +6,11 @@ class User < ApplicationRecord
   validates :email, uniqueness: true,
    length: {maximum: Settings.length.len_50},
    format: {with: Settings.regex.email}
-  validates :password, length:
-   {in: Range.new(Settings.length.len_6, Settings.length.len_50)}
-  validates :name, length: {maximum: Settings.length.len_50}
+  validates :password, presence: true, allow_nil: true,
+  length: {in: Range.new(Settings.length.len_6, Settings.length.len_50)}
+  validates :name, presence: true, length: {maximum: Settings.length.len_50}
+  USER_ATTRS = %w(name email password password_confirmation).freeze
 
   has_secure_password
+
 end
