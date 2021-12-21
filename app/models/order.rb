@@ -8,7 +8,16 @@ class Order < ApplicationRecord
   before_save :status_default
   enum status: {pending: 0, accept: 1, resolved: 2, rejected: 3}
 
+  def get_total
+    total = 0
+    self.order_details.each do |order_details|
+      total += order_details.price
+    end
+    return total
+  end
+
   private
+
   def status_default
     self.status ||= 0
   end

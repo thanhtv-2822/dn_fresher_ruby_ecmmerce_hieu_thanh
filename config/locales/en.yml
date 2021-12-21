@@ -27,6 +27,9 @@ en:
   password: "Password"
   pass_confirm: "Password Confirm"
   continue_shop : "Continue Shopping"
+  order_num: "Order Num"
+  back: "Back"
+  track_order : "Track Order"
   errors:
     user: "invalid users"
     default: "you have already set the default address"
@@ -40,6 +43,7 @@ en:
     order: "You don't have any order"
   info:
     new_add: "Add new Address"
+    order: "Thanks for your order"
   success:
     img: "Image uploaded successfully"
     order: "Order Successfully"

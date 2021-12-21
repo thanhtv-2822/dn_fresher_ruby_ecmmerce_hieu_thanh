@@ -23,7 +23,9 @@
               <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></a>
             </div>
             <div class="widget-header icontext">
-              <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></a>
+              <%= link_to user_path(@user), class: "icon icon-sm rounded-circle border" do %>
+              <i class="fa fa-user"></i>
+              <% end %>
               <div class="text">
                 <span class="text-muted">
                   <%= t("Welcome") %>

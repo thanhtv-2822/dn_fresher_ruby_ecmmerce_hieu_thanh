@@ -5,6 +5,7 @@ class OrderDetail < ApplicationRecord
   after_create :change_product_quantity
 
   private
+
   def unit_price
     product.price
   end

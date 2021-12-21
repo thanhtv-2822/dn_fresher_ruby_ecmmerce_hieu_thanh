@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
+  include OrderDetailsHelper
+  include OrdersHelper
+  include SessionsHelper
   before_action :set_locale
+  before_action :current_user
 
   private
   def set_locale

@@ -6,78 +6,84 @@
     <div class="row">
         <div class="col-md-8">
             <%= form_for @order do |f| %>
-                 <%= f.hidden_field :status, value: "accept" %>
-                <div class="card p-3">
-                    <div class="mt-4 mb-4">
-                        <h6 class="text-uppercase mb-4">Billing Address</h6>
-                        <%= f.collection_radio_buttons :address_id, @address, :id, :address_initial do |ff|%>
-                            <div class="row">
-                                <div class="col-md-1">
-                                    <%= ff.radio_button%>
+                <%= f.hidden_field :status, value: "accept" %>
+                    <div class="card p-3">
+                        <div class="mt-4 mb-4">
+                            <h6 class="text-uppercase mb-4">Billing Address</h6>
+                            <%= f.collection_radio_buttons :address_id, @address, :id, :address_initial do |ff|%>
+                                <div class="row mt-1">
+                                    <div class="col-md-1">
+                                        <%= ff.radio_button%>
+                                    </div>
+                                    <div class="col-md-11">
+                                        <%= ff.label %>
+                                    </div>
                                 </div>
-                                <div class="col-md-8">
-                                    <%= ff.label %>
-                                </div>
-                            </div>
                             <% end %>
-                    </div>
-                    <h6 class="text-uppercase">Payment methods</h6>
-                    <div class="row mt-4">
-                        <div class="col-md-1">
-                            <%= f.radio_button(:payment_id, "1" ) %>
+                            <div class="mt-4 mb-4">
+                                <%= link_to new_address_path do %>
+                                    <span class="mb-4">
+                                        <%= t("info.new_add") %>
+                                        <i class="fas fa-plus"></i>
+                                    </span>
+                                <% end %>
+                            </div>
                         </div>
-                        <div class="col-md-8">
-                            <%= image_tag("#{Settings.payment.cod}") %>
-                                <span style="margin-left: 10px;">
-                                    <%= t("payment.cod") %>
-                                </span>
+                        <h6 class="text-uppercase">Payment methods</h6>
+                        <div class="row mt-4">
+                            <div class="col-md-1">
+                                <%= f.radio_button(:payment_id, "1" ) %>
+                            </div>
+                            <div class="col-md-8">
+                                <%= image_tag("#{Settings.payment.cod}") %>
+                                    <span style="margin-left: 10px;">
+                                        <%= t("payment.cod") %>
+                                    </span>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row mt-4">
-                        <div class="col-md-1">
-                            <%= f.radio_button(:payment_id, "2" ) %>
+                        <div class="row mt-4">
+                            <div class="col-md-1">
+                                <%= f.radio_button(:payment_id, "2" ) %>
+                            </div>
+                            <div class="col-md-8">
+                                <%= image_tag("#{Settings.payment.momo}") %>
+                                    <span style="margin-left: 10px;">
+                                        <%= t("payment.momo") %>
+                                    </span>
+                            </div>
                         </div>
-                        <div class="col-md-8">
-                            <%= image_tag("#{Settings.payment.momo}") %>
-                                <span style="margin-left: 10px;">
-                                    <%= t("payment.momo") %>
-                                </span>
-                        </div>
-                    </div>
 
-                    <div class="row mt-4">
-                        <div class="col-md-1">
-                            <%= f.radio_button(:payment_id, "3" ) %>
-                        </div>
-                        <div class="col-md-8">
-                            <%= image_tag("#{Settings.payment.internet_banking}") %>
-                                <span style="margin-left: 10px;">
-                                    <%= t("payment.internet_banking") %>
-                                </span>
+                        <div class="row mt-4">
+                            <div class="col-md-1">
+                                <%= f.radio_button(:payment_id, "3" ) %>
+                            </div>
+                            <div class="col-md-8">
+                                <%= image_tag("#{Settings.payment.internet_banking}") %>
+                                    <span style="margin-left: 10px;">
+                                        <%= t("payment.internet_banking") %>
+                                    </span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="mt-4 mb-4 d-flex justify-content-between">
-                    <div class="col-md-4">
-                        <span>Continue Shopping</span>
-                    </div>
-                    <div class="col-md-4">
-                        <%= f.submit "Checkout" , class: "btn btn-sm btn-primary", style: "font-size: 18px;
+                    <div class="mt-4 mb-4 d-flex justify-content-between">
+                        <div class="col-md-4">
+                            <span>Continue Shopping</span>
+                        </div>
+                        <div class="col-md-4">
+                            <%= f.submit "Checkout" , class: "btn btn-sm btn-primary" , style: "font-size: 18px;
                         font-weight: bold" %>
+                        </div>
                     </div>
-                </div>
-                <% end %>
+                    <% end %>
         </div>
         <div class="col-md-4">
-            <% @order_details.joins(:product) .pluck(:quantity, :price, "products.name" , "products.image" ) .map{
-                |quantity, price, name, image| {quantity: quantity, price: price, name: name, img: image} } .each do
-                |details| %>
+            <% @products.each do |details| %>
                 <div class="card card-blue p-3 text-white mb-3">
                     <table>
                         <tr>
                             <td>
-                                <a href="#" class="img-wrap" style="width: 60px; height: 60px">
+                                <a href="#" class="img-wrap">
                                     <%= image_tag(details[:img]) %>
                                 </a>
                             </td>
@@ -112,12 +118,13 @@
                         </tr>
                     </table>
                 </div>
-            <% end %>
-            <span>You have to pay</span>
-            <div class="d-flex flex-row align-items-end mb-3">
-                <h1 class="mb-0 yellow"><%= @total %> VND
-                </h1>
-            </div>
+                <% end %>
+                    <span>You have to pay</span>
+                    <div class="d-flex flex-row align-items-end mb-3">
+                        <h1 class="mb-0 yellow">
+                            <%= @order.get_total %> VND
+                        </h1>
+                    </div>
 
         </div>
     </div>

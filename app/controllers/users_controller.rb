@@ -22,5 +22,4 @@ class UsersController < ApplicationController
   def check_user
     @user = User.find_by(id: params[:id])
   end
-
 end

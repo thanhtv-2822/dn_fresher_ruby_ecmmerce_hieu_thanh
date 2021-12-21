@@ -19,9 +19,7 @@
           <div class="row user-detail-row mt-2">
             <ul class="menu-category">
               <li>
-                <a href="#">
-                  <%= t("his_order") %>
-                </a>
+                <%= link_to t("his_order"), user_order_path(@user) %>
               </li>
             </ul>
           </div>
@@ -120,6 +118,14 @@
                       <%= t("your_address") %>
                     </a>
                   </li>
+                  <li class="ml-5 mt-2">
+                    <%= link_to new_address_path do %>
+                    <span class="mb-4">
+                      <%= t("info.new_add") %>
+                      <i class="fas fa-plus"></i>
+                    </span>
+                  <% end %>
+                  </li>
                 </ul>
                 <div class="tab-content mt-4">
                   <div class="row">
@@ -151,13 +157,6 @@
                           </tr>
                           <% end %>
                       </table>
-                      <% else %>
-                        <%= link_to new_address_path do %>
-                          <span>
-                            <%= t("info.new_add") %>
-                            <i class="fas fa-plus"></i>
-                          </span>
-                        <% end %>
                       <% end %>
                   </div>
                 </div>
