@@ -10,5 +10,7 @@ class Product < ApplicationRecord
     length: {maximum: Settings.length.len_50}
   validates :price, presence: true,
     numericality: {only_decimal: true}
-  validates :description, presence: true
+  validates :description, :image, presence: true
+  validates :quantity, presence: true,
+    numericality: {only_integer: true, greater_than: Settings.min.quantity}
 end

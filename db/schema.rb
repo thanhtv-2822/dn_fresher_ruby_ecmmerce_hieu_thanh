@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 2021_12_20_074521) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+ActiveRecord::Schema.define(version: 2021_12_15_075607) do
+
   create_table "addresses", charset: "utf8", force: :cascade do |t|
     t.string "phone"
     t.string "street"
@@ -50,11 +52,16 @@ ActiveRecord::Schema.define(version: 2021_12_20_074521) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "default"
+    t.string "user"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "categories", charset: "utf8", force: :cascade do |t|
     t.string "name"
+    t.integer "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -75,6 +82,11 @@ ActiveRecord::Schema.define(version: 2021_12_20_074521) do
     t.bigint "order_id", null: false
     t.bigint "product_id", null: false
     t.datetime "created_at", precision: 6
+    t.integer "quantity", default: 1
+    t.decimal "price", precision: 10
+    t.bigint "order_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id", "product_id"], name: "index_order_details_on_order_id_and_product_id", unique: true
     t.index ["order_id"], name: "index_order_details_on_order_id"
@@ -89,6 +101,13 @@ ActiveRecord::Schema.define(version: 2021_12_20_074521) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "payment_id"
     t.integer "address_id"
+    t.integer "status", default: 0
+    t.bigint "user_id", null: false
+    t.bigint "payment_id"
+    t.bigint "address_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["address_id"], name: "index_orders_on_address_id"
     t.index ["payment_id"], name: "index_orders_on_payment_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -103,11 +122,14 @@ ActiveRecord::Schema.define(version: 2021_12_20_074521) do
     t.string "name"
     t.decimal "price", precision: 10
     t.float "rating"
+    t.decimal "price", precision: 10, default: "0"
+    t.float "rating", default: 1.0
     t.string "image"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "quantity"
+    t.integer "quantity", default: 1
     t.bigint "category_id", null: false
     t.index ["category_id"], name: "index_products_on_category_id"
   end
@@ -116,7 +138,7 @@ ActiveRecord::Schema.define(version: 2021_12_20_074521) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.boolean "is_admin"
+    t.boolean "is_admin", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -127,6 +149,8 @@ ActiveRecord::Schema.define(version: 2021_12_20_074521) do
   add_foreign_key "contributes", "users"
   add_foreign_key "order_details", "orders"
   add_foreign_key "order_details", "products"
+  add_foreign_key "orders", "addresses"
   add_foreign_key "orders", "payments"
   add_foreign_key "orders", "users"
+  add_foreign_key "products", "categories"
 end

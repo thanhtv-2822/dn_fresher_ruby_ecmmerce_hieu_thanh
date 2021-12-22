@@ -1,45 +1,28 @@
-# User.create!(name: "Example User",
-#   email:
-#   "example@railstutorial.org",
-#   password: "foobar",
-#   password_confirmation: "foobar")
-#   99.times do |n|
-#     name = Faker::Name.name
-#     email = "example-#{n+1}@railstutorial.org"
-#     password = "password"
-#     User.create!(name: name,
-#     email: email,
-#     password: password,
-#     password_confirmation: password,
-#     is_admin: false)
-#   end
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-category = ["Apple", "Samsung", "Xiaomi"]
+User.create(
+  name: "Admin",
+  email: "admin@gmail.com",
+  password: "123456",
+  password_confirmation: "123456",
+  is_admin: true
+)
+category = ["Dell", "Hp", "Lenovo"]
 
 3.times do |n|
-  name = category[n-1]
-  price = 12000000
-  description = Faker::Lorem.sentence
-  quantity = 5
-  Product.create(
-    name: name,
-    price: price,
-    description: description,
-    quantity: quantity
+  Category.create(name: category[n])
+end
+
+5.times do |n|
+  Category.create(
+    name: category[0] + "-#{n}",
+    parent_id: 1
   )
 end
+
 User.create!(name: "Example User",
-  email:
-  "example@railstutorial.org",
+  email: "example@railstutorial.org",
   password: "foobar",
   password_confirmation: "foobar")
-  99.times do |n|
+  20.times do |n|
     name = Faker::Name.name
     email = "example-#{n+1}@railstutorial.org"
     password = "password"
@@ -47,5 +30,18 @@ User.create!(name: "Example User",
     email: email,
     password: password,
     password_confirmation: password,
-    is_admin: false)
+    is_admin: false
+  )
   end
+
+10.times do
+  Product.create(
+    name: Faker::Name.first_name,
+    description: Faker::Lorem.sentence,
+    price: 120000,
+    image: "https://laptops.vn/uploads/dell-xps-9570-laptop-tran-phat_1600612884.jpg",
+    category_id: 4,
+    quantity: 10,
+    rating: 5
+  )
+end

@@ -112,3 +112,66 @@ en:
               blank: "invalid"
             password_confirmation:
               confirmation: "not match"
+  errors:
+    index: "invalid"
+    login:
+      danger: "Email or password incorrect"
+      success: "Login successfully"
+    register:
+      success: "Register successfully"
+    order_create: "Create order successfuly"
+    record_invalid: "Record Invalid"
+    carts:
+      update: "Update product to cart success"
+      add: "Add product to cart success"
+      remove: "Remove item success"
+      update_qty: "Update cart successfully"
+      update_fail: "Update cart fail"
+      review_success: "Review successfully"
+      review_fail: "Review fail"
+      enough: "Product quantity not enough"
+  form:
+    register_here: "Register here"
+    login_here: "Login here"
+    name: "Name"
+    email: "Email"
+    password: "Password"
+    password_confirm: "Password Confirmation"
+    error_msg: "The Form Contains %{errors} errors"
+  product:
+    description: "Description"
+    add_to_cart: "Add to cart"
+    product_left: "product left"
+    rating: "Rating"
+    not_found: "Product not found!"
+  carts:
+    index:
+      total: "Total"
+      title: "My Cart"
+      checkout: "Checkout"
+      back: "Continue Shopping"
+    product:
+      confirm: "Are you sure?"
+    item:
+      not_found: "Cart item not found!"
+    quantity:
+      not_valid: "Quantity must be greater than 0"
+  admin:
+    permission: "You dont permission"
+    static_pages:
+      home:
+        content: "Welcome to admin page"
+    layouts:
+      nav:
+        dashboard: "Dashboard"
+        function: "Function"
+        user_manager: "User manager"
+        product_manager: "Product manager"
+        order_manager: "Order manager"
+        contribute_manager: "Contribute manager"
+        list_product: "List Product"
+      header:
+        profile: "Profile"
+        logout: "Logout"
+      footer:
+        content: "Admin &copy; Ecommerce 2021"

@@ -92,3 +92,12 @@ config/environments/*.local.yml
 yarn-debug.log*
 .yarn-integrity
 .vscode/tasks.json
+/vscode
+/bin
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
