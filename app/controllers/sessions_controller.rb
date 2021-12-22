@@ -1,10 +1,8 @@
 class SessionsController < ApplicationController
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
+    user = User.find_by email: params[:session][:email].downcase
     if user&.authenticate params[:session][:password]
-      flash[:success] = t "errors.login.success"
-      redirect_to home_path
-      log_in user
+      active user
     else
       flash[:danger] = t "errors.login.danger"
       render :new
@@ -17,4 +15,13 @@ class SessionsController < ApplicationController
   end
 
   def new; end
+
+  private
+  def active user
+    flash[:success] = t "errors.login.success"
+    log_in user
+    return redirect_to admin_root_path if user.is_admin?
+
+    redirect_back_or home_path
+  end
 end
