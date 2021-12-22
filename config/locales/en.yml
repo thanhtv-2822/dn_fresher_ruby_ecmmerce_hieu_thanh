@@ -16,7 +16,8 @@ en:
   Sign Up: "Sign Up"
   description: "Do you have anything to tell us?"
   upload_avt: "Upload avatar"
-  his_order: "History Order"
+  his_order: "History Orders"
+  his_contrbutes: "History Contrbutes"
   change_pwd: "Change Password"
   your_profile: "Your Profile"
   your_address: "Your Address"
@@ -44,6 +45,7 @@ en:
   info:
     new_add: "Add new Address"
     order: "Thanks for your order"
+    contribute: "Thanks for your contribution"
   success:
     img: "Image uploaded successfully"
     order: "Order Successfully"

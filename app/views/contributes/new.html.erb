@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>Thanks for your contribute</h1>
+  <%= form_with model: @contribute do |f| %>
+<%= render partial: "shared/error" , locals: {zone: @contribute}%>
+	<div class="row">
+  	<div class="col-md-6">
+    	<%= f.label :content %>
+      <%= f.text_area :content, class: "form-control" %>
+    </div>
+  </div>
+	<div class="row mt-2">
+		<div class="col-md-6">
+      <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+		</div>
+	</div>
+	<div class= "row mt-4 justify-content-start">
+    <div class="col-md-2">
+      <%= f.submit t("save"), class: "btn btn-primary" %>
+    </div>
+		<div class="col-md-5">
+			<%= link_to t("continue_shopping"), static_pages_home_path, class: "btn btn-md btn-secondary" %>
+		</div>
+  </div>
+<% end %>
+</div>

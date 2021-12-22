@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :users do
     resource :upload, only: [:update]
     resource :order, only: [:show], to: "orders#index"
+    resources :contributes, only: [:show]
   end
   resources :addresses
+  resources :contributes, only: [:new, :create]
 end
