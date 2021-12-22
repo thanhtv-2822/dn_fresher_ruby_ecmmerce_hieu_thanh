@@ -5,14 +5,15 @@ class ContributesController < ApplicationController
   end
 
   def show
-    @contributes = @user.contributes
+    @contributes = current_user.contributes
   end
 
   def create
-    @contribute = @user.contributes.build(contribute_params)
+    @contribute = current_user.contributes.build(contribute_params)
     @contribute.image.attach(contribute_params[:image])
     if @contribute.save
       flash[:success] = "Thanks your contribute"
+      redirect_to user_path(current_user)
     else
       render :show
     end

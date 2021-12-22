@@ -8,7 +8,7 @@
       <%= render :partial => "product", :collection => @carts, :as => :item %>
     </ul>
   </div>
-  
+
   <div class="subtotal cf">
     <ul>
       <li class="totalRow final"><span class="label"><%= t ".total" %></span>
@@ -17,7 +17,7 @@
         </span>
       </li>
       <li class="totalRow">
-        <%= link_to t(".checkout"), orders_path, class: "btn continue btn-checkout", method: :post %>
+        <%= link_to t(".checkout"), orders_path, class: "btn continue btn-checkout", method: :get %>
       </li>
     </ul>
   </div>

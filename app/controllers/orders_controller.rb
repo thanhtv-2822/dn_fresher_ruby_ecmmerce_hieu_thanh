@@ -1,18 +1,19 @@
 class OrdersController < ApplicationController
-  before_action :check_order, :check_address, only: [:show, :update, :create]
+  before_action :check_user, :check_address, only: [:index, :show, :update, :create]
+  before_action :check_order, only: [:index, :update, :create]
 
   def index
-    @orders = @user.orders
+    store_location
   end
 
   def show
-    store_location
+    @orders = @user.orders
   end
 
   def update
     if @order.update order_params
       flash[:success] = t("success.order")
-      redirect_to  user_order_path(@user)
+      redirect_to user_order_path(@user)
     else
       flash[:danger] = t("error.order")
       render :show
@@ -21,11 +22,15 @@ class OrdersController < ApplicationController
 
   private
 
+  def check_user
+     @user = current_user
+  end
+
   def check_order
     @order = @user.orders.find_by(status: 0)
     if @order.nil?
       flash[:danger] = t("warning.order")
-      redirect_to static_pages_home_path
+      redirect_to home_path
     else
       @products = detail_product(@order.order_details)
     end

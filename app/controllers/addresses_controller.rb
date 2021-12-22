@@ -4,7 +4,7 @@ class AddressesController < ApplicationController
   def destroy
     @address = @address.destroy
     flash[:success] = "Address was successfully destroyed"
-    redirect_to user_path(@user)
+    redirect_to user_path(current_user)
   end
 
   def create
@@ -26,7 +26,7 @@ class AddressesController < ApplicationController
   def update
     if @address.update(add_params)
       flash[:success] = "Address updated successfully"
-      redirect_to user_path(@user)
+      redirect_to user_path(current_user)
     else
       render :edit
     end

@@ -6,6 +6,7 @@ vi:
   sign_in: "Đăng nhập"
   sign_up: "Đăng ký"
   log_out: "Đăng xuất"
+  upload_avt: "Upload avatar"
   header:
     Home: "Trang chủ"
     Contact us: "Về chúng tôi"

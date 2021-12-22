@@ -5,8 +5,6 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include CartsHelper
   before_action :set_locale
-  before_action :current_user
-
   private
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
@@ -16,9 +14,6 @@ class ApplicationController < ActionController::Base
     {locale: I18n.locale}
   end
 
-  def current_user
-    @user = User.first
-
   def logged_in_user
     return if logged_in?
 
@@ -26,4 +21,5 @@ class ApplicationController < ActionController::Base
     flash[:danger] = t "admin.permission"
     redirect_to login_url
   end
+
 end

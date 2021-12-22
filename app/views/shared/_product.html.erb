@@ -23,7 +23,11 @@
     </ul>
       <span class="product-shipping">Free Shipping</span>
       <h3 class="title"><a href="#"><%= product.name %></a></h3>
-      <a class="all-deals" href=""> View detail<i class="fa fa-angle-right icon"></i></a>
+      <%= link_to product_path(product), class: "all-deals" do %>
+      <span>
+        View<i class="fa fa-angle-right icon"></i>
+      </span>
+      <% end %>
   </div>
 </div>
 </div>

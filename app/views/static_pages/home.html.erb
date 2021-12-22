@@ -1,14 +1,9 @@
 <section class="section-main bg padding-y mt-2">
   <div class="container">
-<<<<<<< HEAD
-
-=======
->>>>>>> d896c93520d0af12736cb5ab81690e12e438b13c
     <div class="row">
       <aside class="col-md-3">
         <nav class="card">
           <ul class="menu-category">
-<<<<<<< HEAD
             <li><a href="#">Home</a></li>
             <li class="has-submenu"><a href="#">Products</a>
               <ul class="submenu">
@@ -16,7 +11,7 @@
               </ul>
             </li>
             <li>
-              <%= link_to "Hot Trends", static_pages_home_path(rate: "DESC") %>
+              <%= link_to "Hot Trends", home_path(rate: "DESC") %>
             </li>
             <li>
               <%= link_to "Contributes", new_contribute_path %>
@@ -25,72 +20,35 @@
             <li class="has-submenu"><a href="#">Sort by</a>
               <ul class="submenu">
                 <li>
-                  <%= link_to "Price: Low-High", static_pages_home_path(price: "ASC") %>
+                  <%= link_to "Price: Low-High", home_path(price: "ASC") %>
                 </li>
                 <li>
-                  <%= link_to "Price: High-Low", static_pages_home_path(price: "DESC") %>
+                  <%= link_to "Price: High-Low", home_path(price: "DESC") %>
                 </li>
                 <li>
-                  <%= link_to "Rate: Low-High", static_pages_home_path(rate: "ASC") %>
+                  <%= link_to "Rate: Low-High", home_path(rate: "ASC") %>
                 </li>
                 <li>
-                  <%= link_to "Rate: High-Low", static_pages_home_path(rate: "DESC") %>
+                  <%= link_to "Rate: High-Low", home_path(rate: "DESC") %>
                 </li>
                 <li>
-                  <%= link_to "Name: A-Z", static_pages_home_path(name: "ASC") %>
+                  <%= link_to "Name: A-Z", home_path(name: "ASC") %>
                 </li>
                 <li>
-                  <%= link_to "Name: Z-A", static_pages_home_path(name: "DESC") %>
+                  <%= link_to "Name: Z-A", home_path(name: "DESC") %>
                 </li>
               </ul>
-=======
-            <li><a href="#">
-                <%= t("header.Home") %>
-              </a></li>
-            <li class="has-submenu"><a href="#">
-                <%= t("header.Products") %>
-              </a>
-              <ul class="submenu">
-                <li><a href="#">
-                    <%= t("header.Clothes") %>
-                  </a></li>
-                <li><a href="#">
-                    <%= t("header.Electronics") %>
-                  </a></li>
-              </ul>
-            </li>
-            <li><a href="#">
-                <%= t("header.Hot trends") %>
-              </a></li>
-            <li><a href="#">
-                <%= t("header.Best seller") %>
-              </a></li>
-            <li><a href="#">
-                <%= t("header.Best rating") %>
-              </a></li>
-            <li><a href="#">
-                <%= t("header.Contribute") %>
-              </a></li>
-            <li><a href="#">
-                <%= t("header.Contact us") %>
-              </a></li>
->>>>>>> d896c93520d0af12736cb5ab81690e12e438b13c
           </ul>
         </nav>
       </aside>
       <div class="col-md-9">
         <article class="banner-wrap">
-<<<<<<< HEAD
           <%= image_tag("2.jpg", class: "banner-config") %>
-=======
-          <%= image_tag("2.jpg")%>
->>>>>>> d896c93520d0af12736cb5ab81690e12e438b13c
         </article>
       </div>
     </div>
   </div>
 </section>
-<<<<<<< HEAD
 <section class="section-name padding-y-sm mt-5">
   <div class="container">
     <header class="section-heading">
@@ -110,17 +68,3 @@
 
 
 </script>
-=======
-<section class="section-name padding-y-sm mb-5">
-  <div class="container">
-    <header class="section-heading">
-      <h3 class="section-title">
-        <%= t("header.Popular products") %>
-      </h3>
-    </header>
-    <div class="row">
-      <%= render partial: "shared/product" , collection: @products %>
-    </div>
-  </div>
-</section>
->>>>>>> d896c93520d0af12736cb5ab81690e12e438b13c

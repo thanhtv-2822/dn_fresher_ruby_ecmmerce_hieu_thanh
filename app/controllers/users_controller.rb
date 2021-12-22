@@ -13,15 +13,10 @@ class UsersController < ApplicationController
     end
   end
 
-  private
-
-  def user_params
-    params.require(:user).permit(User::USER_ATTRS)
+  def new
+    @user = User.new
   end
 
-  def check_user
-    @user = User.find_by(id: params[:id])
-  end
   def create
     @user = User.new user_params
     if @user.save
@@ -32,12 +27,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def new
-    @user = User.new
-  end
-
   private
+
   def user_params
     params.require(:user).permit(User::USER_ATTRS)
+  end
+
+  def check_user
+    @user = User.find_by(id: params[:id])
   end
 end

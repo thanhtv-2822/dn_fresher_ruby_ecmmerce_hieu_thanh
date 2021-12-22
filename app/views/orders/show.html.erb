@@ -1,130 +1,67 @@
-<div class="container mt-5 px-5">
-    <div class="mb-4">
-        <h2>Vo Chi Hieu | #122222</h2> <span>Please make the payment, after that you can enjoy all the features and
-            benefits.</span>
-    </div>
-    <div class="row">
-        <div class="col-md-8">
-            <%= form_for @order do |f| %>
-                <%= f.hidden_field :status, value: "accept" %>
-                    <div class="card p-3">
-                        <div class="mt-4 mb-4">
-                            <h6 class="text-uppercase mb-4">Billing Address</h6>
-                            <%= f.collection_radio_buttons :address_id, @address, :id, :address_initial do |ff|%>
-                                <div class="row mt-1">
-                                    <div class="col-md-1">
-                                        <%= ff.radio_button%>
-                                    </div>
-                                    <div class="col-md-11">
-                                        <%= ff.label %>
-                                    </div>
-                                </div>
-                            <% end %>
-                            <div class="mt-4 mb-4">
-                                <%= link_to new_address_path do %>
-                                    <span class="mb-4">
-                                        <%= t("info.new_add") %>
-                                        <i class="fas fa-plus"></i>
-                                    </span>
-                                <% end %>
-                            </div>
-                        </div>
-                        <h6 class="text-uppercase">Payment methods</h6>
-                        <div class="row mt-4">
-                            <div class="col-md-1">
-                                <%= f.radio_button(:payment_id, "1" ) %>
-                            </div>
-                            <div class="col-md-8">
-                                <%= image_tag("#{Settings.payment.cod}") %>
-                                    <span style="margin-left: 10px;">
-                                        <%= t("payment.cod") %>
-                                    </span>
-                            </div>
-                        </div>
+<section class="h-100 gradient-custom">
+  <div class="container py-5 h-100 checkout">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-10 col-xl-8">
+        <div class="card" style="border-radius: 10px;">
+          <div class="card-header px-4 py-5">
+            <h5 class="text-muted mb-0"><%= t("info.order") %> <span style="color: #a8729a;"><%= @user.name %></span></h5></h5>
+          </div>
+          <div class="order_config">
 
-                        <div class="row mt-4">
-                            <div class="col-md-1">
-                                <%= f.radio_button(:payment_id, "2" ) %>
-                            </div>
-                            <div class="col-md-8">
-                                <%= image_tag("#{Settings.payment.momo}") %>
-                                    <span style="margin-left: 10px;">
-                                        <%= t("payment.momo") %>
-                                    </span>
-                            </div>
-                        </div>
+          <% @orders.each do |order| %>
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-between pt-2">
+              <p class="fw-bold mb-0"><%= "#{t("order_num")} : #{order.id}" %></p>
+              <p class="text-muted mb-0"><span class="fw-bold me-4">Total:</span><%= order.get_total %>VND</p>
+            </div>
+            <div class="row d-flex align-items-center mt-2">
+              <div class="col-md-2">
+                <p class="text-muted mb-0 small"><%= t("tracker_order") %></p>
+              </div>
+              <%= render partial: "shared/order_status" , locals: {zone: order.status} %>
+            </div>
 
-                        <div class="row mt-4">
-                            <div class="col-md-1">
-                                <%= f.radio_button(:payment_id, "3" ) %>
-                            </div>
-                            <div class="col-md-8">
-                                <%= image_tag("#{Settings.payment.internet_banking}") %>
-                                    <span style="margin-left: 10px;">
-                                        <%= t("payment.internet_banking") %>
-                                    </span>
-                            </div>
-                        </div>
+              <% detail_product(order.order_details).each do |product| %>
+              <div class="card shadow-0 border mb-4 mt-4">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <%= image_tag(product[:img], class:"img-wrap") %>
                     </div>
-                    <div class="mt-4 mb-4 d-flex justify-content-between">
-                        <div class="col-md-4">
-                            <span>Continue Shopping</span>
-                        </div>
-                        <div class="col-md-4">
-                            <%= f.submit "Checkout" , class: "btn btn-sm btn-primary" , style: "font-size: 18px;
-                        font-weight: bold" %>
-                        </div>
+                    <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                      <p class="text-muted mb-0"> <%= product[:name] %></p>
                     </div>
-                    <% end %>
-        </div>
-        <div class="col-md-4">
-            <% @products.each do |details| %>
-                <div class="card card-blue p-3 text-white mb-3">
-                    <table>
-                        <tr>
-                            <td>
-                                <a href="#" class="img-wrap">
-                                    <%= image_tag(details[:img]) %>
-                                </a>
-                            </td>
-                            <td>
-                                <ul style="list-style-type:none;">
-                                    <li>
-                                        <span>
-                                            <%= details[:name] %>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span>
-                                            Amount: <%= details[:quantity] %>
-                                        </span>
-                                    </li>
-                                </ul>
-                            </td>
-                            <td>
-                                <ul style="list-style-type:none;">
-                                    <li>
-                                        <span>
-                                            <%= details[:price] %>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span>
-                                            VND
-                                        </span>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </table>
+                    <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                      <p class="text-muted mb-0 small">Quantity: <%= product[:quantity] %></p>
+                    </div>
+                    <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                      <p class="text-muted mb-0 small"><%= product[:price] %>VND</p>
+                    </div>
+                  </div>
+                  <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
                 </div>
-                <% end %>
-                    <span>You have to pay</span>
-                    <div class="d-flex flex-row align-items-end mb-3">
-                        <h1 class="mb-0 yellow">
-                            <%= @order.get_total %> VND
-                        </h1>
-                    </div>
+              </div>
+              <% end %>
 
+          </div>
+          <% end %>
+          </div>
+          <div class="card-footer border-0 px-4 py-5"
+            style="background-color: #a8729a;
+                  border-bottom-left-radius: 10px;
+                  border-bottom-right-radius: 10px;
+                  text-align: right;">
+          <div class="row justify-content-between">
+            <div class="col-md-2">
+              <%= button_to t("Home"), home_path, method: "get", form_class: "button-23", class: "form-control button_config"%>
+            </div>
+            <div class="col-md-6">
+              <%= button_to t("back"), user_path(@user), method: "get", form_class: "button-23", class: "form-control button_config"%>
+            </div>
+          </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+</section>

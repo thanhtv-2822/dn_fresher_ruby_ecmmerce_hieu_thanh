@@ -4,7 +4,7 @@
       <div class="col-lg-10 col-xl-8">
         <div class="card" style="border-radius: 10px;">
           <div class="card-header px-4 py-5">
-            <h5 class="text-muted mb-0"><%= t("info.contribute") %><span style="color: #a8729a;"><%= @user.name %></span></h5></h5>
+            <h5 class="text-muted mb-0"><%= t("info.contribute") %><span style="color: #a8729a;"><%= current_user.name %></span></h5></h5>
           </div>
 
           <div class="card-body p-4">
@@ -36,10 +36,10 @@
                   text-align: right;">
           <div class="row justify-content-between">
             <div class="col-md-2">
-              <%= button_to t("Home"), static_pages_home_path, method: "get", form_class: "button-23", class: "form-control button_config"%>
+              <%= button_to t("Home"), home_path, method: "get", form_class: "button-23", class: "form-control button_config"%>
             </div>
             <div class="col-md-6">
-              <%= button_to t("back"), user_path(@user), method: "get", form_class: "button-23", class: "form-control button_config"%>
+              <%= button_to t("back"), user_path(current_user), method: "get", form_class: "button-23", class: "form-control button_config"%>
             </div>
           </div>
           </div>
