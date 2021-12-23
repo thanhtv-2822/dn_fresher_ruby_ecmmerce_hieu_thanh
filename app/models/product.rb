@@ -8,6 +8,10 @@ class Product < ApplicationRecord
 
   scope :filter_by_name, ->(keyword){where "name LIKE ?", "%#{keyword}%"}
   scope :order_by, ->(keyword){order keyword}
+  scope :filter_by_category, -> (category){where category_id: category}
+  scope :filter_by_price, -> (order){ order(price: order) }
+  scope :filter_by_rate, -> (order){ order(rating: order)}
+  scope :filter_by_name, -> (order){ order(name: order)}
 
   OPTION = {
     all: 1,

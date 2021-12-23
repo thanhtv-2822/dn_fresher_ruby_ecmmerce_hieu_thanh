@@ -1,10 +1,55 @@
 en:
   application:
     title: "Ecomerce"
+  Home: "Home"
+  Products: "Products"
+  Clothes: "Clothes"
+  Electronics: "Electronics"
+  Hot trends: "Hot trends"
+  Best seller: "Best seller"
+  Best rating: "Best rating"
+  Contribute: "Contribute"
+  About Us: "About Us"
+  Popular products: "Popular products"
   Welcome: "Welcome!"
   sign_in: "Sign In"
   sign_up: "Sign Up"
-  log_out: "Log out"
+  description: "Do you have anything to tell us?"
+  upload_avt: "Upload avatar"
+  his_order: "History Orders"
+  his_contrbutes: "History Contrbutes"
+  change_pwd: "Change Password"
+  your_profile: "Your Profile"
+  your_address: "Your Address"
+  default_add: "Default Address"
+  save: "Save"
+  name: "Name"
+  email: "Email"
+  password: "Password"
+  pass_confirm: "Password Confirm"
+  continue_shopping : "Continue Shopping"
+  order_num: "Order Num"
+  back: "Back"
+  track_order : "Track Order"
+  errors:
+    user: "invalid users"
+    default: "you have already set the default address"
+    img:  "Image upload failed"
+    order: "Order Failed"
+    index: "invalid"
+    one: "Form contain 1 error"
+    other: "Form contain %{count} errors"
+  warning:
+    delete: "Are you sure you want to delete ?"
+    order: "You don't have any order"
+  info:
+    new_add: "Add new Address"
+    order: "Thanks for your order"
+    contribute: "Thanks for your contribution"
+    checkout: "Please make the payment, after that you can enjoy all the features and benefits"
+  success:
+    img: "Image uploaded successfully"
+    order: "Order Successfully"
   header:
     Home: "Home"
     Products: "Products"
@@ -48,6 +93,26 @@ en:
     email: "info@com"
     phone: "+000-000-0000"
     Street: "Street name 123, ABC"
+  payment:
+    momo: "MoMo payment"
+    cod: "You have to pay when you received the goods"
+    internet_banking: "Internet banking"
+  child: "child"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "is not blank"
+              email:
+              invalid: "Invalid"
+              taken: "has already been taken"
+            password:
+              too_short: "at least 6 characters"
+              blank: "invalid"
+            password_confirmation:
+              confirmation: "not match"
   errors:
     index: "invalid"
     login:
@@ -89,8 +154,11 @@ en:
       back: "Continue Shopping"
     product:
       confirm: "Are you sure?"
+    item:
+      not_found: "Cart item not found!"
+    quantity:
+      not_valid: "Quantity must be greater than 0"
   admin:
-    search: "Search"
     permission: "You dont permission"
     static_pages:
       home:

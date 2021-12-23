@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_10_145829) do
+ActiveRecord::Schema.define(version: 2021_12_15_023829) do
 
   create_table "addresses", charset: "utf8", force: :cascade do |t|
     t.string "phone"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2021_12_10_145829) do
   end
 
   create_table "order_details", charset: "utf8", force: :cascade do |t|
-    t.integer "quantity", default: 1
+    t.integer "quantity"
     t.decimal "price", precision: 10
     t.bigint "order_id", null: false
     t.bigint "product_id", null: false
@@ -49,12 +49,12 @@ ActiveRecord::Schema.define(version: 2021_12_10_145829) do
 
   create_table "orders", charset: "utf8", force: :cascade do |t|
     t.text "description"
-    t.integer "status", default: 0
+    t.integer "status"
     t.bigint "user_id", null: false
-    t.bigint "address_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["address_id"], name: "index_orders_on_address_id"
+    t.bigint "payment_id"
+    t.index ["payment_id"], name: "index_orders_on_payment_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -66,27 +66,31 @@ ActiveRecord::Schema.define(version: 2021_12_10_145829) do
 
   create_table "products", charset: "utf8", force: :cascade do |t|
     t.string "name"
-    t.decimal "price", precision: 10, default: "0"
-    t.float "rating", default: 1.0
+    t.decimal "price", precision: 10
+    t.float "rating"
+    t.string "image"
     t.text "description"
+    t.integer "category_id"
+    t.integer "type_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "quantity", default: 1
+    t.integer "quantity"
   end
 
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.boolean "is_admin", default: false
+    t.boolean "is_admin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "img", null: false
   end
 
   add_foreign_key "addresses", "users"
   add_foreign_key "contributes", "users"
   add_foreign_key "order_details", "orders"
   add_foreign_key "order_details", "products"
-  add_foreign_key "orders", "addresses"
+  add_foreign_key "orders", "payments"
   add_foreign_key "orders", "users"
 end

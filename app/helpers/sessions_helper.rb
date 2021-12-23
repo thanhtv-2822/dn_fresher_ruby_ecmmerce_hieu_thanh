@@ -1,4 +1,11 @@
 module SessionsHelper
+
+  def redirect_back_or(default)
+
+      redirect_to(session[:forwarding_url] || default)
+      session.delete(:forwarding_url)
+  end
+
   def log_in user
     if user.is_admin?
       session[:admin_id] = user.id

@@ -7,8 +7,15 @@ Rails.application.routes.draw do
     get "/signup", to: "users#new"
     post "/signup", to: "users#create"
     delete "/logout", to: "sessions#destroy"
+    resources :addresses
+    resources :contributes, only: [:new, :create]
+    resources :orders
+    resources :users do
+      resource :upload, only: [:update]
+      resource :order, only: [:show], to: "orders#show"
+      resources :contributes, only: [:show]
+    end
     resources :products, only: :show
-    resources :orders, only: :create
     resources :carts, only: %i(index destroy) do
       collection do
         post "/add_item_to_cart/:id", to: "carts#create", as: "add_item_to"

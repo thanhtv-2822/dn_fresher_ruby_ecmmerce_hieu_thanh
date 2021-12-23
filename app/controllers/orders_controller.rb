@@ -1,4 +1,25 @@
 class OrdersController < ApplicationController
+  before_action :check_user, :check_address, only: [:index, :show, :update, :create]
+  before_action :check_order, only: [:index, :update, :create]
+
+  def index
+    store_location
+  end
+
+  def show
+    @orders = @user.orders
+  end
+
+  def update
+    if @order.update order_params
+      flash[:success] = t("success.order")
+      redirect_to user_order_path(@user)
+    else
+      flash[:danger] = t("error.order")
+      render :show
+    end
+  end
+
   def create
     ActiveRecord::Base.transaction do
       create_order
@@ -10,7 +31,18 @@ class OrdersController < ApplicationController
     redirect_to carts_path
   end
 
+
   private
+
+  def order_params
+    params.require(:order).permit(
+      :payment_id,
+      :address_id,
+      :status
+    )
+    end
+  end
+ 
   def create_order_detail
     @carts = get_all_item_in_cart
     @carts.each do |item|
@@ -38,5 +70,25 @@ class OrdersController < ApplicationController
     update_rating_product
     @order.save!
     session.delete :cart
+  end
+
+  def check_user
+    @user = current_user
+  end
+
+  def check_order
+    @order = @user.orders.find_by(status: 0)
+    if @order.nil?
+      flash[:danger] = t("warning.order")
+      redirect_to home_path
+    else
+      @products = detail_product(@order.order_details)
+    end
+  end
+
+  def check_address
+    @address = @user.addresses
+    if @address.nil?
+      @address = Address.new
   end
 end

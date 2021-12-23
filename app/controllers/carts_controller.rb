@@ -10,8 +10,9 @@ class CartsController < ApplicationController
   end
 
   def create
-    if @item
-      @item["quantity"] += params[:quantity].to_i
+    item = find_product_in_cart @product
+    if item
+      item["quantity"] += params[:quantity].to_i
       flash[:success] = t "errors.carts.update"
     else
       current_cart << {

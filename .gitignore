@@ -79,7 +79,25 @@ config/environments/*.local.yml
 /config/credentials.yml.enc
 .pull_request_template.md
 .browserslistrc
+
+# Ignore application configuration
+/config/application.yml
+/config/database.yml
+
+# Ignore application configuration
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
 .vscode/tasks.json
 /vscode
 /bin
-/storage
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
