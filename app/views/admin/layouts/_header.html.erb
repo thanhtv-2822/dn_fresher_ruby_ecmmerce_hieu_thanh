@@ -4,17 +4,6 @@
   <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
     <i class="fa fa-bars"></i>
   </button>
-  <!-- Topbar Search -->
-  <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-    <div class="input-group">
-      <%= form_tag admin_products_path, method: :get do %>
-        <%= text_field_tag :search, params[:search], class: "form-control bg-light border-0 small" %>
-        <div class="input-group-append">
-          <%= submit_tag t("admin.search"), class: "btn btn-primary" %>
-        </div>
-      <% end %>
-    </div>
-  </form>
   <!-- Topbar Navbar -->
   <div class="language-admin">
     <%= link_to image_tag("vietnam.png"), locale: :vi %>

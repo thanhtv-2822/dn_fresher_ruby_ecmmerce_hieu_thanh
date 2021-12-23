@@ -2,11 +2,13 @@ vi:
   application:
     title: "Trang thương mại điện tử"
   Welcome: "Xin chào!"
+  description: " Thêm dặn dò dành cho chúng tôi"
   sign_in: "Đăng nhập"
   sign_up: "Đăng ký"
   log_out: "Đăng xuất"
   upload_avt: "Upload avatar"
   save: "Save"
+  select_payment: vui lòng chọn địa chỉ và phương thức thanh toán
   header:
     Home: "Trang chủ"
     Contact us: "Về chúng tôi"
@@ -52,17 +54,6 @@ vi:
     Street: "Street name 123, ABC"
   errors:
     index: "Không hợp lệ"
-    warning:
-      delete: "Are you sure you want to delete ?"
-      order: "You don't have any order"
-    info:
-      new_add: "Add new Address"
-      order: "Thanks for your order"
-      contribute: "Thanks for your contribution"
-      checkout: "Please make the payment, after that you can enjoy all the features and benefits"
-    success:
-      img: "Image uploaded successfully"
-      order: "Order Successfully"
     login:
       danger: "Email hoặc mật khẩu không chính xác"
       success: "Đăng nhập thành công"
@@ -107,6 +98,7 @@ vi:
     quantity:
       not_valid: "Số lượng phải lớn hơn 0"
   admin:
+    search: "Tim Kiem" 
     permission: "Bạn không được phép"
     static_pages:
       home:
@@ -121,10 +113,14 @@ vi:
         contribute_manager: "Quản lý đóng góp"
         list_product: "Liệt kê Sản phẩm"
         add_product: "Thêm sản phẩm"
+        category_manager: "Quản lý danh mục"
+        list_category: "Danh mục danh sách"
+        add_category: "Thêm danh mục"
+        list_contributes: "Danh sách đóng góp"
       header:
         profile: "Hồ sơ"
         logout: "Đăng xuất"
-      footer: 
+      footer:
         content: "Quản trị & copy; Thương mại điện tử 2021"
     products:
       new:
@@ -135,3 +131,9 @@ vi:
         title: "Chỉnh sửa sản phẩm"
       form:
         submit: "Luu"
+      index:
+        id: "ID"
+        name: "Ten"
+        price: "Giá"
+        image: "Hình ảnh"
+        quantity: "Số lượng"

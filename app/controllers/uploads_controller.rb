@@ -4,11 +4,10 @@ class UploadsController < ApplicationController
   def update
     if @user.image.attach(upload_params[:image])
       flash[:success] = t("success.img")
-      redirect_to @user
     else
       flash[:danger] = t("errors.img")
-      redirect_to @user
     end
+    redirect_to @user
   end
 
   private
@@ -20,5 +19,4 @@ class UploadsController < ApplicationController
   def check_user
     @user = current_user
   end
-
 end

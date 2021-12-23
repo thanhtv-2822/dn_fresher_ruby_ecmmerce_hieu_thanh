@@ -8,7 +8,11 @@ module CartsHelper
     current_cart.each do |item|
       product = Product.find_by(id: item["product_id"])
       if product
-        cart_items << {product: product, quantity: item["quantity"], rating: item["rating"]}
+        cart_items << {
+          product: product,
+          quantity: item["quantity"],
+          rating: item["rating"]
+        }
       else
         current_cart.delete(item)
       end

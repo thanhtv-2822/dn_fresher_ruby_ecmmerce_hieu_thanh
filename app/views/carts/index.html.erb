@@ -8,7 +8,6 @@
       <%= render :partial => "product", :collection => @carts, :as => :item %>
     </ul>
   </div>
-
   <div class="subtotal cf">
     <ul>
       <li class="totalRow final"><span class="label"><%= t ".total" %></span>
@@ -22,3 +21,4 @@
     </ul>
   </div>
 </div>
+<%= javascript_include_tag "cart" %>

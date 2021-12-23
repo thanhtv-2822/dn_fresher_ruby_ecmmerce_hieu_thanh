@@ -10,7 +10,7 @@ class CartsController < ApplicationController
   end
 
   def create
-    item = find_product_in_cart @product    
+    item = find_product_in_cart @product
     if item
       item["quantity"] += params[:quantity].to_i
       flash[:success] = t "errors.carts.update"
@@ -79,7 +79,8 @@ class CartsController < ApplicationController
   end
 
   def quantity_valid quantity
-    flash[:danger] = if quantity.to_i.negative?
+    flash[:danger] = if quantity.to_i.negative? ||
+                        quantity.to_i == 0
                        t "carts.quantity.not_valid"
                      else
                        t "errors.carts.enough"

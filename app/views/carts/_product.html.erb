@@ -6,7 +6,7 @@
         <%= image_tag item[:product].display_image_admin if item[:product].image.attached? %>
       </div>
       <h3><%=item[:product].name %></h3>
-      <input type="number" class="qty" value="<%= item[:quantity] %>", min="1", max="<%= item[:product].quantity %>">
+      <input type="number" class="qty" value="<%= item[:quantity] %>"  min="1" max="<%= item[:product].quantity %>">
       x <%= item[:product].price %>
     </div>
     <div class="cartReview">
@@ -22,4 +22,3 @@
     </div>
   </div>
 </li>
-<%= javascript_include_tag "cart" %>

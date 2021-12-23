@@ -1,14 +1,10 @@
 class Contribute < ApplicationRecord
   belongs_to :user
   validates :content, length: {maximum: Settings.length.len_200}
-  has_one_attached :image
-  before_save :current_status
   enum status: {pending: 0, accept: 1}
 
-  CONT_ATT = %w(content image).freeze
+  scope :filter_accept, ->{where(status: 1)}
+  scope :filter_pending, ->{where(status: 0)}
 
-  private
-  def current_status
-    self.status = 0
-  end
+  CONT_ATT = %w(content image).freeze
 end

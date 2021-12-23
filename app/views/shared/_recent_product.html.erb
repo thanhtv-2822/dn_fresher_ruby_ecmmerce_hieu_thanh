@@ -1,0 +1,35 @@
+<% if recent_product.present? %>
+<div class="col-md-3 mt-3">
+<div class="product-grid8">
+  <div class="product-image8">
+      <a href="#">
+        <%= image_tag(recent_product.image) if recent_product.image.attached? %>
+      </a>
+      <ul class="social">
+          <li><a href="" class="fa fa-shopping-cart"></a></li>
+      </ul>
+      <span class="product-discount-label">-20%</span>
+  </div>
+  <div class="product-content">
+      <div class="price"><%= recent_product.price %> VND
+      </div>
+      <ul class="rating">
+        <% 5.times do |n| %>
+          <% if n < cal_star(recent_product.rating) %>
+            <li class="fa fa-star"></li>
+          <% else %>
+            <li class="fa fa-star disable"></li>
+          <% end %>
+        <% end %>
+    </ul>
+      <span class="product-shipping">Free Shipping</span>
+      <h3 class="title"><a href="#"><%= recent_product.name %></a></h3>
+      <%= link_to product_path(recent_product), class: "all-deals" do %>
+      <span>
+        View<i class="fa fa-angle-right icon"></i>
+      </span>
+      <% end %>
+  </div>
+</div>
+</div>
+<% end %>

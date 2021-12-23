@@ -1,5 +1,5 @@
 module OrdersHelper
   def cal_star star
-    star.floor()
+    star.floor
   end
 end

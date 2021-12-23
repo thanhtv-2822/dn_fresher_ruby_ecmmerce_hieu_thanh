@@ -6,7 +6,7 @@ class Admin::ProductsController < Admin::BaseController
       @pagy, @products = pagy(option_filter(params[:option]), items: 5)
     elsif params[:search]
       @pagy, @products = pagy(
-        Product.all.filter_by_name(params[:search]),
+        Product.all.sort_by_name(params[:search]),
         items: 5
       )
     else

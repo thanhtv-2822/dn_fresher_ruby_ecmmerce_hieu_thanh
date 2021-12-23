@@ -1,0 +1,21 @@
+<%= form_tag admin_contributes_path, method: :get do %>
+<div class="form-option">
+  <%= select_tag :option, options_for_select(Settings.admin.contribute_filter), class: "form-control mr-sm-2 option-filter" %>
+   <%= submit_tag "Sort", class: "btn btn-info"%>
+</div>
+<% end %>
+<table class="table table-bordered table-hover table-inverse">
+  <thead class="thead-inverse|thead-default">
+    <tr>
+      <th>Contributer</th>
+      <th>Content</th>
+      <th class="col-sm-2">Image</th>
+      <th>Status</th>
+      <th><%= t ".action" %></th>
+    </tr>
+  </thead>
+  <tbody>
+      <%= render "contribute" %>
+  </tbody>
+</table>
+<%== pagy_bootstrap_nav(@pagy) %>

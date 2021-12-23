@@ -43,6 +43,18 @@
     </div>
   </li>
   <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategory" aria-expanded="true" aria-controls="collapseCategory">
+      <i class="fas fa-fw fa-wrench"></i>
+      <span><%= t ".category_manager" %></span>
+    </a>
+    <div id="collapseCategory" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <%= link_to  t(".list_category"), admin_categories_path, class: "collapse-item" %>
+        <%= link_to  t(".add_category"), new_admin_category_path, class: "collapse-item" %>
+      </div>
+    </div>
+  </li>
+  <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrder" aria-expanded="true" aria-controls="collapseOrder">
       <i class="fas fa-fw fa-wrench"></i>
       <span><%= t ".order_manager" %></span>
@@ -59,6 +71,7 @@
     </a>
     <div id="collapseContribute" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
+        <%= link_to  t(".list_contributes"), admin_contributes_path, class: "collapse-item" %>
       </div>
     </div>
   </li>

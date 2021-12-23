@@ -2,3 +2,6 @@ DB_USERNAME: root
 DB_HOST: 127.0.0.1
 DB_PORT: 3300
 DB_NAME: "test"
+USER_EMAIL: "vfrshjklg@gmail.com"
+USER_PASSWORD: "chicanem"
+USER_HOST: "localhost:3000"
