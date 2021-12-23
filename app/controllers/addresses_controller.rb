@@ -41,5 +41,4 @@ class AddressesController < ApplicationController
   def current_address
     @address = Address.find(params[:id])
   end
-
 end

@@ -2,6 +2,27 @@ class OrdersController < ApplicationController
   before_action :check_user, :check_address, only: [:index, :show, :update, :create]
   before_action :check_order, only: [:index, :update]
 
+  def index
+    store_location
+  end
+
+  def show
+    @orders = @user.orders
+  end
+
+  def update
+    begin
+      @order.update order_params
+      flash[:success] = t("success.order")
+      UserMailer.checkout(@user, @order).deliver_now
+      redirect_to user_order_path(@user)
+    rescue => ex
+      puts ex
+      flash[:danger] = ex.message
+      redirect_to orders_path
+    end
+  end
+
   def create
     ActiveRecord::Base.transaction do
       create_order
@@ -12,25 +33,8 @@ class OrdersController < ApplicationController
     redirect_to carts_path
   end
 
-  def index
-    store_location
-  end
-
-  def show
-    @orders = @user.orders
-  end
-
-  def update
-    if @order.update order_params
-      flash[:success] = t("success.order")
-      redirect_to user_order_path(@user)
-    else
-      flash[:danger] = t("error.order")
-      render :show
-    end
-  end
-
   private
+
   def create_order_detail
     @carts = get_all_item_in_cart
     @carts.each do |item|
@@ -67,7 +71,7 @@ class OrdersController < ApplicationController
   def check_order
     @order = @user.orders.find_by(status: 0)
     if @order.nil?
-      flash[:danger] = t "errors.warning.order"
+      flash[:danger] = t("warning.order")
       redirect_to home_path
     else
       @products = @order.order_details
@@ -78,6 +82,7 @@ class OrdersController < ApplicationController
     @address = @user.addresses
     if @address.nil?
       @address = Address.new
+    end
   end
 
   def order_params
@@ -86,6 +91,5 @@ class OrdersController < ApplicationController
       :address_id,
       :status
     )
-    end
   end
 end

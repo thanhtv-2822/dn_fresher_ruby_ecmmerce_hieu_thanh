@@ -1,0 +1,13 @@
+<table class="table table-bordered table-hover table-inverse">
+  <thead class="thead-inverse|thead-default">
+    <tr>
+      <th><%= t ".id" %></th>
+      <th><%= t ".name" %></th>
+      <th class="col-md-2"><%= t ".action" %></th>
+    </tr>
+  </thead>
+  <tbody>
+      <%= render "category" %>
+  </tbody>
+</table>
+<%== pagy_bootstrap_nav(@pagy) %>

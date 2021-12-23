@@ -2,6 +2,16 @@ en:
   hello: "Hello world"
   application:
     title: "Ecomerce"
+  Home: "Home"
+  Products: "Products"
+  Clothes: "Clothes"
+  Electronics: "Electronics"
+  Hot trends: "Hot trends"
+  Best seller: "Best seller"
+  Best rating: "Best rating"
+  Contribute: "Contribute"
+  About Us: "About Us"
+  Popular products: "Popular products"
   Welcome: "Welcome!"
   sign_in: "Sign In"
   sign_up: "Sign Up"
@@ -22,6 +32,7 @@ en:
   order_num: "Order Num"
   back: "Back"
   track_order : "Track Order"
+  select_payment: "Please select payment and address"
   errors:
     user: "invalid users"
     default: "you have already set the default address"
@@ -89,6 +100,21 @@ en:
     cod: "You have to pay when you received the goods"
     internet_banking: "Internet banking"
   child: "child"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "is not blank"
+              email:
+              invalid: "Invalid"
+              taken: "has already been taken"
+            password:
+              too_short: "at least 6 characters"
+              blank: "invalid"
+            password_confirmation:
+              confirmation: "not match"
   errors:
     index: "invalid"
     login:
@@ -135,6 +161,7 @@ en:
     quantity:
       not_valid: "Quantity must be greater than 0"
   admin:
+    search: "Search" 
     permission: "You dont permission"
     static_pages:
       home:
@@ -149,10 +176,13 @@ en:
         contribute_manager: "Contribute manager"
         list_product: "List Product"
         add_product: "Add Product"
+        category_manager: "Category manager"
+        list_category: "List Category"
+        add_category: "Add Category"
       header:
         profile: "Profile"
         logout: "Logout"
-      footer: 
+      footer:
         content: "Admin &copy; Ecommerce 2021"
     products:
       new:
@@ -163,18 +193,3 @@ en:
         title: "Edit Product"
       form:
         submit: "Save"
-  activerecord:
-    errors:
-      models:
-        user:
-          attributes:
-            name:
-              blank: "is not blank"
-              email:
-              invalid: "Invalid"
-              taken: "has already been taken"
-            password:
-              too_short: "at least 6 characters"
-              blank: "invalid"
-            password_confirmation:
-              confirmation: "not match"

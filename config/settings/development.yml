@@ -6,12 +6,12 @@ length:
   len_200: 200
 regex:
   email: !ruby/regexp /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-min:
-  quantity: 0
-admin:
-  product_sorts: [["All", 1], ["Oldest", 2], ["Newest", 3], ["Price ASC", 4], ["Price DESC", 5]]
 payment:
   momo: "https://hstatic.net/0/0/global/design/seller/image/payment/momo.svg?v=1"
   internet_banking: "https://hstatic.net/0/0/global/design/seller/image/payment/other.svg?v=1"
   cod: "https://hstatic.net/0/0/global/design/seller/image/payment/cod.svg?v=1"
 default_url: "https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png"
+min:
+  quantity: 0
+admin:
+  product_sorts: [["All", 1], ["Oldest", 2], ["Newest", 3], ["Price ASC", 4], ["Price DESC", 5]]

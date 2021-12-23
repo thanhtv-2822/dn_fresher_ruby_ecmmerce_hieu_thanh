@@ -3,11 +3,14 @@
     <div class="container">
       <div>
         <%= link_to image_tag("vietnam.png"), locale: :vi %>
-          <%= link_to image_tag("england.png"), locale: :en %>
+        <%= link_to image_tag("england.png"), locale: :en %>
       </div>
       <div class="row align-items-center">
-        <div class="col-lg-2 col-4">
-          <%= t("application.title") %>
+        <div class="col-lg-2 col-4 logoE">
+          <%= link_to home_path do%>
+            <img src="/assets/logoE.png">
+          <% end %>
+          <p><%= t("application.title") %></p>
         </div>
         <div class="col-lg-6 col-sm-12">
           <form action="#" class="search">

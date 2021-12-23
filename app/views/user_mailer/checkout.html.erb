@@ -1,0 +1,7 @@
+<h1>Order Successfully</h1>
+
+<span>
+  Hello <%= @user.name %>
+</span>
+<span> We'd like to thanks for support, your order has been successful, our staff will contact with you sooon</span>
+<%= render partial: "shared/order_detail" , locals: {zone: @order} %>

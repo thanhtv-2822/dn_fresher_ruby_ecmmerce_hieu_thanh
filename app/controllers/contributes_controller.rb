@@ -1,5 +1,4 @@
 class ContributesController < ApplicationController
-
   def new
     @contribute = Contribute.new
   end

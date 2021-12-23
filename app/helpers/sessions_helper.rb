@@ -1,5 +1,5 @@
 module SessionsHelper
-   def log_in user
+  def log_in user
     if user.is_admin?
       session[:admin_id] = user.id
     else
@@ -26,6 +26,7 @@ module SessionsHelper
   def log_out
     session.delete :user_id
     session.delete :cart
+    session.delete :recent
     @current_user = nil
   end
 
