@@ -6,5 +6,13 @@ length:
   len_200: 200
 regex:
   email: !ruby/regexp /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+payment:
+  momo: "https://hstatic.net/0/0/global/design/seller/image/payment/momo.svg?v=1"
+  internet_banking: "https://hstatic.net/0/0/global/design/seller/image/payment/other.svg?v=1"
+  cod: "https://hstatic.net/0/0/global/design/seller/image/payment/cod.svg?v=1"
 min:
   quantity: 0
+product_per_page: 5
+order:
+  ASC: "ASC"
+  DESC: "DESC"

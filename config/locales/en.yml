@@ -2,9 +2,10 @@ en:
   application:
     title: "Ecomerce"
   Welcome: "Welcome!"
-  sign_in: "Sign In"
   sign_up: "Sign Up"
-  log_out: "Log out"
+  sign_in: "Sign In"
+  description: "Do you have anything to tell us?"
+  filter: "Filter by"
   header:
     Home: "Home"
     Products: "Products"
@@ -48,6 +49,27 @@ en:
     email: "info@com"
     phone: "+000-000-0000"
     Street: "Street name 123, ABC"
+  payment:
+    momo: "MoMo payment"
+    cod: "You have to pay when you received the goods"
+    internet_banking: "Internet banking"
+  child: "child"
+  errors:
+    index: "invalid"
+    login:
+      danger: "Email or password incorrect"
+      success: "Login successfully"
+    register:
+      success: "Register successfully"
+  form:
+    register_here: "Register here"
+    login_here: "Login here"
+    name: "Name"
+    email: "Email"
+    password: "Password"
+    password_confirm: "Password Confirmation"
+    error_msg: "The Form Contains %{errors} errors"
+  title: "Ecomerce"
   errors:
     index: "invalid"
     login:
@@ -109,5 +131,16 @@ en:
       header:
         profile: "Profile"
         logout: "Logout"
-      footer: 
+      footer:
         content: "Admin &copy; Ecommerce 2021"
+  sort:
+    index: "Sort"
+    price:
+      low: "Price: Low-High"
+      high: "Price: High-Low"
+    rate:
+      low: "Rate: Low-High"
+      high: "Rate: High-Low"
+    name:
+      low: "Name: A-Z"
+      high: "Name: Z-A"
