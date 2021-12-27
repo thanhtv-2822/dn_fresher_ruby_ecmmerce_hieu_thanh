@@ -41,6 +41,9 @@ en:
     index: "invalid"
     one: "Form contain 1 error"
     other: "Form contain %{count} errors"
+  diff_info: "Diffrent info"
+  payment: "Payment"
+  list_orders: "List orders"
   warning:
     delete: "Are you sure you want to delete ?"
     order: "You don't have any order"
@@ -52,6 +55,10 @@ en:
   success:
     img: "Image uploaded successfully"
     order: "Order Successfully"
+    address: "Address was created successfully"
+    add_destroy: "Address was successfully destroyed"
+    user: "update user information succesfully"
+    user_delete: "User delete successfully"
   header:
     Home: "Home"
     Products: "Products"
@@ -117,6 +124,7 @@ en:
               confirmation: "not match"
   errors:
     index: "invalid"
+    delete: "Can not delete a record"
     login:
       danger: "Email or password incorrect"
       success: "Login successfully"
@@ -124,6 +132,13 @@ en:
       success: "Register successfully"
     order_create: "Create order successfuly"
     record_invalid: "Record Invalid"
+    user: "invalid users"
+    img:  "Image upload failed"
+    order: "Order Failed"
+    index: "invalid"
+    one: "Form contain 1 error"
+    default: "you have already set the default address"
+    other: "Form contain %{count} errors"
     carts:
       update: "Update product to cart success"
       add: "Add product to cart success"
@@ -163,6 +178,7 @@ en:
   admin:
     search: "Search" 
     permission: "You dont permission"
+    search: "Search"
     static_pages:
       home:
         content: "Welcome to admin page"
@@ -180,6 +196,8 @@ en:
         list_category: "List Category"
         add_category: "Add Category"
         list_contributes: "List Contribute"
+        list_user: "List Users"
+        add_user: "Add User"
       header:
         profile: "Profile"
         logout: "Logout"
@@ -200,3 +218,9 @@ en:
         price: "Price"
         image: "Image"
         quantity: "Quantity"
+  user:
+    id: "ID"
+    name: "Name"
+    email: "Email"
+    img : "Image"
+    create: "Create"

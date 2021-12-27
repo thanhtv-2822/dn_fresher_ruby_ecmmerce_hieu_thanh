@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-md-2">
+    <label>
+      <%= t("name")%>
+    </label>
+  </div>
+  <div class="col-md-6">
+    <p>
+      <%= f.text_field :name, class: "form-control" %>
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <label>
+      <%= t("email") %>
+    </label>
+  </div>
+  <div class="col-md-6">
+    <p>
+      <%= f.text_field :email, class: "form-control" %>
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <label>
+      <%= t("password")%>
+    </label>
+  </div>
+  <div class="col-md-6">
+    <p>
+      <%= f.password_field :password, class: "form-control" %>
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <label>
+      <%= t("pass_confirm")%>
+    </label>
+  </div>
+  <div class="col-md-6">
+    <p>
+      <%= f.password_field :password_confirmation, class: "form-control" %>
+    </p>
+  </div>
+</div>
+<div class="row">
+
+  <div class="col-md-4">
+    <%= link_to yield(:button_text), home_path, class: "btn btn-sm btn-primary config-buton config-bnt-link" %>
+  </div>
+  <div class="col-md-4">
+    <%= f.submit "Save" , class: "btn btn-sm btn-primary" , style: "font-size: 18px; font-weight: bold" %>
+  </div>
+</div>

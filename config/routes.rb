@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :users do
       resource :upload, only: [:update]
       resource :order, only: [:show], to: "orders#show"
-      resources :contributes, only: [:show]
+      resources :contributes, only: [:index]
     end
     resources :products, only: :show
     resources :carts, only: %i(index destroy) do
@@ -30,6 +30,10 @@ Rails.application.routes.draw do
       resources :products
       resources :categories
       resources :contributes, only: %i(show index update)
+      resources :users
+      resources :orders do
+        resources :order_details, only: [:index]
+      end
     end
   end
 end

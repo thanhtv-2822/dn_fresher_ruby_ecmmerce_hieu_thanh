@@ -2,7 +2,7 @@
   <tr>
     <td><%= contribute.user.name %></td>
     <td><%= contribute.content %></td>
-    <td><%= image_tag contribute.image %></td>
+    <td><%= image_tag contribute.image if contribute.image.attached? %></td>
     <td>
     <% if contribute.status == 'accept' %>
      <%= button_tag contribute.status, type: "button", class: "btn btn-info status-contribute"%>

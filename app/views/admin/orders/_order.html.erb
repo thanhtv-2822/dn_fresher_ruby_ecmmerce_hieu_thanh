@@ -1,0 +1,27 @@
+<% @orders.each do |order| %>
+  <tr>
+    <td>
+      <%= link_to order.id, admin_order_order_details_path(order)%>
+    </td>
+    <td><%= order.user.name %></td>
+    <td><%= order.user.email %></td>
+    <td>
+      <ul style="list-style-type:none;">
+        <li><%= order.address.address_initial %></li>
+        <li><%= order.payment.name %></li>
+      </ul>
+    </td>
+    <td><%= order.get_total %></td>
+     <td>
+      <%= form_tag admin_order_path(order), method: :patch do %>
+        <%= select_tag :status, options_for_select(Settings.order.status, selected: Settings.status[order.status]), class: "form-control" %>
+        <%= submit_tag t("save"), class: "btn btn-info mt-2"%>
+      <% end %>
+    </td>
+    <td class="text-center">
+      <%= link_to admin_order_order_details_path(order) do %>
+        <i class="fas fa-eye"></i>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include CartsHelper
   include ProductHelper
+  include AddressesHelper
+  include CategoriesHelper
   before_action :set_locale
   private
   def set_locale

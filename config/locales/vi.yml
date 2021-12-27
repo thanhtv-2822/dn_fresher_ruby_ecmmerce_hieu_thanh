@@ -9,6 +9,11 @@ vi:
   upload_avt: "Upload avatar"
   save: "Save"
   select_payment: vui lòng chọn địa chỉ và phương thức thanh toán
+  select_payment: vui lòng chọn địa chỉ và phương thức thanh toán
+  payment: "Phương thức thanh toán"
+  diff_info: "Những thông tin khác"
+  save: "Luu"
+  list_orders: "Danh sách order"
   header:
     Home: "Trang chủ"
     Contact us: "Về chúng tôi"
@@ -137,3 +142,8 @@ vi:
         price: "Giá"
         image: "Hình ảnh"
         quantity: "Số lượng"
+  user:
+    id: "ID"
+    name: "Tên"
+    email: "Email"
+    img : "Hình ảnh"

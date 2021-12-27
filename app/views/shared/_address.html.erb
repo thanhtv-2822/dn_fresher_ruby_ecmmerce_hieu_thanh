@@ -37,11 +37,11 @@
 		</div>
 	</div>
 	<div class= "row mt-4">
-    <div class="col-md-2">
+		<div class="col-md-3">
+		  <%= link_to t("Home"), home_path, class: "btn btn-sm btn-primary config-buton config-bnt-link" %>
+		</div>
+		 <div class="col-md-2">
       <%= f.submit t("save"), class: "btn btn-primary" %>
     </div>
-		<div class="col-md-5">
-			<%= link_to t("Home"), home_path, class: "btn btn-sm btn-secondary config-buton" %>
-		</div>
   </div>
 <% end %>

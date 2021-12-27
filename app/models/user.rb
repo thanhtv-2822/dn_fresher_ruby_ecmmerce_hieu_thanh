@@ -3,7 +3,8 @@ class User < ApplicationRecord
   has_many :contributes, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_one_attached :image
-
+  scope :order_by_updated_at, ->{order(created_at: "DESC")}
+  scope :filter_by_name, ->(q){where "name LIKE ?", "%#{q}%"}
   before_save{self.email = email.downcase}
 
   validates :email, uniqueness: true,

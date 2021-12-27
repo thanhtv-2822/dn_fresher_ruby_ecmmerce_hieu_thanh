@@ -1,10 +1,11 @@
 class ContributesController < ApplicationController
+  before_action :check_logged_in?, only: %i(index new create )
   def new
     @contribute = Contribute.new
   end
 
-  def show
-    @contributes = current_user.contributes
+  def index
+    @contributes = current_user.contributes.order(created_at: "DESC")
   end
 
   def create
@@ -12,9 +13,9 @@ class ContributesController < ApplicationController
     @contribute.image.attach(contribute_params[:image])
     if @contribute.save
       flash[:success] = "Thanks your contribute"
-      redirect_to user_path(current_user)
+      redirect_to user_contributes_path(current_user)
     else
-      render :show
+      render :new
     end
   end
 
@@ -22,5 +23,11 @@ class ContributesController < ApplicationController
 
   def contribute_params
     params.require(:contribute).permit(Contribute::CONT_ATT)
+  end
+
+  def check_logged_in?
+    return if logged_in?
+
+    redirect_back_or login_path
   end
 end

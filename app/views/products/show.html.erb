@@ -1,6 +1,11 @@
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=1072830636899048&autoLogAppEvents=1"
+nonce="wIavc3pl">
+</script>
 <main class="container">
   <div class="left-column">
-    <%= image_tag @product.image if @product.image.attached? %>
+    <%= image_tag @product.display_img_detail if @product.image.attached? %>
   </div>
 
   <div class="right-column">
@@ -15,11 +20,14 @@
         <span class="fa fa-star <%= @product.rating >= n + 1 ? 'checked' : ''%>"></span>
       <% end %>
       <span><%= @product.rating %></span>
+      <%= link_to "https://www.facebook.com/share.php?href=http://localhost:3000/product/#{@product.id}" do %>
+        <i class="fab fa-facebook-square fa-4x facebook"></i>
+      <% end %>
     </div>
     <hr>
     <!-- Product Pricing -->
     <div class="product-price">
-      <span><%= @product.price %></span>
+      <span><%= @product.price %> VND</span>
     </div>
     <div class="btn-add-cart">
         <%= link_to t("product.add_to_cart"), add_item_to_carts_path(@product, quantity: 1), class: "cart-btn", method: :post %>
@@ -31,3 +39,8 @@
     </div>
   </div>
 </main>
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="fb-comments" data-href="http://localhost:3000/en/products" data-width="" data-numposts="5"></div>
+  </div>
+</div>

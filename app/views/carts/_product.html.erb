@@ -7,7 +7,7 @@
       </div>
       <h3><%=item[:product].name %></h3>
       <input type="number" class="qty" value="<%= item[:quantity] %>"  min="1" max="<%= item[:product].quantity %>">
-      x <%= item[:product].price %>
+      x <%= item[:product].price %> VND
     </div>
     <div class="cartReview">
       <% 5.times do |n| %>
@@ -15,7 +15,7 @@
       <% end %>
     </div>
     <div class="prodTotal cartSection">
-      <p><%= total_price(item) %></p>
+      <p><%= total_price(item) %> VND</p>
     </div>
     <div class="cartSection removeWrap">
       <%= link_to  "x", cart_path(id: item[:product].id), class: "remove", method: :delete, data: {confirm: t(".confirm")}%>

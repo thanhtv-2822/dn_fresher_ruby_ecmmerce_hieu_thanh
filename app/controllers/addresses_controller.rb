@@ -3,16 +3,17 @@ class AddressesController < ApplicationController
 
   def destroy
     @address = @address.destroy
-    flash[:success] = "Address was successfully destroyed"
+    flash[:success] = t "success.add_destroy"
     redirect_to user_path(current_user)
   end
 
   def create
     @address = current_user.addresses.build(add_params)
-    if @address.save
-      flash[:success] = "Address was created successfully"
+    if check_default(current_user, add_params["default"], @address) && @address.save
+      flash[:success] = t "success.address"
       redirect_back_or @user
     else
+      flash[:danger] = t "errors.default"
       render :new
     end
   end
@@ -24,16 +25,16 @@ class AddressesController < ApplicationController
   def edit; end
 
   def update
-    if @address.update(add_params)
-      flash[:success] = "Address updated successfully"
+    if check_default(current_user, add_params["default"], @address) && @address.update(add_params)
+      flash[:success] = t "success.address"
       redirect_to user_path(current_user)
     else
+      flash[:danger] = t "errors.default"
       render :edit
     end
   end
 
   private
-
   def add_params
     params.require(:address).permit(Address::ADD_ATTRS)
   end

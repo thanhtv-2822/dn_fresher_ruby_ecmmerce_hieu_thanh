@@ -369,7 +369,8 @@ body {
 
 .left-column {
   width: 65%;
-  position: relative;
+  display: block;
+  text-align: center;
 }
 
 .right-column {
@@ -690,7 +691,7 @@ a.remove:hover {
   font-weight: bold;
   border-radius: 50px;
   float: right;
-  text-align: right;
+  text-align: center;
   -webkit-transition: all 0.25s linear;
   -moz-transition: all 0.25s linear;
   -ms-transition: all 0.25s linear;
@@ -722,7 +723,7 @@ a.remove:hover {
 }
 
 .config-buton{
-  height: 40px;
+  height: 37px;
   padding: 6.2px !important;
   width: 122px
 }
@@ -829,11 +830,6 @@ html, body {
   margin: 0 auto;
   padding: 15px;
 }
-/* Columns */
-.left-column {
-  width: 65%;
-  position: relative;
-}
 
 .right-column {
   width: 35%;
@@ -841,9 +837,6 @@ html, body {
 }
 /* Left Column */
 
-.left-column img.active {
-  opacity: 1;
-}
 /* Product Description */
 .product-description {
   border-bottom: 1px solid $product_des_border;
@@ -992,4 +985,18 @@ form.d-none.d-sm-inline-block.form-inline.mr-auto.ml-md-3.my-2.my-md-0.mw-100.na
   float: left;
   width: 30%;
   margin-left: 0rem !important;
+}
+
+.contribute{
+  height: 200px !important;
+}
+.config-bnt-link {
+  border-radius: 0px !important;
+}
+.img-home{
+  height: 268px !important;
+}
+
+.config-showall {
+  width: 86px
 }

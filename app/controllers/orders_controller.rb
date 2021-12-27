@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @orders = @user.orders
+    @orders = @user.orders.order_by_updated_at
   end
 
   def update
@@ -17,7 +17,6 @@ class OrdersController < ApplicationController
       UserMailer.checkout(@user, @order).deliver_now
       redirect_to user_order_path(@user)
     rescue => ex
-      puts ex
       flash[:danger] = ex.message
       redirect_to orders_path
     end
@@ -34,6 +33,14 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def order_params
+    params.require(:order).permit(
+      :payment_id,
+      :address_id,
+      :status
+    )
+  end
 
   def create_order_detail
     @carts = get_all_item_in_cart
@@ -83,13 +90,5 @@ class OrdersController < ApplicationController
     if @address.nil?
       @address = Address.new
     end
-  end
-
-  def order_params
-    params.require(:order).permit(
-      :payment_id,
-      :address_id,
-      :status
-    )
   end
 end

@@ -7,7 +7,7 @@
             <li><a href="#">Home</a></li>
             <li class="has-submenu"><a href="#">Products</a>
               <ul class="submenu">
-                <%= render partial: "shared/category", collection: @categories %>
+                <%= render partial: "shared/category", locals: {zone: @categories} %>
               </ul>
             </li>
             <li>
@@ -16,7 +16,6 @@
             <li>
               <%= link_to "Contributes", new_contribute_path %>
             </li>
-            <li><a href="#">About Us</a></li>
             <li class="has-submenu"><a href="#">Sort by</a>
               <ul class="submenu">
                 <li>
@@ -52,7 +51,13 @@
 <section class="section-name padding-y-sm mt-5">
   <div class="container">
     <header class="section-heading">
-      <h3 class="section-title">Popular products</h3>
+      <div class="row">
+        <div class="col-md-10">
+          <h3 class="section-title">Popular products</h3>
+        </div>
+        <div class="col-md-2">
+          <%= button_to  "Show all", home_path, method: "get", class: "btn btn-outline-primary config-showall" %>
+        </div>
     </header>
     <div class="row">
       <%= render partial: "shared/product", collection: @products %>
@@ -71,7 +76,4 @@
     </div>
   </div>
 </section>
-<script>
-
-
-</script>
+<script lang="javascript">var __vnp = {code : 10345,key:'', secret : '17cdd017a1dedb8b8639b9966c73930c'};(function() {var ga = document.createElement('script');ga.type = 'text/javascript';ga.async=true; ga.defer=true;ga.src = '//core.vchat.vn/code/tracking.js';var s = document.getElementsByTagName('script');s[0].parentNode.insertBefore(ga, s[0]);})();</script>

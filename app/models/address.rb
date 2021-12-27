@@ -6,7 +6,6 @@ class Address < ApplicationRecord
             numericality: {only_integer: true}
   validates :street, :commune, :district, :city,
             length: {maximum: Settings.length.len_20}
-  validate :check_default, if: ->{:default.present?}
   ADD_ATTRS = %w(phone street commune district city default).freeze
   def address_initial
     "#{phone}, #{commune}, #{street}, #{district}, #{city}"
