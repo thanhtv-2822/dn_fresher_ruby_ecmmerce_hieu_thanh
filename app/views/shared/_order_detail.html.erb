@@ -1,0 +1,25 @@
+<% zone.order_details.each do |details| %>
+  <div class="card shadow-0 border mb-4 mt-4">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-2">
+          <% if details.product.image.attached? %>
+            <%= image_tag(details.product.image, class:"img-wrap") %>
+          <% end %>
+        </div>
+        <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+          <p class="text-muted mb-0"> <%= details.product[:name] %></p>
+        </div>
+        <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+          <p class="text-muted mb-0 small">Quantity: <%= details.product[:quantity] %></p>
+        </div>
+        <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+          <p class="text-muted mb-0 small"><%= details.product[:price] %>VND</p>
+        </div>
+        </div>
+          <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

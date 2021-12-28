@@ -1,0 +1,21 @@
+<% @products.each_with_index do |product, index| %>
+  <tr>
+    <td><%= new_index_page(params[:page]) + index %></td>
+    <td><%= product.name %></td>
+    <td><%= product.price %> VND</td>
+    <td><%= product.quantity %></td>
+    <td><%= product.description %></td>
+    <td><%= image_tag product.display_image_admin if product.image.attached? %></td>
+    <td>
+      <%= link_to admin_product_path(product) do %>
+        <i class="fas fa-eye"></i>
+      <% end %>
+      <%= link_to edit_admin_product_path(product) do %>
+        <i class="fas fa-edit"></i>
+      <% end %>
+      <%= link_to admin_product_path(product), method: :delete, data: {confirm: t(".delete")} do %>
+       <i class="far fa-trash-alt"></i>
+        <% end %>
+    </td>
+  </tr>
+<% end %>

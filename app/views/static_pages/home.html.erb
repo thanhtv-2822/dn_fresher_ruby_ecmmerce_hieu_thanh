@@ -4,48 +4,19 @@
       <aside class="col-md-3">
         <nav class="card">
           <ul class="menu-category">
-            <li>
-              <a href="#">
-                <%= t("header.Home") %>
-              </a>
-            </li>
-            <li class="has-submenu">
-              <a href="#">
-                <%= t("header.Products") %>
-              </a>
+            <li><a href="#">Home</a></li>
+            <li class="has-submenu"><a href="#">Products</a>
               <ul class="submenu">
-                <%= render partial: "shared/category", collection: @categories %>
+                <%= render partial: "shared/category", locals: {zone: @categories} %>
               </ul>
             </li>
             <li>
-              <a href="#">
-                <%= t("header.Hot trends") %>
-              </a>
+              <%= link_to "Hot Trends", home_path(rate: "DESC") %>
             </li>
             <li>
-              <a href="#">
-                <%= t("header.Best seller") %>
-              </a>
+              <%= link_to "Contributes", new_contribute_path %>
             </li>
-            <li>
-              <a href="#">
-                <%= t("header.Best rating") %>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <%= t("header.Contribute") %>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <%= t("header.Contact us") %>
-              </a>
-            </li>
-            <li class="has-submenu">
-              <a href="#">
-                <%= t("filter") %>
-              </a>
+            <li class="has-submenu"><a href="#">Sort by</a>
               <ul class="submenu">
                 <li>
                   <%= link_to t("sort.price.low"), home_path(price: Settings.order.ASC ) %>
@@ -71,7 +42,7 @@
       </aside>
       <div class="col-md-9">
         <article class="banner-wrap">
-          <%= image_tag("2.jpg") %>
+          <%= image_tag("2.jpg", class: "banner-config") %>
         </article>
       </div>
     </div>
@@ -80,17 +51,29 @@
 <section class="section-name padding-y-sm mt-5">
   <div class="container">
     <header class="section-heading">
-      <h3 class="section-title">
-        <%= t("header.Popular products") %>
-      </h3>
+      <div class="row">
+        <div class="col-md-10">
+          <h3 class="section-title">Popular products</h3>
+        </div>
+        <div class="col-md-2">
+          <%= button_to  "Show all", home_path, method: "get", class: "btn btn-outline-primary config-showall" %>
+        </div>
     </header>
     <div class="row">
-      <%= render partial: "shared/product" , collection: @products %>
+      <%= render partial: "shared/product", collection: @products %>
     </div>
-    <div class="row mt-2 justify-content-center">
+    <div class="row mt-5 justify-content-center">
       <div class="col-md-3">
         <%== pagy_bootstrap_nav(@pagy) %>
       </div>
-  </div>
+    </div>
+     <hr>
+    <header class="section-heading">
+      <h3 class="section-title">Recently products</h3>
+    </header>
+    <div class="row">
+      <%= render partial: "shared/recent_product", collection: @recent_product %>
+    </div>
   </div>
 </section>
+<script lang="javascript">var __vnp = {code : 10345,key:'', secret : '17cdd017a1dedb8b8639b9966c73930c'};(function() {var ga = document.createElement('script');ga.type = 'text/javascript';ga.async=true; ga.defer=true;ga.src = '//core.vchat.vn/code/tracking.js';var s = document.getElementsByTagName('script');s[0].parentNode.insertBefore(ga, s[0]);})();</script>

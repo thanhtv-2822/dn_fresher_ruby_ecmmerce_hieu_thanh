@@ -39,9 +39,20 @@ User.create!(name: "Example User",
     name: Faker::Name.first_name,
     description: Faker::Lorem.sentence,
     price: 120000,
-    image: "https://laptops.vn/uploads/dell-xps-9570-laptop-tran-phat_1600612884.jpg",
-    category_id: 4,
+     category_id: 4,
     quantity: 10,
     rating: 5
   )
 end
+
+Payment.create(
+  name: "MoMo"
+)
+
+Payment.create(
+  name: "COD"
+)
+
+Payment.create(
+  name: "Internet Banking"
+)

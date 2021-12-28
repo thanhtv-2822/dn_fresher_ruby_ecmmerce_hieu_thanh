@@ -10,9 +10,19 @@ payment:
   momo: "https://hstatic.net/0/0/global/design/seller/image/payment/momo.svg?v=1"
   internet_banking: "https://hstatic.net/0/0/global/design/seller/image/payment/other.svg?v=1"
   cod: "https://hstatic.net/0/0/global/design/seller/image/payment/cod.svg?v=1"
+default_url: "https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png"
 min:
   quantity: 0
-product_per_page: 5
+admin:
+  product_sorts: [["All", 1], ["Oldest", 2], ["Newest", 3], ["Price ASC", 4], ["Price DESC", 5]]
+  contribute_filter: [["All", 1], ["Accept", 2], ["Pending", 3]]
+  contribute:
+    accept: 2
+    pending: 3
 order:
   ASC: "ASC"
   DESC: "DESC"
+  status: [["accept", 1],["resolved", 2], ["rejected", 3]]
+status: {pending: 0, accept: 1, resolved: 2, rejected: 3}
+page:
+  size_5: 5

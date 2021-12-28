@@ -1,0 +1,47 @@
+<%= form_for @address do |f| %>
+  <%= render partial: "shared/error" , locals: {zone: @address}%>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.label :phone %>
+      <%= f.text_field :phone, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-md-6">
+      <%= f.label :commune %>
+      <%= f.text_field :commune, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-md-6">
+      <%= f.label :street %>
+      <%= f.text_field :street, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-md-4">
+      <%= f.label :district %>
+      <%= f.text_field :district, class: "form-control" %>
+    </div>
+    <div class="col-md-4">
+      <%= f.label :city %>
+      <%= f.text_field :city, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-md-1">
+      <%= f.label :default %>
+    </div>
+    <div class="col-md-4">
+      <%= f.check_box :default %>
+    </div>
+  </div>
+  <div class= "row mt-4">
+    <div class="col-md-3">
+      <%= link_to t("Home"), home_path, class: "btn btn-sm btn-primary config-buton config-bnt-link" %>
+    </div>
+     <div class="col-md-2">
+      <%= f.submit t("save"), class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

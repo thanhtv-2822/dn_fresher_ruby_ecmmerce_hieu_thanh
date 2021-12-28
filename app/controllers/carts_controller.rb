@@ -16,7 +16,7 @@ class CartsController < ApplicationController
       flash[:success] = t "errors.carts.update"
     else
       current_cart << {
-        product: @product,
+        product_id: @product.id,
         quantity: params[:quantity].to_i,
         rating: 0
       }
@@ -63,7 +63,7 @@ class CartsController < ApplicationController
 
   def check_quantity_update
     return if params[:quantity].to_i.positive? &&
-              params[:quantity].to_i <= @item["product"]["quantity"]
+              params[:quantity].to_i <= @product.quantity
 
     quantity_valid params[:quantity]
     redirect_to carts_path
@@ -71,16 +71,16 @@ class CartsController < ApplicationController
 
   def check_quantity_add
     return if @item.nil? ||
-              params[:quantity].to_i.positive? &&
               params[:quantity].to_i +
-              @item["quantity"] <= @item["product"]["quantity"]
+              @item[:quantity] <= @product.quantity
 
     quantity_valid params[:quantity]
-    redirect_to product_path(@item["product"]["id"])
+    redirect_to product_path(@item[:product].id)
   end
 
   def quantity_valid quantity
-    flash[:danger] = if quantity.to_i.negative?
+    flash[:danger] = if quantity.to_i.negative? ||
+                        quantity.to_i.zero?
                        t "carts.quantity.not_valid"
                      else
                        t "errors.carts.enough"

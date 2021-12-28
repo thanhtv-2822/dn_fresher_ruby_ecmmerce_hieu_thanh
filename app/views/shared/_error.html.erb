@@ -1,0 +1,11 @@
+<% if zone.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      <% zone.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </div>
+    <ul>
+    </ul>
+  </div>
+<% end %>
