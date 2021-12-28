@@ -80,7 +80,7 @@ class CartsController < ApplicationController
 
   def quantity_valid quantity
     flash[:danger] = if quantity.to_i.negative? ||
-                        quantity.to_i == 0
+                        quantity.to_i.zero?
                        t "carts.quantity.not_valid"
                      else
                        t "errors.carts.enough"

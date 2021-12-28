@@ -32,7 +32,7 @@ class Admin::ProductsController < Admin::BaseController
 
   def destroy
     @product.destroy
-    flash[:success] = "Delete success"
+    flash[:success] = t "admin.products.delete"
     redirect_to admin_products_path
   end
 
@@ -40,7 +40,7 @@ class Admin::ProductsController < Admin::BaseController
 
   def update
     if @product.update product_params
-      flash[:success] = "Updated success"
+      flash[:success] = t "admin.products.update"
       redirect_to admin_products_path
     else
       render :edit

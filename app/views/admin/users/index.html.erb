@@ -11,13 +11,13 @@
   <div class="row justify-content-between mb-4">
     <div class="col-md-3">
       <%= form_with url: admin_users_path, method: :get do |form| %>
-      <%= form.label :name, "Search for Name :" %>
-      <%= form.text_field :name %>
-      <%= form.submit "Search", class: "btn btn-primary"%>
+        <%= form.label :name, t("placeholder") %>
+        <%= form.text_field :name %>
+        <%= form.submit t("admin.search"), class: "btn btn-primary"%>
       <% end %>
     </div>
     <div class="col-md-1">
-      <%= button_to  "Show all", admin_users_path, method: "get", class: "btn btn-outline-primary config-showall" %>
+      <%= button_to  t("show_all"), admin_users_path, method: "get", class: "btn btn-outline-primary config-showall" %>
     </div>
   </div>
   <tbody>

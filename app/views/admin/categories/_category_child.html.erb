@@ -1,15 +1,15 @@
-<% @cate_child.each do |category| %>
+<% @cate_child.each_with_index do |category, index| %>
   <tr>
-    <td><%= category.id %></td>
+    <td><%= new_index_page(params[:page]) + index %></td>
     <td><%= category.name %></td>
     <td><%= category.parent_id %></td>
     <td>
       <%= link_to edit_admin_category_path(category) do %>
         <i class="fas fa-edit"></i>
       <% end %>
-      <%= link_to admin_category_path(category), method: :delete, data: {confirm: "Are you sure?"} do %>
+      <%= link_to admin_category_path(category), method: :delete, data: {confirm: t(".delete")} do %>
        <i class="far fa-trash-alt"></i>
-        <% end %>
+      <% end %>
       </td>
   </tr>
 <% end %>

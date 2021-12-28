@@ -15,7 +15,7 @@ class Address < ApplicationRecord
 
   def check_default
     return unless default != 1 && default == 1 && Address.find_by(default: 1)
-      
+
     errors.add(:default, I18n.t("errors.default"))
   end
 end

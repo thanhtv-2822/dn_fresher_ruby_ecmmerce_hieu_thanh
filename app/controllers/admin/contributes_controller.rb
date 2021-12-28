@@ -14,7 +14,7 @@ class Admin::ContributesController < Admin::BaseController
     @contribute = Contribute.find_by id: params[:id]
     return if @contribute
 
-    flash[:danger] = "Can not found contribute"
+    flash[:danger] = t "admin.contrib.not_found"
     redirect_to admin_contributes_path
   end
 
@@ -24,17 +24,18 @@ class Admin::ContributesController < Admin::BaseController
       @contribute.update status: 1
       UserMailer.suggestion(@contribute).deliver_now
     else
-      flash[:danger] = "Can not found contribute"
+      flash[:danger] = t "admin.contrib.not_found"
     end
     redirect_to admin_contributes_path
   end
 
   private
   def filter_option option
+    contrib = Settings.admin.contribute
     case option.to_i
-    when 2
+    when contrib.accept
       Contribute.filter_accept
-    when 3
+    when contrib.pending
       Contribute.filter_pending
     else
       Contribute.all

@@ -1,11 +1,12 @@
-<% @contributes.each do |contribute| %>
+<% @contributes.each_with_index do |contribute, index| %>
   <tr>
+    <td><%= new_index_page(params[:page]) +index %></td>
     <td><%= contribute.user.name %></td>
     <td><%= contribute.content %></td>
     <td><%= image_tag contribute.image if contribute.image.attached? %></td>
     <td>
-    <% if contribute.status == 'accept' %>
-     <%= button_tag contribute.status, type: "button", class: "btn btn-info status-contribute"%>
+    <% if contribute.status == "accept" %>
+      <%= button_tag contribute.status, type: "button", class: "btn btn-info status-contribute"%>
     <% else %>
       <%= button_tag contribute.status, type: "button", class: "btn btn-danger status-contribute"%>
     <% end %>

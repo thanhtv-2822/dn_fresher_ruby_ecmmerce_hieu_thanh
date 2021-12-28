@@ -1,6 +1,6 @@
-<% @products.each do |product| %>
+<% @products.each_with_index do |product, index| %>
   <tr>
-    <td><%= product.id %></td>
+    <td><%= new_index_page(params[:page]) + index %></td>
     <td><%= product.name %></td>
     <td><%= product.price %> VND</td>
     <td><%= product.quantity %></td>
@@ -13,7 +13,7 @@
       <%= link_to edit_admin_product_path(product) do %>
         <i class="fas fa-edit"></i>
       <% end %>
-      <%= link_to admin_product_path(product), method: :delete, data: {confirm: "Are you sure?"} do %>
+      <%= link_to admin_product_path(product), method: :delete, data: {confirm: t(".delete")} do %>
        <i class="far fa-trash-alt"></i>
         <% end %>
       </td>

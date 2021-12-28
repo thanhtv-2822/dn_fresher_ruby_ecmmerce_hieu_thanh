@@ -3,9 +3,9 @@ class UploadsController < ApplicationController
 
   def update
     if params[:user] && @user.image.attach(upload_params[:image])
-      flash[:success] = t("success.img")
+      flash[:success] = t "success.img"
     else
-      flash[:danger] = t("errors.img")
+      flash[:danger] = t "errors.img"
     end
     redirect_to @user
   end

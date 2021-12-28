@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def  update
     if @user.update user_params
-      flash[:success] = "User updated successfully"
+      flash[:success] = t "errors.update.success"
       redirect_to @user
     else
       render :show

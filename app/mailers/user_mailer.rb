@@ -12,6 +12,6 @@ class UserMailer < ApplicationMailer
 
   def suggestion contrib
     @contribute = contrib
-    mail to: contrib.user.email, subject: "Suggestion" 
+    mail to: contrib.user.email, subject: "Suggestion"
   end
 end

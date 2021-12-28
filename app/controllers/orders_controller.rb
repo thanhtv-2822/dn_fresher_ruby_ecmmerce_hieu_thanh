@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
-  before_action :check_user, :check_address, only: [:index, :show, :update, :create]
-  before_action :check_order, only: [:index, :update]
+  before_action :check_user, :check_address, only: %i(index show update create)
+  before_action :check_order, only: %i(index update)
+  before_action :find_order, only: :create
 
   def index
     store_location
@@ -11,19 +12,20 @@ class OrdersController < ApplicationController
   end
 
   def update
-    begin
+    ActiveRecord::Base.transaction do
       @order.update order_params
-      flash[:success] = t("success.order")
+      flash[:success] = t "success.order"
       UserMailer.checkout(@user, @order).deliver_now
       redirect_to user_order_path(@user)
-    rescue => ex
-      flash[:danger] = ex.message
-      redirect_to orders_path
     end
+  rescue ActiveRecord::RecordInvalid
+    flash[:danger] = t "errors.record_invalid"
+    redirect_to orders_path
   end
 
   def create
     ActiveRecord::Base.transaction do
+      remove_order if @order
       create_order
       redirect_to orders_path
     end
@@ -63,16 +65,19 @@ class OrdersController < ApplicationController
     end
   end
 
+  def remove_order
+    @order.destroy
+  end
+
   def create_order
     @order = current_user.orders.build
     create_order_detail
     update_rating_product
     @order.save!
-    session.delete :cart
   end
 
   def check_user
-     @user = current_user
+    @user = current_user
   end
 
   def check_order
@@ -87,8 +92,12 @@ class OrdersController < ApplicationController
 
   def check_address
     @address = @user.addresses
-    if @address.nil?
-      @address = Address.new
-    end
+    return if @address
+
+    @address = Address.new
+  end
+
+  def find_order
+    @order = Order.find_by(user_id: current_user, status: 0)
   end
 end

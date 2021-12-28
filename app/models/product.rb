@@ -8,15 +8,12 @@ class Product < ApplicationRecord
 
   scope :sort_by_name, ->(keyword){where "name LIKE ?", "%#{keyword}%"}
   scope :order_by, ->(keyword){order keyword}
-  scope :filter_by_category, -> (category){where category_id: category}
-  scope :filter_by_price, -> (order){ order(price: order) }
-  scope :filter_by_rate, -> (order){ order(rating: order)}
-  scope :filter_by_name, -> (order){ order(name: order)}
-  scope :filter_by_type, -> (type_id){Product.joins("INNER JOIN categories
-    ON products.category_id = categories.id
-    AND  categories.parent_id = #{type_id}")}
-
-
+  scope :filter_by_category, ->(category){where category_id: category}
+  scope :filter_by_price, ->(order){order(price: order)}
+  scope :filter_by_rate, ->(order){order(rating: order)}
+  scope :filter_by_name, ->(order){order(name: order)}
+  scope :filter_by_type,
+        ->(type){joins(:categories).where("categories.parent_id = #{type}")}
   OPTION = {
     all: 1,
     oldest: 2,
@@ -34,10 +31,11 @@ class Product < ApplicationRecord
   validates :description, presence: true
   validates :quantity, presence: true,
     numericality: {only_integer: true, greater_than: Settings.min.quantity}
-  validates :image, content_type: {in: %w(image/jpeg image/gif image/png),
-    message: "must be a valid image format"},
-    size: {less_than: 5.megabytes,
-    message: "should be less than 5MB"}
+  validates :image, content_type:
+  {in: %w(image/jpeg image/gif image/png),
+   message: "must be a valid image format"},
+  size: {less_than: 5.megabytes,
+         message: "should be less than 5MB"}
 
   def display_image_admin
     image.variant resize_to_limit: [300, 200]

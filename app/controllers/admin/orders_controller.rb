@@ -1,4 +1,4 @@
-class Admin::OrdersController <  Admin::BaseController
+class Admin::OrdersController < Admin::BaseController
   before_action :check_order, only: [:update]
   def index
     @pagy, @orders = pagy(
@@ -12,12 +12,11 @@ class Admin::OrdersController <  Admin::BaseController
 
   def update
     if @order.update(status: status_params.to_i)
-      flash[:success] = "Orders updated successfully"
-      redirect_to admin_orders_path
+      flash[:success] = t "admin.order.update.success"
     else
-      flash[:danger] = "Update failed"
-      redirect_to admin_orders_path
+      flash[:danger] = t "admin.order.update.fail"
     end
+    redirect_to admin_orders_path
   end
 
   private

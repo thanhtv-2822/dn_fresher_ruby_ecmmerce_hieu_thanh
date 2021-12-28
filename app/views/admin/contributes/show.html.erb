@@ -4,15 +4,15 @@
     (<%= @contribute.user.email %>)
   </div>
   <div class="card-body">
-    <h5 class="card-title">Contribute</h5>
+    <h5 class="card-title"><%= t ".contrib" %></h5>
     <% if @contribute.image.attached? %>
       <%= image_tag @contribute.image, class: "img-contribute" %>
     <% end %>
     <p class="card-text"><%= @contribute.content %></p>
     <% if @contribute.status == "pending" %>
-      <%= link_to  "Accept", admin_contribute_path(@contribute) , method: :put, class: "btn btn-primary"%>
+      <%= link_to  t(".accept"), admin_contribute_path(@contribute) , method: :put, class: "btn btn-primary"%>
     <% end %>
-    <%= link_to  "Back", admin_contributes_path, class: "btn btn-danger"%>
+    <%= link_to  t(".back"), admin_contributes_path, class: "btn btn-danger"%>
   </div>
   <div class="card-footer text-muted">
   </div>

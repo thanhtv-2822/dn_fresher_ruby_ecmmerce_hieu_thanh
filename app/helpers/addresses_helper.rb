@@ -5,9 +5,9 @@ module AddressesHelper
     user.addresses.find_by(default: 1) ? false : true
   end
 
-  def create_address address, params
-    address = current_user.addresses.build(add_params)
-    if address.save
+  def create_address
+    @address = current_user.addresses.build(add_params)
+    if @address.save
       flash[:success] = "Address was created successfully"
       redirect_back_or @user
     else
@@ -15,5 +15,4 @@ module AddressesHelper
       redirect_to new_address_path
     end
   end
-
 end

@@ -4,11 +4,10 @@ class Order < ApplicationRecord
   belongs_to :address, optional: true
   has_many :order_details, dependent: :destroy
   has_many :products, through: :order_details
-  scope :order_by_updated_at, ->{order(updated_at: "DESC")}
-  scope :filter_by_customer, ->(name){Order.joins("INNER JOIN users
-    ON orders.user_id = users.id
-    AND users.name LIKE %#{name}%")}
-  scope :filter_by_status, -> (status){where status: status}
+  scope :order_by_updated_at, ->{where.not(status: 0).order(updated_at: "DESC")}
+  scope :filter_by_customer,
+        ->(name){joins(:users).where("users.name LIKE %#{name}%")}
+  scope :filter_by_status, ->(status){where status: status}
   before_update :check_payment_address
   enum status: {pending: 0, accept: 1, resolved: 2, rejected: 3}
 

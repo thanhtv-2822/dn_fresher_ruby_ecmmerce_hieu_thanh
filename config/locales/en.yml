@@ -31,6 +31,8 @@ en:
   continue_shopping : "Continue Shopping"
   order_num: "Order Num"
   back: "Back"
+  show_all: "Show all"
+  placeholder: "Search for Name :" 
   track_order : "Track Order"
   select_payment: "Please select payment and address"
   errors:
@@ -128,8 +130,12 @@ en:
     login:
       danger: "Email or password incorrect"
       success: "Login successfully"
+    logout: "Logout successfuly"
+    cant_login: "You must log out before you can log in"
     register:
       success: "Register successfully"
+    update:
+      success: "Update successfully"
     order_create: "Create order successfuly"
     record_invalid: "Record Invalid"
     user: "invalid users"
@@ -178,10 +184,41 @@ en:
   admin:
     search: "Search" 
     permission: "You dont permission"
-    search: "Search"
     static_pages:
       home:
         content: "Welcome to admin page"
+    categories:
+      add_form:
+        back: "Back"
+        parent: "Add parent category"
+      category_child:
+        delete: "Are you sure?"
+      category:
+        delete: "Are you sure?"
+      form:
+        back: "Back"
+      edit:
+        title: "Edit Category"
+      new:
+        title: "Add Category"
+    contributes:
+      index:
+        stt: "STT"
+        contributer: "Contributer"
+        content: "Content"
+        image: "Image"
+        status: "Status"
+        sort: "Sort"
+      show:
+        back: "Back"
+        accept: "Accept"
+        contrib: "Contribute"
+    orders:
+      index:
+        status: "Select Status :"
+    users:
+      user: 
+        delete: "Are you sure?"
     layouts:
       nav:
         dashboard: "Dashboard"
@@ -204,6 +241,8 @@ en:
       footer:
         content: "Admin &copy; Ecommerce 2021"
     products:
+      product:
+        delete: "Are you sure?"
       new:
         title: "Add Product"
         success: "Create product successfuly"
@@ -218,6 +257,24 @@ en:
         price: "Price"
         image: "Image"
         quantity: "Quantity"
+        sort: "Sort"
+      delete: "Delete success"
+      update: "Updated success"
+    category:
+      update:
+        success: "Update category successfuly"
+        fail: "Update category fails"
+      remove: "Remove category successfuly"
+      not_found:  "Category not found"
+      new: "Create category successfuly"
+    contrib:
+      not_found: "Can not found contribute"
+    order_detail:
+      invalid: "Invalid Order"
+    order:
+      update:
+        success: "Orders updated successfully"
+        fail: "Update failed"
   user:
     id: "ID"
     name: "Name"

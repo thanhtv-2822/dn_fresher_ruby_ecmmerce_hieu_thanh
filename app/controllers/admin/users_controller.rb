@@ -1,7 +1,5 @@
 class Admin::UsersController < Admin::BaseController
   before_action :check_user, only: [:edit, :update, :destroy]
-
-
   def index
     @pagy, @users = pagy(
       User.all.order_by_updated_at,
@@ -39,11 +37,10 @@ class Admin::UsersController < Admin::BaseController
   def destroy
     if @user.destroy
       flash[:success] = t "success.user_delete"
-      redirect_to admin_users_path
     else
       flash[:danger] = t "errors.delete"
-      redirect_to admin_users_path
     end
+    redirect_to admin_users_path
   end
 
   private
@@ -60,7 +57,5 @@ class Admin::UsersController < Admin::BaseController
     return if @user = User.find_by(id: params[:id])
 
     flash[:danger] = t "errors.user"
-
   end
-
 end

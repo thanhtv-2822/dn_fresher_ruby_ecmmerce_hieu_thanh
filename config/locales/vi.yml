@@ -8,12 +8,15 @@ vi:
   log_out: "Đăng xuất"
   upload_avt: "Upload avatar"
   save: "Save"
+  back: "Trở lại"
   select_payment: vui lòng chọn địa chỉ và phương thức thanh toán
   select_payment: vui lòng chọn địa chỉ và phương thức thanh toán
   payment: "Phương thức thanh toán"
   diff_info: "Những thông tin khác"
   save: "Luu"
   list_orders: "Danh sách order"
+  show_all: "Hiển thị tất cả"
+  placeholder: "Tìm kiếm tên :" 
   header:
     Home: "Trang chủ"
     Contact us: "Về chúng tôi"
@@ -62,8 +65,12 @@ vi:
     login:
       danger: "Email hoặc mật khẩu không chính xác"
       success: "Đăng nhập thành công"
+    logout: "Logout successfuly"
+    cant_login: "You must log out before you can log in"
     register:
       success: "Đăng ký thành công"
+    update:
+      success: "Update successfully"
     order_create: "Tạo đơn hàng thành công"
     record_invalid: "Bản ghi không hợp lệ"
     carts:
@@ -108,6 +115,38 @@ vi:
     static_pages:
       home:
         content: "Chào mừng đến với trang quản trị"
+    categories:
+      add_form:
+        back: "Trở lại"
+        parent: "Thêm danh mục cha"
+      category_child:
+        delete: "Bạn có chắc không?"
+      category:
+        delete: "Bạn có chắc không?"
+      form:
+        back: "Trở lại"
+      edit:
+        title: "Edit Category"
+      new:
+        title: "Add Category"
+    contributes:
+      index:
+        stt: "STT"
+        contributer: "Người đóng góp"
+        content: "Nội dung"
+        image: "Hình ảnh"
+        status: "Trạng thái"
+        sort: "Sắp xếp"
+      show:
+        back: "Trở lại"
+        accept: "Chấp nhận"
+        contrib: "Đóng góp"
+    orders:
+      index:
+        status: "Chọn trạng thái :"
+    users:
+      user: 
+        delete: "Bạn có chắc không?"
     layouts:
       nav:
         dashboard: "Trang tổng quan"
@@ -142,6 +181,24 @@ vi:
         price: "Giá"
         image: "Hình ảnh"
         quantity: "Số lượng"
+        sort: "Sắp xếp"
+      delete: "Xóa thành công"
+      update: "Cập nhật thành công"
+    category:
+      update:
+        success: "Cập nhật danh mục thành công"
+        fail: "Cập nhật danh mục không thành công"
+      remove: "Xóa danh mục thành công"
+      not_found:  "Danh mục không được tìm thấy"
+      new: "Tạo danh mục thành công"
+    contrib:
+      not_found: "Không thể tìm thấy đóng góp"
+    order_detail:
+      invalid: "Đơn hàng không hợp lệ"
+    order:
+      update:
+        success: "Đã cập nhật đơn hàng thành công"
+        fail: "Cập nhật không thành công"
   user:
     id: "ID"
     name: "Tên"
