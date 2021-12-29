@@ -131,4 +131,4 @@ ActiveRecord::Schema.define(version: 2021_12_27_015200) do
   add_foreign_key "orders", "payments"
   add_foreign_key "orders", "users"
   add_foreign_key "products", "categories"
- end
+end

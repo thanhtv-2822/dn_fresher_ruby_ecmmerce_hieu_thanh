@@ -38,6 +38,8 @@ end
 
 group :test do
   gem "capybara", ">= 3.26"
+  gem "simplecov"
+  gem "simplecov-rcov"
   gem "selenium-webdriver"
   gem "webdrivers"
 end
