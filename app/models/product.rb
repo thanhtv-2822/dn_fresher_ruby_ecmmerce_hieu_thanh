@@ -13,7 +13,10 @@ class Product < ApplicationRecord
   scope :filter_by_rate, ->(order){order(rating: order)}
   scope :filter_by_name, ->(order){order(name: order)}
   scope :filter_by_type,
-        ->(type){joins(:categories).where("categories.parent_id = #{type}")}
+        (lambda do |type|
+          joins(:category).where("categories.parent_id = :type", type: type)
+        end)
+
   OPTION = {
     all: 1,
     oldest: 2,
