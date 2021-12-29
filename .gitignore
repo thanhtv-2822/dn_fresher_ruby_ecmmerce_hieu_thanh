@@ -68,7 +68,6 @@ yarn-debug.log*
 /test
 .framgia-ci-reports/
 .framgia-ci-result.temp.yml
-/spec
 
 config/settings.local.yml
 config/settings/*.local.yml
@@ -100,3 +99,4 @@ yarn-debug.log*
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+/coverage/
