@@ -89,11 +89,7 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def find_all_category
-    @category_child = Category.where("parent_id IS NOT NULL")
-    return if @category_child
-
-    flash[:danger] = t "admin.products.new.not_found"
-    redirect_to admin_products_path
+    @category_child = Category.where.not(parent_id: nil)
   end
 
   def product_params
