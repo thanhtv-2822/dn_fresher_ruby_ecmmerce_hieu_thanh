@@ -201,6 +201,7 @@ vi:
     order_detail:
       invalid: "Đơn hàng không hợp lệ"
     order:
+      not_found: "Dơn đặt hàng không được tìm thấy"
       update:
         success: "Đã cập nhật đơn hàng thành công"
         fail: "Cập nhật không thành công"

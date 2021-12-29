@@ -11,15 +11,21 @@ class Admin::OrdersController < Admin::BaseController
   end
 
   def update
-    if @order.update(status: status_params.to_i)
-      flash[:success] = t "admin.order.update.success"
-    else
+    if status_params.to_i < Order.statuses[@order.status] ||
+       gap(status_params, Order.statuses[@order.status]) > 1
       flash[:danger] = t "admin.order.update.fail"
+    else
+      @order.update(status: status_params.to_i)
+      flash[:success] = t "admin.order.update.success"
     end
     redirect_to admin_orders_path
   end
 
   private
+
+  def gap change_status, current_status
+    (change_status.to_i - current_status).abs
+  end
 
   def status_params
     params.require(:status)
@@ -31,5 +37,8 @@ class Admin::OrdersController < Admin::BaseController
 
   def check_order
     return if @order = Order.find_by(id: params[:id])
+
+    flash[:danger] = t "admin.order.not_found"
+    redirect_to admin_orders_path
   end
 end
