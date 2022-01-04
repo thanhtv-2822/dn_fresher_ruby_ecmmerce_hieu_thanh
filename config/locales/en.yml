@@ -284,3 +284,5 @@ en:
     email: "Email"
     img : "Image"
     create: "Create"
+    img_mess: "should be less than 5MB"
+    img_valid: "must be a valid image format"

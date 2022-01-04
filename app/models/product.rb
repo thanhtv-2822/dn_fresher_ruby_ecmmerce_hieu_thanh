@@ -32,10 +32,10 @@ class Product < ApplicationRecord
   validates :quantity, presence: true,
     numericality: {only_integer: true, greater_than: Settings.min.quantity}
   validates :image, content_type:
-  {in: %w(image/jpeg image/gif image/png),
-   message: "must be a valid image format"},
-  size: {less_than: 5.megabytes,
-         message: "should be less than 5MB"}
+   {in: %w(image/jpeg image/gif image/png),
+    message: I18n.t("user.img_valid")},
+   size: {less_than: Settings.length.len_5.megabytes,
+          message: I18n.t("user.img_mess")}
 
   def display_image_admin
     image.variant resize_to_limit: [300, 200]

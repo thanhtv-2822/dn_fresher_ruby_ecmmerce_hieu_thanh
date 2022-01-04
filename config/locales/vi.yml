@@ -209,3 +209,5 @@ vi:
     name: "Tên"
     email: "Email"
     img : "Hình ảnh"
+    img_mess: "phải nhỏ hơn 5MB"
+    img_valid: "phải là định dạng hình ảnh hợp lệ"

@@ -38,9 +38,12 @@ end
 
 group :test do
   gem "capybara", ">= 3.26"
+  gem "database_cleaner"
+  gem "factory_bot_rails"
+  gem "selenium-webdriver"
+  gem "shoulda-matchers", "~> 5.0"
   gem "simplecov"
   gem "simplecov-rcov"
-  gem "selenium-webdriver"
   gem "webdrivers"
 end
 
