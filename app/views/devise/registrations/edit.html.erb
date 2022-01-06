@@ -1,3 +1,5 @@
+
+
 <% provide(:button_text, "Home") %>
 <div class="row flex-lg-nowrap justify-content-end">
   <div class="col-3 col-lg-auto ml-5" style="width: 300px;">
@@ -5,7 +7,7 @@
       <div class="e-navlist e-navlist--active-bg">
         <ul class="nav">
           <li class="nav-item">
-            <%= link_to user_order_path(@user) do %>
+            <%= link_to order_path(@user) do %>
             <i class="fa fa-fw fa-th mr-1"></i>
               <span>
                 <%= t("his_order") %>
@@ -13,7 +15,7 @@
             <% end %>
           </li>
           <li class="nav-item mt-2">
-            <%= link_to user_contributes_path(@user) do %>
+            <%= link_to contributes_path do %>
             <i class="fa fa-fw fa-th mr-1"></i>
               <span>
                 <%= t("his_contrbutes") %>
@@ -45,9 +47,8 @@
                   <div class="text-center text-sm-left mb-2 mb-sm-0">
                     <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap"><%= @user.name %></h4>
                     <p class="mb-0"><%= @user.email %></p>
-                    <div class="text-muted"><small>Last seen 2 hours ago</small></div>
                     <div class="mt-2">
-                      <%= form_with model: @user, url: user_upload_path(@user), method: "patch" do |upload| %>
+                      <%= form_with model: @user, url: upload_path(@user), method: "patch" do |upload| %>
                         <%= upload.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
                         <% if @user %>
                           <div class="col-md-7 col-sm-7 col-xs-7 user-detail-section1 text-center">
@@ -64,10 +65,54 @@
               </ul>
               <div class="tab-content pt-3">
                 <div class="tab-pane active">
-                  <%= form_for @user do |f| %>
-                  <%= render partial: "shared/error" , locals: {zone: @user}%>
-                  <%= render partial: "shared/form_user" , locals: {f: f}%>
+
+                  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                    <div class="form-group">
+                      <%= f.label :name,  t("form.name") %>
+                      <%= f.text_field :name, class: "form-control" %>
+                      <small><i><%= render partial: 'devise/shared/error_message_for_field', locals: {object: resource, attr: :name} %></i></small>
+                    </div>
+
+                    <div class="field">
+                      <%= f.label :email, t("devises.email") %><br />
+                      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+                      <small><i><%= render partial: 'devise/shared/error_message_for_field', locals: {object: resource, attr: :email} %></i></small>
+                    </div>
+
+                    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                    <% end %>
+
+                    <div class="field">
+                      <%= f.label :password, t("devises.password") %> <small><i>(<%= t "devises.not_change_password" %>)</i></small><br />
+                      <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+                      <% if @minimum_password_length %>
+                        <br />
+                        <small>*<em><%= @minimum_password_length %> <%= t "devises.characters_minimum" %></em></small>
+                      <% end %>
+                      <small><i><%= render partial: 'devise/shared/error_message_for_field', locals: {object: resource, attr: :password} %></i></small>
+                    </div>
+
+                    <div class="field">
+                      <%= f.label :password_confirmation, t("devises.password_confirmation") %><br />
+                      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+                      <small><i><%= render partial: 'devise/shared/error_message_for_field', locals: {object: resource, attr: :password_confirmation} %></i></small>
+                    </div>
+
+                    <div class="field">
+                      <%= f.label :current_password, t("devises.current_password") %> <small><i>(<%= t "devises.require_current_password" %>)</i></small><br />
+                      <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
+                      <small><i><%= render partial: 'devise/shared/error_message_for_field', locals: {object: resource, attr: :current_password} %></i></small>
+                    </div>
+
+                    <div class="actions">
+                      <%= f.submit "Update", class: "btn btn-info" %>
+                    </div>
                   <% end %>
+
+                  <%= button_to t("devises.cancel_account"), registration_path(resource_name),class: "btn btn-warning" , data: { confirm: t("devises.cancel_account_message") }, method: :delete %>
+
+                  <%= link_to t("devises.back"), :back, class: "redirect-link"%>
                 </div>
               </div>
             </div>
@@ -90,7 +135,7 @@
         <div class="card">
           <div class="card-body">
             <h6 class="card-title font-weight-bold">Support</h6>
-            <% if @address.present? %>
+            <% if @user.addresses.present? %>
               <table>
                 <tr>
                   <th>Address</th>

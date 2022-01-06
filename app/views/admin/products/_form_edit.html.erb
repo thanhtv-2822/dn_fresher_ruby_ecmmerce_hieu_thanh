@@ -1,5 +1,4 @@
 <%= form_for [:admin, @product] do |f| %>
-  <%= render "shared/error_messages", object: f.object %>
   <div class="form-group">
     <%= f.label :category_id %>
     <%= f.collection_select :category_id, @category_child, :id, :name, {},{:class=>"form-control"}%>
@@ -7,22 +6,27 @@
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name, class: "form-control" %>
+    <small><i><%= render partial: 'devise/shared/error_message_for_field', locals: {object: @product, attr: :name} %></i></small>
   </div>
   <div class="form-group">
     <%= f.label :description %>
     <%= f.text_area :description, class: "form-control", size: "70x5" %>
+    <small><i><%= render partial: 'devise/shared/error_message_for_field', locals: {object: @product, attr: :description} %></i></small>
   </div>
   <div class="form-group">
     <%= f.label :price %>
     <%= f.number_field :price, min: 0, step: 1000, class: "form-control" %>
+    <small><i><%= render partial: 'devise/shared/error_message_for_field', locals: {object: @product, attr: :price} %></i></small>
   </div>
   <div class="form-group">
     <%= f.label :rating %>
     <%= f.range_field :rating, class: "form-control", in: 1..5 %>
+    <small><i><%= render partial: 'devise/shared/error_message_for_field', locals: {object: @product, attr: :rating} %></i></small>
   </div>
   <div class="form-group">
     <%= f.label :quantity %>
     <%= f.number_field :quantity, min: 1, step: 1, class: "form-control" %>
+    <small><i><%= render partial: 'devise/shared/error_message_for_field', locals: {object: @product, attr: :quantity} %></i></small>
   </div>
   <div class="form-group">
     <span class="image">

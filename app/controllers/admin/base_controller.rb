@@ -1,12 +1,14 @@
 class Admin::BaseController < ApplicationController
   include Pagy::Backend
   layout "admin/layouts/application"
-  before_action :logged_admin?
+  before_action :authenticate_user!, :check_admin
 
-  def logged_admin?
-    return if admin_logged_in?
+  private
+  def check_admin
+    return if current_user.is_admin?
 
-    redirect_to login_path
+    store_location_for(:admin, request.fullpath)
     flash[:danger] = t "admin.permission"
+    redirect_to root_path
   end
 end

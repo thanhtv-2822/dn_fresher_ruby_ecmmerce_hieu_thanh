@@ -7,7 +7,7 @@ class UploadsController < ApplicationController
     else
       flash[:danger] = t "errors.img"
     end
-    redirect_to @user
+    redirect_to edit_user_registration_path
   end
 
   private

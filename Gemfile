@@ -7,6 +7,7 @@ gem "bcrypt", "3.1.12"
 gem "bootsnap", ">= 1.4.4", require: false
 gem "bootstrap-sass", "~> 3.4", ">= 3.4.1"
 gem "config"
+gem "devise", "~> 4.1"
 gem "faker", "2.1.2"
 gem "figaro"
 gem "image_processing", "1.9.3"

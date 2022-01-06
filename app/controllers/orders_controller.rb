@@ -3,9 +3,7 @@ class OrdersController < ApplicationController
   before_action :check_order, only: %i(index update)
   before_action :find_order, only: :create
 
-  def index
-    store_location
-  end
+  def index; end
 
   def show
     @orders = @user.orders.order_by_updated_at
@@ -16,7 +14,7 @@ class OrdersController < ApplicationController
       @order.update order_params
       flash[:success] = t "success.order"
       UserMailer.checkout(@user, @order).deliver_now
-      redirect_to user_order_path(@user)
+      redirect_to order_path(@user)
     end
   rescue ActiveRecord::RecordInvalid
     flash[:danger] = t "errors.record_invalid"

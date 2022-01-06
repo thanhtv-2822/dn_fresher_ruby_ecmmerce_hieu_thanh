@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+
   has_many :addresses, dependent: :destroy
   has_many :contributes, dependent: :destroy
   has_many :orders, dependent: :destroy
@@ -22,9 +25,6 @@ class User < ApplicationRecord
   validates :password, presence: true, allow_nil: true,
   length: {in: Range.new(Settings.length.len_6, Settings.length.len_50)}
 
-  has_secure_password
-
-  USER_ATTRS = %w(name email password password_confirmation).freeze
   UPLOAD = %w(image).freeze
 
   def display_image

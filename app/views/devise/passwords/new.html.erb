@@ -1,0 +1,26 @@
+<div id="signup">
+  <div class="container">
+    <div id="signup-row" class="row justify-content-center align-items-center">
+      <div id="signup-column" class="col-md-6">
+        <div id="signup-box" class="col-md-12">
+          <h3 class="text-center text-info"><%= t "devises.forgot_password" %></h3>
+
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+
+            <div class="field">
+              <%= f.label :email, t("devises.email") %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+              <small><i><%= render partial: 'devise/shared/error_message_for_field', locals: {object: resource, attr: :email} %></i></small>
+            </div>
+
+            <div class="actions">
+              <%= f.submit t("devises.send_reset_password_instructions"), class: "btn btn-info" %>
+            </div>
+          <% end %>
+
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

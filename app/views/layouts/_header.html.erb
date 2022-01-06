@@ -27,10 +27,10 @@
         <div class="col-lg-4 col-sm-6 col-12" style="text-align:end">
           <div class="widgets-wrap float-md-right">
             <div class="widget-header mr-3 shopping_card">
-              <% if logged_in? %>
+              <% if user_signed_in? %>
                 <%= link_to raw("<i class='fa fa-shopping-cart'></i>"), carts_path, class: "icon icon-sm rounded-circle
                   border " %>
-                <%= link_to user_path(current_user), class: "icon icon-sm rounded-circle border ml-3" do %>
+                <%= link_to edit_user_registration_path, class: "icon icon-sm rounded-circle border ml-3" do %>
                   <i class="fa fa-user"></i>
                 <% end %>
               <% end %>
@@ -40,14 +40,14 @@
                 <span class="text-muted mr-4">
                   <%= t("Welcome") %>
                 </span>
-                <% if logged_in? %>
+                <% if user_signed_in? %>
                   <div>
-                    <%= link_to t("log_out"), logout_path, method: :delete %>
+                    <%= link_to t("log_out"), destroy_user_session_path, method: :delete %>
                   </div>
                   <% else %>
                     <div>
-                      <%= link_to t("sign_in"), login_path %>
-                      <%= link_to t("sign_up"), signup_path %>
+                      <%= link_to t("sign_in"), new_user_session_path %>
+                      <%= link_to t("sign_up"), new_user_registration_path %>
                     </div>
                   <% end %>
               </div>
