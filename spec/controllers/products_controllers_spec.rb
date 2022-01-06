@@ -1,6 +1,5 @@
 require "rails_helper"
 require "shared/share_example_spec.rb"
-include SessionsHelper
 
 RSpec.describe Admin::ProductsController, type: :controller do
   let(:admin){FactoryBot.create :user, is_admin: 1}
@@ -21,11 +20,11 @@ RSpec.describe Admin::ProductsController, type: :controller do
     before {get :new}
 
     it "redirect to login page" do
-      should redirect_to login_path
+      should redirect_to("/users/sign_in")
     end
 
     it "display flash danger don't permission" do
-      expect(flash[:danger]).to eq("You dont permission")
+      expect(flash[:alert]).to eq("You need to sign in or sign up before continuing.")
     end
   end
 
@@ -35,7 +34,7 @@ RSpec.describe Admin::ProductsController, type: :controller do
       FactoryBot.create :category, parent_id: Category.first.id
     end
     
-    before {log_in admin}
+    before {sign_in admin}
 
     describe "GET #show" do
       before {product}

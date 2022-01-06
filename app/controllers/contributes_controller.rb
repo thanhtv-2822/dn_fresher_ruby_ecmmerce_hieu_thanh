@@ -1,5 +1,5 @@
 class ContributesController < ApplicationController
-  before_action :check_logged_in?, only: %i(index new create)
+  before_action :logged_in_user, only: %i(index new create)
   def new
     @contribute = Contribute.new
   end
@@ -13,7 +13,7 @@ class ContributesController < ApplicationController
     @contribute.image.attach(contribute_params[:image])
     if @contribute.save
       flash[:success] = t "info.contribute"
-      redirect_to user_contributes_path(current_user)
+      redirect_to contributes_path
     else
       render :new
     end
@@ -23,11 +23,5 @@ class ContributesController < ApplicationController
 
   def contribute_params
     params.require(:contribute).permit(Contribute::CONT_ATT)
-  end
-
-  def check_logged_in?
-    return if logged_in?
-
-    redirect_back_or login_path
   end
 end

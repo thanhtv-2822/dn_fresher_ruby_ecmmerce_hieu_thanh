@@ -49,10 +49,6 @@ RSpec.describe User, type: :model do
       expect(user.email).to eq("thanh@gmail.com")
     end
   end
-
-  describe "has secure password" do
-    it {is_expected.to have_secure_password}
-  end
   
   describe "validations" do
     it "is a valid" do

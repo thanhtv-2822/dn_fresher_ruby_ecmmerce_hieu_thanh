@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :check_product, only: :show
   def show
-    return unless logged_in?
+    return unless user_signed_in?
     return if check_item @product
 
     check_recently_product @product

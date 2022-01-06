@@ -1,5 +1,4 @@
 <%= form_for [:admin, @category] do |f| %>
-  <%= render "shared/error_messages", object: f.object %>
   <div class="add-child-category" >
     <p><%= t ".parent" %>:</p>
     <input type="checkbox" id="unlock-category" onclick="unlock()">
@@ -11,6 +10,7 @@
   <div class="form-group">
     <%= f.label :name, t("user.name") %>
     <%= f.text_field :name, class: "form-control" %>
+    <small><i><%= render partial: 'devise/shared/error_message_for_field', locals: {object: @category, attr: :name} %></i></small>
   </div>
   <div class="form-group back">
     <%= link_to t("back"), admin_categories_path, class: "btn-danger btn-back"%>

@@ -28,11 +28,12 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def update
-    flash[:success] = if @category.update category_params
-                        t "admin.category.update.success"
-                      else
-                        t "admin.category.update.fail"
-                      end
+    if @category.update category_params
+      flash[:success] = t "admin.category.update.success"
+    else
+      flash[:danger] = t "admin.category.update.fail"
+    end
+
     if @category.parent_id.nil?
       redirect_to admin_categories_path
     else
