@@ -1,4 +1,6 @@
 class Admin::UsersController < Admin::BaseController
+  authorize_resource
+
   before_action :check_user, only: [:edit, :update, :destroy]
   def index
     @pagy, @users = pagy(

@@ -1,5 +1,4 @@
 require "rails_helper"
-include SessionsHelper
 require "shared/share_example_spec.rb"
 
 RSpec.describe Admin::OrdersController, type: :controller do
@@ -9,11 +8,11 @@ RSpec.describe Admin::OrdersController, type: :controller do
     it {should route(:get, "/admin/orders").to(action: :index)}
     it {should route(:put, "/admin/orders/1").to(action: :update, id: 1)}
   end
-
+  
   it_behaves_like "share check login admin"
 
   describe "admin is logged in" do
-    before {log_in admin}
+    before {sign_in admin}
 
     describe "GET #index" do
       let(:user){FactoryBot.create :user, name: "thanh"}

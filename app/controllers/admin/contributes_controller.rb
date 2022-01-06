@@ -1,4 +1,6 @@
 class Admin::ContributesController < Admin::BaseController
+  authorize_resource
+
   def index
     if params[:option]
       @pagy, @contributes = pagy(

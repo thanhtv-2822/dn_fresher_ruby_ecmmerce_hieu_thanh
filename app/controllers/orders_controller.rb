@@ -3,6 +3,9 @@ class OrdersController < ApplicationController
   before_action :check_order, only: %i(index update)
   before_action :find_order, only: :create
 
+  before_action :authenticate_user!
+  authorize_resource
+
   def index; end
 
   def show
@@ -89,7 +92,7 @@ class OrdersController < ApplicationController
   end
 
   def check_address
-    @address = @user.addresses
+    @address = @user&.addresses
     return if @address
 
     @address = Address.new
