@@ -17,6 +17,7 @@ class OrdersController < ApplicationController
       @order.update order_params
       flash[:success] = t "success.order"
       UserMailer.checkout(@user, @order).deliver_now
+      session.delete :cart
       redirect_to order_path(@user)
     end
   rescue ActiveRecord::RecordInvalid

@@ -4,39 +4,29 @@
       <aside class="col-md-3">
         <nav class="card">
           <ul class="menu-category">
-            <li><a href="#">Home</a></li>
             <li class="has-submenu"><a href="#">Products</a>
               <ul class="submenu">
                 <%= render partial: "shared/category", locals: {zone: @categories} %>
               </ul>
             </li>
             <li>
-              <%= link_to "Hot Trends", home_path(rate: "DESC") %>
-            </li>
-            <li>
               <%= link_to "Contributes", new_contribute_path %>
             </li>
-            <li class="has-submenu"><a href="#">Sort by</a>
-              <ul class="submenu">
-                <li>
-                  <%= link_to t("sort.price.low"), home_path(price: Settings.order.ASC ) %>
-                </li>
-                <li>
-                  <%= link_to t("sort.price.high"), home_path(price: Settings.order.DESC ) %>
-                </li>
-                <li>
-                  <%= link_to t("sort.rate.low"), home_path(rate: Settings.order.ASC ) %>
-                </li>
-                <li>
-                  <%= link_to t("sort.rate.high"), home_path(rate: Settings.order.DESC ) %>
-                </li>
-                <li>
-                  <%= link_to t("sort.name.low"), home_path(name: Settings.order.ASC ) %>
-                </li>
-                <li>
-                  <%= link_to t("sort.name.high"), home_path(name: Settings.order.DESC ) %>
-                </li>
-              </ul>
+            <li>
+              <%= sort_link(@q, :created_at, t("ransack.sort_created_at"), default_order: :desc) %>
+            </li>
+            <li>
+              <%= sort_link(@q, :name, t("ransack.sort_name")) %>
+            </li>
+            <li>
+              <%= sort_link(@q, :price, t("ransack.sort_price")) %>
+            </li>
+            <li>
+              <%= sort_link(@q, :quantity, t("ransack.sort_quantity")) %>
+            </li>
+            <li>
+              <%= link_to  t("ransack.search"), "#", "data-toggle"=>"modal", "data-target"=>"#searchModal"%>
+            </li>
           </ul>
         </nav>
       </aside>
@@ -48,12 +38,54 @@
     </div>
   </div>
 </section>
+
+<!-- Search Modal -->
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><%= t "ransack.search" %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= search_form_for(@q, url: root_path, method: :get) do |f| %>
+          <div class="field">
+            <%= f.label :product_cont, t("ransack.name_or_des") %>
+            <%= f.search_field :product_cont, class: "form-control"%>
+          </div>
+          <div class="field">
+            <%= f.label :category_name_cont, t("ransack.category") %>
+            <%= f.collection_select :category_name_cont, all_sub_menu, :name, :name, {},{:class=>"form-control"}%>
+          </div>
+          <div class="field">
+            <%= f.label :price, t("ransack.price") %>
+            <div class="form-group price-search">
+              <%= f.text_field :price_gteq, class: "form-control"%> -
+              <%= f.text_field :price_lteq, class: "form-control"%>
+            </div>
+          </div>
+          <div class="field">
+            <%= f.label :created_at_eq, t("ransack.created_at") %>
+            <%= f.date_field :created_at_eq, class: "form-control input-sm" %>
+          </div>
+          <div class="form-group">
+          <%= f.submit t("ransack.search"), class: "btn btn-primary" %>
+          <%= link_to t("ransack.clear"), request.path, class: "clear-link" %>
+          </div>
+        <% end %>  
+      </div>
+    </div>
+  </div>
+</div>
+
 <section class="section-name padding-y-sm mt-5">
   <div class="container">
     <header class="section-heading">
       <div class="row">
         <div class="col-md-10">
-          <h3 class="section-title">Popular products</h3>
+          <h3 class="section-title">All products</h3>
         </div>
         <div class="col-md-2">
           <%= button_to  "Show all", home_path, method: "get", class: "btn btn-outline-primary config-showall" %>
@@ -67,7 +99,14 @@
         <%== pagy_bootstrap_nav(@pagy) %>
       </div>
     </div>
-     <hr>
+    <hr>
+    <header class="section-heading">
+      <h3 class="section-title">High ratings</h3>
+    </header>
+    <div class="row">
+      <%= render partial: "shared/product", collection: @high_rating_product %>
+    </div>
+    <hr>
     <header class="section-heading">
       <h3 class="section-title">Recently products</h3>
     </header>

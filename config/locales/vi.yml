@@ -235,3 +235,14 @@ vi:
     new_password_confirmation: "Xác nhận mật khẩu mới"
   cancan:
     permission: "Bạn không có quyền truy cập trang này."
+  ransack:
+    category: "Tìm kiếm theo tên danh mục"
+    name_or_des: "Tìm kiếm theo tên và mô tả sản phẩm"
+    price: "Tìm kiếm theo giá"
+    created_at: "Tìm kiếm sản phẩm theo ngày tạo"
+    search: "Tìm kiếm"
+    clear: "Clear"
+    sort_name: "Sắp xếp theo tên"
+    sort_price: "Sắp xếp theo giá"
+    sort_quantity: "Sắp xếp theo số lượng"
+    sort_created_at: "Sắp xếp theo ngày tạo"

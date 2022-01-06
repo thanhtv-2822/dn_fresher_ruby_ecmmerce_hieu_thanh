@@ -6,6 +6,12 @@ class Product < ApplicationRecord
 
   accepts_nested_attributes_for :category
 
+  ransack_alias :product, :name_or_description
+
+  ransacker :created_at, type: :date do
+    Arel.sql("date(products.created_at)")
+  end
+
   scope :sort_by_name, ->(keyword){where "name LIKE ?", "%#{keyword}%"}
   scope :order_by, ->(keyword){order keyword}
   scope :filter_by_category, ->(category){where category_id: category}
@@ -50,5 +56,23 @@ class Product < ApplicationRecord
 
   def display_img_detail
     image.variant resize_to_limit: [377, 377]
+  end
+
+  def self.ransackable_attributes auth_object = nil
+    if auth_object == :admin
+      super
+    else
+      super & %w(product name description price created_at)
+    end
+  end
+
+  def self.ransackable_scopes auth_object = nil
+    if auth_object == :admin
+      %i(filter_by_category filter_by_type sort_by_name order_by
+        filter_by_price filter_by_name filter_by_rate)
+    else
+      # @q = Product.ransack({filter_by_rate: "desc"}, {auth_object: :admin})
+      %i(filter_by_category filter_by_type filter_by_price filter_by_name)
+    end
   end
 end
