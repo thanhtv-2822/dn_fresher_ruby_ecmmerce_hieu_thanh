@@ -275,6 +275,7 @@ en:
     order_detail:
       invalid: "Invalid Order"
     order:
+      not_found: "Order not found"
       update:
         success: "Orders updated successfully"
         fail: "Update failed"

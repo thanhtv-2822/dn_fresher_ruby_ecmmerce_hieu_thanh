@@ -27,3 +27,23 @@ RSpec.shared_examples "share check product presence" do |action|
     end
   end
 end
+
+RSpec.shared_examples "share check login admin" do
+  before {get :index}
+
+  it "redirect to login page" do
+    should redirect_to login_path
+  end
+
+  it "display flash danger don't permission" do
+    expect(flash[:danger]).to eq("You dont permission")
+  end
+end
+
+RSpec.shared_examples "share update order fail" do |old, new|
+  let(:order) {FactoryBot.create :order, status: old}
+  it "when update fail" do
+    put :update, params: {id: order.id, status: new}
+    expect(flash[:danger]).to eq("Update failed")
+  end
+end
