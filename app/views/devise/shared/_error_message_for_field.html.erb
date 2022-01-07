@@ -1,0 +1,9 @@
+<% if object.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+      <% object.errors[attr].each do |msg| %>
+        <li><%= "(*)" + convert_array_to_string?(attr.to_s) + " " + msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

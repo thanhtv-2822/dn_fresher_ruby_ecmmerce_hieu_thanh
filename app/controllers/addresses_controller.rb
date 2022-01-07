@@ -4,7 +4,7 @@ class AddressesController < ApplicationController
   def destroy
     @address = @address.destroy
     flash[:success] = t "success.add_destroy"
-    redirect_to user_path(current_user)
+    redirect_to edit_user_registration_path
   end
 
   def create
@@ -12,7 +12,7 @@ class AddressesController < ApplicationController
     if check_default(current_user, add_params["default"], @address) &&
        @address.save
       flash[:success] = t "success.address"
-      redirect_back_or @user
+      redirect_to edit_user_registration_path
     else
       flash[:danger] = t "errors.default"
       render :new

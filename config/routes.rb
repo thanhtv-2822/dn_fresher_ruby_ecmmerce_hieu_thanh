@@ -1,20 +1,13 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /en|vi/ do
     root "static_pages#home"
+    devise_for :users
     get "/home", to: "static_pages#home"
-    get "/login", to: "sessions#new"
-    post "/login", to: "sessions#create"
-    get "/signup", to: "users#new"
-    post "/signup", to: "users#create"
-    delete "/logout", to: "sessions#destroy"
     resources :addresses
-    resources :contributes, only: [:new, :create]
+    resources :contributes, only: %i(new create index)
     resources :orders
-    resources :users do
-      resource :upload, only: [:update]
-      resource :order, only: [:show], to: "orders#show"
-      resources :contributes, only: [:index]
-    end
+    resources :uploads, only: :update
+    resources :order, only: :show, to: "orders#show"
     resources :products, only: :show
     resources :carts, only: %i(index destroy) do
       collection do

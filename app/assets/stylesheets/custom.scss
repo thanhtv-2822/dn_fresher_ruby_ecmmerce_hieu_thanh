@@ -1,0 +1,29 @@
+@import "color";
+
+input#user_remember_me {
+  width: auto;
+}
+
+#login-box a {
+  color: $login;
+}
+
+#signup-box a {
+  color: $login;
+}
+
+.alert-notice {
+  color: $notice_color;
+  background-color: $notice_bg;
+  border-color: $notice_border;
+}
+
+.alert-alert {
+  color: $alert_color;
+  background-color: $alert_bg;
+  border-color: $alert_border;
+}
+
+.redirect-link {
+  color: $login;
+}
