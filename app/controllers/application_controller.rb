@@ -27,6 +27,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  rescue_from CanCan::AccessDenied do
+    redirect_to root_path, alert: t("cancan.permission")
+  end
+
   private
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale

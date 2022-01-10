@@ -1,4 +1,6 @@
 class Admin::OrdersController < Admin::BaseController
+  authorize_resource
+
   before_action :check_order, only: [:update]
   def index
     @pagy, @orders = pagy(

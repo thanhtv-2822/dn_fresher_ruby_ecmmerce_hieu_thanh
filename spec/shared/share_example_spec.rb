@@ -32,11 +32,11 @@ RSpec.shared_examples "share check login admin" do
   before {get :index}
 
   it "redirect to login page" do
-    should redirect_to login_path
+    should redirect_to("/users/sign_in")
   end
 
   it "display flash danger don't permission" do
-    expect(flash[:danger]).to eq("You dont permission")
+    expect(flash[:alert]).to eq("You need to sign in or sign up before continuing.")
   end
 end
 

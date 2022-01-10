@@ -1,4 +1,6 @@
 class Admin::CategoriesController < Admin::BaseController
+  authorize_resource
+
   before_action :find_category, except: %i(index new create)
   def index
     @pagy, @category = pagy(Category.all, items: Settings.page.size_5)

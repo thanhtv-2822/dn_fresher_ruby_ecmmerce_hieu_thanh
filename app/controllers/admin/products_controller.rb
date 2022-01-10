@@ -1,4 +1,6 @@
 class Admin::ProductsController < Admin::BaseController
+  authorize_resource
+
   before_action :find_product, only: %i(show destroy edit update)
   before_action :find_all_category, except: %i(index show)
   def index

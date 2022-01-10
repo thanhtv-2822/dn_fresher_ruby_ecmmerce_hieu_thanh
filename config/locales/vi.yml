@@ -233,3 +233,5 @@ vi:
     remember_me: "Lưu đăng nhập"
     new_password: "Mật khẩu mới"
     new_password_confirmation: "Xác nhận mật khẩu mới"
+  cancan:
+    permission: "Bạn không có quyền truy cập trang này."
