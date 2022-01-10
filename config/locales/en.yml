@@ -310,3 +310,14 @@ en:
     new_password_confirmation: "Confirm new password"
   cancan:
     permission: "You are not authorized to access this page."
+  ransack:
+    category: "Search for category name"
+    name_or_des: "Search for name and description product"
+    price: "Price"
+    created_at: "Search for created at product"
+    search: "Search"
+    clear: "Clear"
+    sort_name: "Sort by name"
+    sort_price: "Sort by price"
+    sort_quantity: "Sort by quantity"
+    sort_created_at: "Sort by created_at"

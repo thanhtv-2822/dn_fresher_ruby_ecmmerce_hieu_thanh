@@ -27,3 +27,19 @@ input#user_remember_me {
 .redirect-link {
   color: $login;
 }
+
+.clear-link {
+  color: $login;
+}
+
+.price-search{
+  display: flex;
+  #q_price_lteq{
+    padding-left: 20px;
+    margin-left: 20px;
+  }
+  #q_price_gteq{
+    padding-right: 20px;
+    margin-right: 20px;
+  }
+}
