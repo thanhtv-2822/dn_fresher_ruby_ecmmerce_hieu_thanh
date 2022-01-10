@@ -12,7 +12,7 @@ class AddressesController < ApplicationController
     if check_default(current_user, add_params["default"], @address) &&
        @address.save
       flash[:success] = t "success.address"
-      redirect_to edit_user_registration_path
+      redirect_to stored_location_for(:orders) || edit_user_registration_path
     else
       flash[:danger] = t "errors.default"
       render :new

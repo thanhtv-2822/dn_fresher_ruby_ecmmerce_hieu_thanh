@@ -58,6 +58,61 @@ class Product < ApplicationRecord
     image.variant resize_to_limit: [377, 377]
   end
 
+  class << self
+    def import_file file
+      ActiveRecord::Base.transaction do
+        spreadsheet = Roo::Spreadsheet.open file
+        rows = read_file spreadsheet
+        products_valid = []
+        products_invalid = []
+        get_list_product rows, products_invalid, products_valid
+        import! products_valid
+        {
+          errors: products_invalid.count,
+          successes: products_valid.count,
+          updates: rows.count - products_invalid.count - products_valid.count
+        }
+      end
+    rescue ActiveRecord::RecordInvalid
+      {}
+    end
+
+    def read_file spreadsheet
+      header = spreadsheet.row(1)
+      rows = []
+      (2..spreadsheet.last_row).each do |i|
+        row = new [header, spreadsheet.row(i)].transpose.to_h
+        rows << row
+      end
+      rows
+    end
+
+    def get_list_product rows, products_invalid, products_valid
+      list_product = []
+      rows.each do |item|
+        item.quantity = item.quantity.to_i
+        list_product << item
+      end
+
+      check_product? list_product, products_invalid, products_valid
+    end
+
+    def check_product? products, products_invalid, products_valid
+      products.each do |product|
+        if product.valid?
+          @item = Product.find_by(name: product.name)
+          if @item
+            @item.update quantity: @item.quantity + product.quantity
+          else
+            products_valid << product
+          end
+        else
+          products_invalid << product
+        end
+      end
+    end
+  end
+
   def self.ransackable_attributes auth_object = nil
     if auth_object == :admin
       super

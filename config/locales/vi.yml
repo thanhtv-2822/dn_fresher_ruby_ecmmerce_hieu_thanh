@@ -100,6 +100,10 @@ vi:
     rating: "Xếp hạng"
     not_found: "Sản phẩm không được tìm thấy!"
     delete: "Xóa sản phẩm thành công"
+    import: "Nhập"
+    import_fail: "Không nhập được"
+    import_success: "Nhập thành công %{success} sản phẩm, thất bại %{errors} sản phẩm, cập nhật thành công %{updates} sản phẩm"
+    file_valid: "Chỉ hỗ trợ tệp excel và csv"
   carts:
     index:
       total: "Tổng cộng"

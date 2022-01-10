@@ -1,4 +1,9 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
+  authenticate :user, lambda { |u| u.is_admin? } do
+    mount Sidekiq::Web => "/sidekiq"
+  end
   scope "(:locale)", locale: /en|vi/ do
     root "static_pages#home"
     devise_for :users
@@ -22,6 +27,7 @@ Rails.application.routes.draw do
       delete "/logout", to: "static_pages#destroy"
       resources :products
       resources :categories
+      resources :import, only: %i(new create)
       resources :contributes, only: %i(show index update)
       resources :users
       resources :orders do

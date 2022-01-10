@@ -1,0 +1,6 @@
+<div>
+  <%= form_tag admin_import_index_path, multipart: true do %>
+    <%= file_field_tag :file, accept: Settings.format.file %>
+    <%= submit_tag t("product.import") %>
+  <% end %>
+</div>
