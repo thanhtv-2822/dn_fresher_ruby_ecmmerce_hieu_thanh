@@ -24,6 +24,12 @@ input#user_remember_me {
   border-color: $alert_border;
 }
 
+.sidekiq-admin{
+  position: absolute;
+  right: 0;
+  margin-right: 200px;
+}
+
 .redirect-link {
   color: $login;
 }

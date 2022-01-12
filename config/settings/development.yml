@@ -28,3 +28,7 @@ status: {pending: 0, accept: 1, resolved: 2, rejected: 3}
 page:
   size_5: 5
   size_medium: 8
+format:
+  file: ".csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+  xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+  csv: ".csv"

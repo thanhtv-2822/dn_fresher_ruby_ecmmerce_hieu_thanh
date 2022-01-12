@@ -27,7 +27,7 @@ class Admin::ContributesController < Admin::BaseController
     @contribute = Contribute.find_by id: params[:id]
     if @contribute
       @contribute.update status: 1
-      UserMailer.suggestion(@contribute).deliver_now
+      UserMailer.delay_for(1.minute).suggestion(@contribute)
     else
       flash[:danger] = t "admin.contrib.not_found"
     end

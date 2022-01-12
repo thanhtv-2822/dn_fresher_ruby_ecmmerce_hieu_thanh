@@ -6,7 +6,9 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   authorize_resource
 
-  def index; end
+  def index
+    store_location_for(:orders, request.fullpath)
+  end
 
   def show
     @orders = @user.orders.order_by_updated_at
@@ -16,7 +18,7 @@ class OrdersController < ApplicationController
     ActiveRecord::Base.transaction do
       @order.update order_params
       flash[:success] = t "success.order"
-      UserMailer.checkout(@user, @order).deliver_now
+      SendMailWorker.perform_async(@user.id, @order.id)
       session.delete :cart
       redirect_to order_path(@user)
     end
@@ -27,8 +29,9 @@ class OrdersController < ApplicationController
 
   def create
     ActiveRecord::Base.transaction do
-      remove_order if @order
+      RemoveOrderPending.perform_async(@order.id) if @order
       create_order
+      UpdateStatusWorker.set(wait: 7.days).perform_async(@order.id)
       redirect_to orders_path
     end
   rescue ActiveRecord::RecordInvalid
@@ -67,10 +70,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  def remove_order
-    @order.destroy
-  end
-
   def create_order
     @order = current_user.orders.build
     create_order_detail
@@ -83,7 +82,7 @@ class OrdersController < ApplicationController
   end
 
   def check_order
-    @order = @user.orders.find_by(status: 0)
+    @order = @user.orders.find_by(status: :pending)
     if @order.nil?
       flash[:danger] = t("warning.order")
       redirect_to home_path
@@ -100,6 +99,6 @@ class OrdersController < ApplicationController
   end
 
   def find_order
-    @order = Order.find_by(user_id: current_user, status: 0)
+    @order = Order.find_by(user_id: current_user, status: :pending)
   end
 end

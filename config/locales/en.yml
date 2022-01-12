@@ -170,6 +170,10 @@ en:
     rating: "Rating"
     not_found: "Product not found!"
     delete: "Remove product success"
+    import: "Import"
+    import_fail: "Failed to import"
+    import_success: "Import successfully %{success} products, fail %{errors} products, update successfully %{updates} products"
+    file_valid: "Only support file excel and csv"
   carts:
     index:
       total: "Total"
