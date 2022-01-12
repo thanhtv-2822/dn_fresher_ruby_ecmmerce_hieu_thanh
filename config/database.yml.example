@@ -1,12 +1,16 @@
 default: &default
   adapter: mysql2
   encoding: utf8
-  username: <%= ENV["DB_USERNAME"] %>
-  host: <%= ENV["DB_HOST"] %>
-  port: <%= ENV["DB_PORT"] %>
+  username: root
+  host: 127.0.0.1
+  port: 3300
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
 development:
   <<: *default
-  database: <%= ENV["DB_NAME"] %>
+  database: develop_mysql
+
+test:
+  <<: *default
+  database: test_mysql
