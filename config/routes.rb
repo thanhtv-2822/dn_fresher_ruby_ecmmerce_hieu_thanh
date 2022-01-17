@@ -4,6 +4,13 @@ Rails.application.routes.draw do
   authenticate :user, lambda { |u| u.is_admin? } do
     mount Sidekiq::Web => "/sidekiq"
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :products
+    end
+  end
+
   scope "(:locale)", locale: /en|vi/ do
     root "static_pages#home"
     devise_for :users

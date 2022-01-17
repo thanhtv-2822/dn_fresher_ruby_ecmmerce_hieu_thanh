@@ -1,10 +1,10 @@
 class CartsController < ApplicationController
+  before_action :authenticate_user!
+  authorize_resource class: false
   before_action :find_product, except: :index
   before_action :find_item, except: %i(index create)
   before_action :check_quantity_update, only: :update_cart
   before_action :check_quantity_add, only: :create
-  before_action :authenticate_user!
-  authorize_resource class: false
 
   def index
     @carts = get_all_item_in_cart

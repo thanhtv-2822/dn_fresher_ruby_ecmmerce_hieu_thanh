@@ -57,7 +57,7 @@
           </div>
           <div class="field">
             <%= f.label :category_name_cont, t("ransack.category") %>
-            <%= f.collection_select :category_name_cont, all_sub_menu, :name, :name, {},{:class=>"form-control"}%>
+            <%= f.collection_select :category_name_cont, all_sub_menu, :name, :name, {:include_blank => "--Select category--"},{:class=>"form-control"}%>
           </div>
           <div class="field">
             <%= f.label :price, t("ransack.price") %>
