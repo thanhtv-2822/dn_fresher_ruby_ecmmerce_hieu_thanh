@@ -68,5 +68,7 @@ gem "grape-swagger-rails"
 #-- rake grape:routes
 gem "grape_on_rails_routes"
 
+gem "grape-active_model_serializers"
+
 #-- share resouce, allow any request
 gem "rack-cors"
