@@ -31,6 +31,21 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, alert: t("cancan.permission")
   end
 
+  def authentication!
+    token = request.headers["Jwt-Token"]
+    user_id = Auth.decode(token)["user_id"] if token
+    @current_user = User.find_by(id: user_id) if user_id
+    return if @current_user
+
+    render_json :message, t("jwt.unauthorized"), :unauthorized
+  rescue JWT::DecodeError
+    render_json :message, t("jwt.invalid"), :unauthorized
+  end
+
+  def render_json message, data, status
+    render json: {message => data}, status: status
+  end
+
   private
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale

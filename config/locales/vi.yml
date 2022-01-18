@@ -250,3 +250,7 @@ vi:
     sort_price: "Sắp xếp theo giá"
     sort_quantity: "Sắp xếp theo số lượng"
     sort_created_at: "Sắp xếp theo ngày tạo"
+  jwt:
+    invalid: "Mã thông báo không hợp lệ"
+    unauthorized: "Bạn cần đăng nhập để sử dụng ứng dụng"
+    error_login: "Email / mật khẩu không hợp lệ"
