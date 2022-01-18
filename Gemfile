@@ -57,3 +57,16 @@ group :test do
 end
 
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+#-- api--
+gem "grape"
+
+#-- api documentation
+gem "grape-swagger"
+gem "grape-swagger-rails"
+
+#-- rake grape:routes
+gem "grape_on_rails_routes"
+
+#-- share resouce, allow any request
+gem "rack-cors"

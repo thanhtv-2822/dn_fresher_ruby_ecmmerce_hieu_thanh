@@ -1,4 +1,4 @@
-class Api::V1::ProductsController < ApplicationController
+class API::V1::ProductsController < ApplicationController
   before_action :authentication!
   skip_before_action :verify_authenticity_token
   before_action :find_product, only: %i(show destroy update)
