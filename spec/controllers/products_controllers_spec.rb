@@ -64,7 +64,7 @@ RSpec.describe Admin::ProductsController, type: :controller do
         before {get :index}
 
         it "return all product" do
-          expect(assigns(:products)).to eq [product1, product2]
+          expect(assigns(:products)).to eq [product2, product1]
         end
 
         it "render template index product page" do 

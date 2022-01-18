@@ -3,13 +3,17 @@ class Admin::ProductsController < Admin::BaseController
 
   before_action :find_product, only: %i(show destroy edit update)
   before_action :find_all_category, except: %i(index show)
+
   def index
     if params[:option]
       find_products_with_option params[:option]
     elsif params[:search]
       find_products_with_search params[:search]
     else
-      @pagy, @products = pagy(Product.all, items: Settings.page.size_5)
+      @pagy, @products = pagy(
+        Product.order_by(created_at: :desc),
+        items: Settings.page.size_5
+      )
     end
   end
 
@@ -61,7 +65,7 @@ class Admin::ProductsController < Admin::BaseController
 
   def find_products_with_search keyword
     @pagy, @products = pagy(
-      Product.all.sort_by_name(keyword),
+      Product.sort_by_name(keyword),
       items: Settings.page.size_5
     )
   end
@@ -70,15 +74,15 @@ class Admin::ProductsController < Admin::BaseController
     options = Product::OPTION
     @products = case option.to_i
                 when options[:oldest]
-                  Product.all.order_by created_at: :asc
+                  Product.order_by created_at: :asc
                 when options[:newest]
-                  Product.all.order_by created_at: :desc
+                  Product.order_by created_at: :desc
                 when options[:price_asc]
-                  Product.all.order_by price: :asc
+                  Product.order_by price: :asc
                 when options[:price_desc]
-                  Product.all.order_by price: :desc
+                  Product.order_by price: :desc
                 else
-                  Product.all
+                  Product.order_by created_at: :desc
                 end
   end
 

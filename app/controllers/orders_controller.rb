@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+  authorize_resource
+
   before_action :check_user, :check_address, only: %i(index show update create)
   before_action :check_order, only: %i(index update)
   before_action :find_order, only: :create
-
-  before_action :authenticate_user!
-  authorize_resource
 
   def index
     store_location_for(:orders, request.fullpath)
@@ -82,7 +82,7 @@ class OrdersController < ApplicationController
   end
 
   def check_order
-    @order = @user.orders.find_by(status: :pending)
+    @order = current_user&.orders&.find_by(status: :pending)
     if @order.nil?
       flash[:danger] = t("warning.order")
       redirect_to home_path
