@@ -5,15 +5,20 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => "/sidekiq"
   end
 
-  namespace :api do
-    namespace :v1 do
-      resources :products
-    end
-  end
-
   scope "(:locale)", locale: /en|vi/ do
     root "static_pages#home"
     devise_for :users
+
+    namespace :api do
+      namespace :v1 do
+        resources :products
+        as :user do
+          post "sign_in", to: "sessions#create"
+          post "refresh_token", to: "sessions#refresh_token"
+        end
+      end
+    end
+
     get "/home", to: "static_pages#home"
     resources :addresses
     resources :contributes, only: %i(new create index)

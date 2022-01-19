@@ -325,3 +325,7 @@ en:
     sort_price: "Sort by price"
     sort_quantity: "Sort by quantity"
     sort_created_at: "Sort by created_at"
+  jwt:
+    invalid: "Token invalid"
+    unauthorized: "You need to log in to use the app"
+    error_login: "Invalid email/password combination"

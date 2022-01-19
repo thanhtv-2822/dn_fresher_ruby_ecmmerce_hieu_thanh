@@ -1,27 +1,28 @@
 class Api::V1::ProductsController < ApplicationController
+  before_action :authentication!
   skip_before_action :verify_authenticity_token
   before_action :find_product, only: %i(show destroy update)
 
   def index
     @products = Product.includes(:category)
-    render json: @products, status: :ok
+    render_json :data, @products, :ok
   end
 
   def show
-    render json: @product, status: :ok
+    render_json :data, @product, :ok
   end
 
   def create
     product = Product.new product_params
     return unless product.save
 
-    render json: product, status: :created
+    render_json :data, product, :created
   end
 
   def update
     return unless @product.update product_params
 
-    render json: @product, status: :ok
+    render_json :data, @product, :ok
   end
 
   def destroy
@@ -35,7 +36,7 @@ class Api::V1::ProductsController < ApplicationController
     @product = Product.find_by id: params[:id]
     return if @product
 
-    render json: {message: t("product.not_found")}, status: :not_found
+    render_json :message, t("product.not_found"), :not_found
   end
 
   def product_params
