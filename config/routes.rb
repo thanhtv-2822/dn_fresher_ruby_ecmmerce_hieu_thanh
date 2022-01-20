@@ -19,6 +19,9 @@ Rails.application.routes.draw do
       end
     end
 
+    mount API::Base, at: "/"
+    mount GrapeSwaggerRails::Engine, at: "/documentation"
+
     get "/home", to: "static_pages#home"
     resources :addresses
     resources :contributes, only: %i(new create index)

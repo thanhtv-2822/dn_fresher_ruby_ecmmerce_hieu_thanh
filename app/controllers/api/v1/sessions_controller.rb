@@ -1,4 +1,4 @@
-class Api::V1::SessionsController < Devise::SessionsController
+class API::V1::SessionsController < Devise::SessionsController
   skip_before_action :verify_authenticity_token
   before_action :find_refresh_token, only: :refresh_token
 
