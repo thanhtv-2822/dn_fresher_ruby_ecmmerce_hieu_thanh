@@ -17,6 +17,10 @@ module API
           error_response(message: e.message, status: 422)
         end
 
+        rescue_from Grape::Exceptions::ValidationErrors do |e|
+          error_response(message: e.message, status: 422)
+        end
+
         helpers do
           def authenticate_user!
             token = request.headers["Jwt-Token"]
