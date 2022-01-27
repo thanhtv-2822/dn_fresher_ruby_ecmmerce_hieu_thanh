@@ -47,3 +47,10 @@ RSpec.shared_examples "share update order fail" do |old, new|
     expect(flash[:danger]).to eq("Update failed")
   end
 end
+
+RSpec.shared_examples "share response code 401" do |apikey, msg, path|
+  it "response #{msg} when api key nil" do
+    get path, params: {api_key: apikey}
+    expect(response.status).to eq(401)
+  end
+end

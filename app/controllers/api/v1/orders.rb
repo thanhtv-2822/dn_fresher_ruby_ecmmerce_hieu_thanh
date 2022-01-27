@@ -20,6 +20,16 @@ module API
         get ":id", root: "order" do
           Order.find params[:id]
         end
+
+        desc "Update status of order"
+        params do
+          requires :id, type: Integer, desc: "ID of the order"
+          requires :status, type: String, documentation: {in: "body"}
+        end
+        put ":id", root: "order" do
+          order = Order.find(params[:id])
+          present order if order&.update(status: params[:status])
+        end
       end
     end
   end

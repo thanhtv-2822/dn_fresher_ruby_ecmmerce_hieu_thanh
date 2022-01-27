@@ -8,9 +8,10 @@ module API
         version "v1", using: :path
         default_format :json
         format :json
+        formatter :json, Grape::Formatter::ActiveModelSerializers
 
-        rescue_from ActiveRecord::RecordNotFound do
-          error_response(message: I18n.t("product.not_found"), status: 404)
+        rescue_from ActiveRecord::RecordNotFound do |e|
+          error_response(message: e.message, status: 404)
         end
 
         rescue_from ActiveRecord::RecordInvalid do |e|
@@ -23,7 +24,7 @@ module API
 
         helpers do
           def authenticate_user!
-            token = request.headers["Jwt-Token"]
+            token = params["api_key"].split(" ")[1]
             user_id = Auth.decode(token)["user_id"] if token
             @current_user = User.find_by(id: user_id) if user_id
             error!(I18n.t("jwt.unauthorized"), 401) unless @current_user
